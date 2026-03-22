@@ -1,0 +1,18 @@
+/* ════════════════════════════════════
+   DESIGN TOKENS
+════════════════════════════════════ */
+:root{
+  --navy:#0A2342;--navy2:#0D2D55;
+  --blue:#1A5FBF;--blue-lt:#EBF2FF;
+  --teal:#0D9488;--teal-lt:#CCFBF1;
+  --gold:#F59E0B;--gold-lt:#FEF9EC;
+  --red:#DC2626;--green:#059669;--green-lt:#D1FAE5;
+  --purple:#7C3AED;--purple-lt:#EDE9FE;
+  --white:#FFFFFF;--bg:#F8FAFB;--ink:#0A1628;
+  --body:#374151;--muted:#6B7280;--line:#E5EAF2;
+  --font:'Sora',sans-serif;--km:'Hanuman',serif;
+  --r:16px;--rsm:10px;--rxs:6px;
+  --s1:0 2px 12px rgba(10,35,66,.07);
+  --s2:0 8px 40px rgba(10,35,66,.13);
+  --s3:0 24px 80px rgba(10,35,66,.2);
+}
