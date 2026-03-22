@@ -5,398 +5,804 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>ASTI — គំនិតផ្តួចផ្តើម TVET អាស៊ាន-ស្វីស</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@300;400;700;900&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@300;400;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-/* ─── RESET ─── */
+/* ══════════════════════════════════════
+   RESET
+══════════════════════════════════════ */
 *{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 
-/* ─── TOKENS ─── */
+/* ══════════════════════════════════════
+   DESIGN TOKENS  (inspired by ASEAN Foundation)
+══════════════════════════════════════ */
 :root{
-  --blue:      #002E6E;
-  --blue-dark: #001A3E;
-  --blue-mid:  #003A8A;
-  --yellow:    #FFD400;
-  --yellow-dk: #E6BE00;
-  --red:       #ED1C24;
-  --green:     #4CAF6F;
-  --white:     #FFFFFF;
-  --off:       #F6F8FB;
-  --ink:       #1A1A2E;
-  --muted:     #5A6B7B;
-  --line:      #E2E8F0;
-  --shadow:    0 4px 24px rgba(0,46,110,.08);
-  --shadow-lg: 0 14px 48px rgba(0,46,110,.14);
-  --r:         16px;
-  --r-sm:      10px;
-  --km:        'Hanuman',serif;
-  --en:        'Barlow',sans-serif;
-  --cond:      'Barlow Condensed',sans-serif;
+  /* Brand */
+  --blue:       #003087;   /* primary navy */
+  --blue-dark:  #001A4D;   /* topbar / footer */
+  --blue-mid:   #004BB5;   /* hover / mid shade */
+  --blue-light: #EDF3FF;   /* section bg tint */
+  --yellow:     #FFD400;   /* accent = ASEAN Foundation's pink role */
+  --yellow-dk:  #E6BE00;
+  --red:        #E0284F;   /* alerts / tags only */
+  --green:      #22C55E;   /* success / open */
+
+  /* Neutrals */
+  --white:  #FFFFFF;
+  --bg:     #F5F9FF;       /* section alt bg – like ASEAN Foundation's #F6FBFF */
+  --ink:    #0F172A;       /* headings */
+  --body:   #374151;       /* body text */
+  --muted:  #6B7280;       /* captions */
+  --line:   #E2E8F0;       /* dividers */
+
+  /* Shadows */
+  --s1: 0 2px 12px rgba(0,48,135,.07);
+  --s2: 0 8px 32px rgba(0,48,135,.12);
+  --s3: 0 20px 60px rgba(0,48,135,.18);
+
+  /* Geometry */
+  --r:    16px;
+  --r-sm: 10px;
+  --r-xs: 6px;
+
+  /* Fonts */
+  --pp: 'Poppins',sans-serif;   /* headings, numbers, English */
+  --km: 'Hanuman',serif;        /* Khmer */
 }
 
-/* ─── BASE ─── */
-body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:1.9;font-size:16px;-webkit-font-smoothing:antialiased;}
+/* ══════════════════════════════════════
+   BASE
+══════════════════════════════════════ */
+body{
+  font-family:var(--km);
+  background:var(--white);
+  color:var(--body);
+  line-height:1.85;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
-a{text-decoration:none;}
+button{cursor:pointer;}
 
-/* ─── FADE-IN ANIMATION ─── */
-.fade{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease;}
-.fade.visible{opacity:1;transform:none;}
-.fade-delay-1{transition-delay:.1s;}
-.fade-delay-2{transition-delay:.2s;}
-.fade-delay-3{transition-delay:.3s;}
-.fade-delay-4{transition-delay:.4s;}
+/* ══════════════════════════════════════
+   SCROLL ANIMATIONS
+══════════════════════════════════════ */
+.reveal{
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),
+             transform .7s cubic-bezier(.22,1,.36,1);
+}
+.reveal.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;} .d2{transition-delay:.16s;}
+.d3{transition-delay:.24s;} .d4{transition-delay:.32s;}
 
-/* ─── TOP BAR ─── */
-.topbar{background:var(--blue-dark);padding:8px 48px;display:flex;justify-content:space-between;align-items:center;}
-.tb-left{font-family:var(--en);font-size:11px;color:rgba(255,255,255,.38);letter-spacing:.04em;}
-.tb-right{display:flex;gap:24px;align-items:center;}
-.tb-right a{font-family:var(--en);font-size:11px;color:rgba(255,255,255,.42);transition:color .2s;}
+/* ══════════════════════════════════════
+   TOP UTILITY BAR
+══════════════════════════════════════ */
+.topbar{
+  background:var(--blue-dark);
+  padding:8px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.tb-text{
+  font-family:var(--pp);font-size:11px;
+  color:rgba(255,255,255,.38);letter-spacing:.04em;
+}
+.tb-right{display:flex;gap:20px;align-items:center;}
+.tb-right a{
+  font-family:var(--pp);font-size:11px;
+  color:rgba(255,255,255,.42);transition:color .2s;
+}
 .tb-right a:hover{color:#fff;}
 .lang-sw{display:flex;gap:4px;}
-.lang-btn{font-family:var(--en);font-size:10px;font-weight:700;padding:3px 11px;border-radius:20px;border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.38);cursor:pointer;background:transparent;letter-spacing:.04em;transition:all .2s;}
+.lang-btn{
+  font-family:var(--pp);font-size:10px;font-weight:600;
+  padding:3px 11px;border-radius:20px;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.38);background:transparent;
+  transition:all .2s;
+}
 .lang-btn.on{background:var(--yellow);color:var(--blue);border-color:var(--yellow);}
-.lang-btn:hover:not(.on){border-color:rgba(255,255,255,.38);color:#fff;}
+.lang-btn:hover:not(.on){border-color:rgba(255,255,255,.4);color:#fff;}
 
-/* ─── NAV ─── */
-.nav{background:var(--white);height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;box-shadow:0 2px 18px rgba(0,46,110,.08);position:sticky;top:0;z-index:200;}
-.nav-logo{display:flex;align-items:center;gap:14px;}
-.logo-words .name{font-family:var(--cond);font-size:24px;font-weight:900;color:var(--blue);letter-spacing:1.5px;line-height:1;}
-.logo-words .sub{font-family:var(--en);font-size:9px;color:var(--muted);letter-spacing:.04em;margin-top:3px;}
-.nav-links{display:flex;align-items:center;gap:0;list-style:none;height:72px;}
-.nav-links a{display:flex;align-items:center;height:72px;padding:0 18px;font-family:var(--km);font-size:14px;color:var(--ink);border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;}
+/* ══════════════════════════════════════
+   NAV  — clean horizontal like ASEAN Foundation
+══════════════════════════════════════ */
+.nav{
+  background:var(--white);
+  height:72px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  box-shadow:0 1px 0 var(--line), 0 4px 24px rgba(0,48,135,.06);
+  position:sticky;top:0;z-index:300;
+}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo-text .brand{
+  font-family:var(--pp);font-size:22px;font-weight:800;
+  color:var(--blue);letter-spacing:.5px;line-height:1;
+}
+.nav-logo-text .tagline{
+  font-family:var(--pp);font-size:9px;font-weight:400;
+  color:var(--muted);letter-spacing:.04em;margin-top:2px;
+}
+.nav-links{display:flex;align-items:center;list-style:none;height:72px;gap:0;}
+.nav-links a{
+  display:flex;align-items:center;height:72px;padding:0 16px;
+  font-family:var(--pp);font-size:13px;font-weight:500;
+  color:var(--body);border-bottom:2px solid transparent;
+  transition:all .2s;white-space:nowrap;
+}
 .nav-links a:hover{color:var(--blue);border-bottom-color:var(--yellow);}
-.nav-links a.active{color:var(--blue);font-weight:700;border-bottom-color:var(--blue);}
-.nav-cta{background:var(--red)!important;color:#fff!important;border-radius:var(--r-sm)!important;padding:0 22px!important;height:42px!important;margin-left:10px;font-weight:700!important;border-bottom:none!important;align-self:center;display:inline-flex!important;align-items:center!important;}
-.nav-cta:hover{background:#C5151C!important;border-bottom:none!important;}
+.nav-links a.on{color:var(--blue);font-weight:600;border-bottom-color:var(--blue);}
+.nav-cta{
+  font-family:var(--pp)!important;font-size:13px!important;font-weight:600!important;
+  background:var(--yellow)!important;color:var(--blue)!important;
+  border-radius:var(--r-sm)!important;padding:0 20px!important;
+  height:40px!important;margin-left:16px;border-bottom:none!important;
+  align-self:center;display:inline-flex!important;align-items:center!important;
+  transition:background .2s!important;
+}
+.nav-cta:hover{background:var(--yellow-dk)!important;}
 /* Hamburger */
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
 .ham span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
 .ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .ham.open span:nth-child(2){opacity:0;}
 .ham.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mob-nav{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);border-top:1px solid var(--line);z-index:199;box-shadow:0 12px 40px rgba(0,46,110,.12);}
+.mob-nav{
+  display:none;position:fixed;top:72px;left:0;right:0;
+  background:var(--white);border-top:1px solid var(--line);
+  z-index:299;box-shadow:var(--s2);
+}
 .mob-nav.open{display:block;}
-.mob-nav ul{list-style:none;padding:12px 0;}
-.mob-nav ul li a{display:block;padding:14px 32px;font-family:var(--km);font-size:16px;color:var(--ink);border-bottom:1px solid var(--line);}
+.mob-nav ul{list-style:none;padding:8px 0;}
+.mob-nav ul a{
+  display:block;padding:14px 32px;
+  font-family:var(--pp);font-size:15px;font-weight:500;color:var(--ink);
+  border-bottom:1px solid var(--line);transition:background .2s;
+}
+.mob-nav ul a:hover{background:var(--bg);color:var(--blue);}
 .mob-nav ul li:last-child a{border-bottom:none;}
-.mob-nav ul li a:hover,.mob-nav ul li a.active{color:var(--blue);background:var(--off);}
 .mob-cta-wrap{padding:20px 32px 28px;}
-.mob-cta{display:block;background:var(--red);color:#fff;font-family:var(--km);font-size:15px;font-weight:700;padding:14px;border-radius:var(--r-sm);text-align:center;}
+.mob-cta{
+  display:block;background:var(--yellow);color:var(--blue);
+  font-family:var(--pp);font-size:15px;font-weight:700;
+  padding:14px;border-radius:var(--r-sm);text-align:center;
+}
 
-/* ─── HERO ─── */
-.hero{background:var(--blue);position:relative;overflow:hidden;}
-.hero-orb1{position:absolute;width:640px;height:640px;border-radius:50%;background:rgba(255,212,0,.05);top:-220px;right:-80px;pointer-events:none;}
-.hero-orb2{position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(237,28,36,.06);bottom:-140px;left:8%;pointer-events:none;}
-.hero-body{max-width:1160px;margin:0 auto;padding:88px 48px 76px;display:grid;grid-template-columns:1fr 460px;gap:52px;align-items:center;position:relative;z-index:1;}
-.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,212,0,.1);border:1px solid rgba(255,212,0,.22);color:var(--yellow);font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:7px 16px;border-radius:20px;margin-bottom:26px;width:fit-content;}
-.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--yellow);flex-shrink:0;animation:pulse-dot 2s infinite;}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
-.hero h1{font-family:var(--km);font-size:54px;font-weight:900;color:#fff;line-height:1.22;margin-bottom:8px;}
-.hero h1 .hy{color:var(--yellow);}
-.hero h1 .hg{color:#7ED957;}
-.hero-en{font-family:var(--en);font-size:13px;color:rgba(255,255,255,.28);letter-spacing:.07em;margin-bottom:22px;}
-.hero-desc{font-size:16px;color:rgba(255,255,255,.7);line-height:2;max-width:520px;margin-bottom:38px;}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
-.btn-yellow{background:var(--yellow);color:var(--blue);font-family:var(--km);font-size:15px;font-weight:700;padding:14px 28px;border-radius:var(--r-sm);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:all .22s;box-shadow:0 4px 18px rgba(255,212,0,.28);}
-.btn-yellow:hover{background:var(--yellow-dk);transform:translateY(-2px);box-shadow:0 7px 22px rgba(255,212,0,.36);}
-.btn-outline{background:rgba(255,255,255,.07);color:rgba(255,255,255,.85);font-family:var(--km);font-size:15px;font-weight:500;padding:14px 28px;border-radius:var(--r-sm);border:1.5px solid rgba(255,255,255,.18);cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:all .22s;}
-.btn-outline:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.35);}
-.hero-trust{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-.trust-lbl{font-family:var(--en);font-size:11px;color:rgba(255,255,255,.28);letter-spacing:.05em;}
-.trust-badges{display:flex;gap:8px;flex-wrap:wrap;}
-.trust-badge{padding:4px 13px;border:1px solid rgba(255,255,255,.13);border-radius:20px;font-family:var(--en);font-size:10px;font-weight:700;color:rgba(255,255,255,.38);}
-/* Hero right */
+/* ══════════════════════════════════════
+   HERO  — clean, text-dominant, inspired by ASEAN Foundation
+══════════════════════════════════════ */
+.hero{
+  background:var(--blue);
+  position:relative;overflow:hidden;
+}
+/* Subtle background shapes */
+.hero::before{
+  content:'';position:absolute;
+  width:700px;height:700px;border-radius:50%;
+  background:rgba(255,212,0,.05);
+  top:-280px;right:-160px;pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  background:rgba(255,255,255,.03);
+  bottom:-120px;left:5%;pointer-events:none;
+}
+.hero-wrap{
+  max-width:1200px;margin:0 auto;
+  padding:100px 48px 88px;
+  display:grid;grid-template-columns:1fr 420px;
+  gap:64px;align-items:center;
+  position:relative;z-index:1;
+}
+/* Tag pill */
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,212,0,.12);
+  border:1px solid rgba(255,212,0,.2);
+  color:var(--yellow);
+  font-family:var(--pp);font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:6px 16px;border-radius:20px;
+  margin-bottom:28px;width:fit-content;
+}
+.pill-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--yellow);
+  animation:blink 2.2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{
+  font-family:var(--km);font-size:52px;font-weight:900;
+  color:#fff;line-height:1.22;margin-bottom:10px;
+}
+.hero h1 em{color:var(--yellow);font-style:normal;}
+.hero h1 .green{color:#5EE087;}
+.hero-sub-en{
+  font-family:var(--pp);font-size:12px;font-weight:400;
+  color:rgba(255,255,255,.3);letter-spacing:.08em;
+  text-transform:uppercase;margin-bottom:22px;
+}
+.hero-desc{
+  font-family:var(--km);font-size:16px;
+  color:rgba(255,255,255,.68);line-height:2.0;
+  max-width:520px;margin-bottom:40px;
+}
+/* CTA row */
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;}
+.btn-accent{
+  background:var(--yellow);color:var(--blue);
+  font-family:var(--pp);font-size:14px;font-weight:700;
+  padding:14px 28px;border-radius:var(--r-sm);border:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .22s;
+  box-shadow:0 4px 20px rgba(255,212,0,.3);
+}
+.btn-accent:hover{background:var(--yellow-dk);transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,212,0,.4);}
+.btn-ghost{
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.88);
+  font-family:var(--pp);font-size:14px;font-weight:500;
+  padding:14px 28px;border-radius:var(--r-sm);
+  border:1.5px solid rgba(255,255,255,.18);
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .22s;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);}
+/* Funded-by row */
+.hero-funded{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.funded-lbl{
+  font-family:var(--pp);font-size:10px;font-weight:600;
+  color:rgba(255,255,255,.28);letter-spacing:.06em;text-transform:uppercase;
+}
+.funded-badges{display:flex;gap:8px;flex-wrap:wrap;}
+.funded-b{
+  padding:4px 14px;border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;
+  font-family:var(--pp);font-size:10px;font-weight:600;
+  color:rgba(255,255,255,.36);
+}
+
+/* ── Hero RIGHT: 4 stat tiles + story card ── */
 .hero-right{display:flex;flex-direction:column;gap:14px;}
-.hstat-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.hstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);border-radius:var(--r);padding:24px 20px;display:flex;flex-direction:column;gap:5px;transition:all .25s;cursor:default;}
-.hstat:hover{background:rgba(255,255,255,.13);transform:translateY(-4px);}
-.hstat-icon{font-size:22px;margin-bottom:4px;}
-.hstat-num{font-family:var(--cond);font-size:42px;font-weight:900;color:#fff;line-height:1;letter-spacing:-1px;}
-.hstat-num .u{font-size:21px;}
-.hstat.y .u{color:var(--yellow);}
-.hstat.r .u{color:#FF7070;}
-.hstat.g .u{color:#7ED957;}
-.hstat.b .u{color:#6BA3FF;}
-.hstat-lbl{font-size:12px;color:rgba(255,255,255,.42);line-height:1.55;}
-.hero-story{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);border-radius:var(--r);padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .22s;}
-.hero-story:hover{background:rgba(255,255,255,.14);}
-.story-av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--red),#FF7043);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
-.story-chip{font-family:var(--en);font-size:9px;color:var(--yellow);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:2px;}
-.story-name{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;}
-.story-txt{font-size:12px;color:rgba(255,255,255,.42);line-height:1.55;}
-.story-arr{margin-left:auto;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.45);font-size:17px;flex-shrink:0;}
-/* Hero stripe */
-.hero-stripe{height:5px;background:linear-gradient(90deg,var(--red) 25%,var(--yellow) 25% 50%,var(--green) 50% 75%,rgba(255,255,255,.18) 75%);}
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.htile{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:22px 18px;
+  transition:all .25s;cursor:default;
+}
+.htile:hover{background:rgba(255,255,255,.14);transform:translateY(-4px);}
+.htile-icon{font-size:20px;margin-bottom:8px;}
+.htile-num{
+  font-family:var(--pp);font-size:38px;font-weight:800;
+  color:#fff;line-height:1;letter-spacing:-1px;
+}
+.htile-num sup{font-size:18px;font-weight:700;}
+.htile.ty sup{color:var(--yellow);}
+.htile.tr sup{color:#FF8080;}
+.htile.tg sup{color:#5EE087;}
+.htile.tb sup{color:#80B5FF;}
+.htile-lbl{font-family:var(--km);font-size:12px;color:rgba(255,255,255,.42);margin-top:5px;line-height:1.45;}
 
-/* ─── IMPACT STRIP ─── */
-.impact-strip{background:var(--yellow);}
-.is-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
-.is-item{padding:22px 24px;text-align:center;border-right:1px solid rgba(0,46,110,.1);}
-.is-item:last-child{border-right:none;}
-.is-num{font-family:var(--cond);font-size:34px;font-weight:900;color:var(--blue);line-height:1;}
-.is-lbl{font-size:13px;color:rgba(0,46,110,.58);margin-top:4px;line-height:1.4;}
+.story-tile{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:18px 20px;
+  display:flex;align-items:center;gap:14px;
+  cursor:pointer;transition:all .22s;
+}
+.story-tile:hover{background:rgba(255,255,255,.14);}
+.story-av{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#E0284F,#FF7043);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--pp);font-size:13px;font-weight:700;color:#fff;
+}
+.story-chip{
+  font-family:var(--pp);font-size:9px;font-weight:600;
+  color:var(--yellow);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px;
+}
+.story-name{font-family:var(--km);font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;}
+.story-txt{font-family:var(--km);font-size:12px;color:rgba(255,255,255,.42);line-height:1.5;}
+.story-arr{
+  margin-left:auto;width:28px;height:28px;border-radius:50%;
+  background:rgba(255,255,255,.08);display:flex;align-items:center;
+  justify-content:center;color:rgba(255,255,255,.4);font-size:16px;flex-shrink:0;
+}
+/* Hero bottom stripe */
+.hero-stripe{height:5px;background:linear-gradient(90deg,#E0284F 25%,var(--yellow) 25% 50%,#22C55E 50% 75%,rgba(255,255,255,.15) 75%);}
 
-/* ─── SECTION BASE ─── */
-.sec{padding:96px 48px;}
-.sec-inner{max-width:1160px;margin:0 auto;}
-.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
-.sec-label::before{content:'';width:20px;height:2px;background:var(--red);}
-.sec-h{font-family:var(--km);font-size:36px;font-weight:900;color:var(--blue);line-height:1.25;margin-bottom:12px;}
-.sec-sub{font-size:16px;color:var(--muted);max-width:580px;line-height:1.9;margin-bottom:52px;}
-.sec-en{font-family:var(--en);font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+/* ══════════════════════════════════════
+   IMPACT NUMBERS STRIP  (yellow bg like ASEAN Foundation's coloured stat bars)
+══════════════════════════════════════ */
+.stats-strip{background:var(--yellow);}
+.stats-wrap{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-item{
+  padding:24px 28px;text-align:center;
+  border-right:1px solid rgba(0,48,135,.12);
+}
+.stat-item:last-child{border-right:none;}
+.stat-num{
+  font-family:var(--pp);font-size:36px;font-weight:800;
+  color:var(--blue);line-height:1;
+}
+.stat-lbl{
+  font-family:var(--km);font-size:13px;
+  color:rgba(0,48,135,.62);margin-top:5px;line-height:1.45;
+}
 
-/* ─── ECOSYSTEM ─── */
-.eco-sec{background:var(--off);}
-.eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
-.eco-card{border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .28s;display:flex;flex-direction:column;background:var(--white);box-shadow:var(--shadow);}
-.eco-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);}
-.eco-top{padding:32px 26px 22px;flex:1;}
-.eco-icon{width:54px;height:54px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
-.eco-title{font-size:17px;font-weight:700;color:var(--blue);margin-bottom:6px;line-height:1.4;}
-.eco-title-en{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;}
-.eco-desc{font-size:14px;color:var(--muted);line-height:1.8;}
-.eco-foot{padding:16px 26px;display:flex;align-items:center;justify-content:space-between;font-family:var(--en);font-size:12px;font-weight:700;letter-spacing:.04em;}
-.eco-card.edu .eco-icon{background:#DBEAFE;}
-.eco-card.edu .eco-title-en{color:#1D4ED8;}
-.eco-card.edu .eco-foot{background:var(--blue);color:var(--yellow);}
-.eco-card.career .eco-icon{background:#DCFCE7;}
-.eco-card.career .eco-title-en{color:#15803D;}
-.eco-card.career .eco-foot{background:#15803D;color:#fff;}
-.eco-card.cert .eco-icon{background:#FEF3C7;}
-.eco-card.cert .eco-title-en{color:#92400E;}
-.eco-card.cert .eco-foot{background:var(--yellow);color:var(--blue);}
-.eco-card.grant .eco-icon{background:#FFE4E6;}
-.eco-card.grant .eco-title-en{color:var(--red);}
-.eco-card.grant .eco-foot{background:var(--red);color:#fff;}
+/* ══════════════════════════════════════
+   SECTION BASE
+══════════════════════════════════════ */
+.sec{padding:100px 48px;}
+.sec-inner{max-width:1200px;margin:0 auto;}
+.sec-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--pp);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--blue-mid);
+  margin-bottom:14px;
+}
+.sec-kicker::before{content:'';width:18px;height:2px;background:var(--yellow);}
+.sec-h{
+  font-family:var(--km);font-size:38px;font-weight:900;
+  color:var(--ink);line-height:1.25;margin-bottom:14px;
+}
+.sec-sub{
+  font-family:var(--km);font-size:16px;color:var(--muted);
+  max-width:580px;line-height:2.0;margin-bottom:56px;
+}
 
-/* ─── ROADMAP ─── */
-.roadmap-sec{background:var(--white);}
-.rm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;}
-.rm-grid::before{content:'';position:absolute;top:48px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--red),var(--yellow),var(--green),var(--blue-mid));opacity:.16;z-index:0;}
-.rm-card{background:var(--off);border-radius:var(--r);padding:34px 22px 28px;text-align:center;position:relative;z-index:1;transition:all .28s;border:1.5px solid transparent;}
-.rm-card:hover{background:var(--white);box-shadow:var(--shadow-lg);border-color:var(--line);transform:translateY(-7px);}
-.rm-num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--cond);font-size:20px;font-weight:900;color:#fff;margin:0 auto 16px;}
-.rm-n1{background:var(--red);}
-.rm-n2{background:var(--yellow);color:var(--blue);}
-.rm-n3{background:var(--green);}
-.rm-n4{background:var(--blue);}
-.rm-icon{font-size:30px;margin-bottom:14px;}
-.rm-title{font-size:16px;font-weight:700;color:var(--blue);margin-bottom:10px;line-height:1.45;}
-.rm-desc{font-size:14px;color:var(--muted);line-height:1.8;}
+/* ══════════════════════════════════════
+   PROGRAMMES  — inspired by ASEAN Foundation 6-card grid
+══════════════════════════════════════ */
+.prog-sec{background:var(--white);}
+.prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.prog-card{
+  border-radius:var(--r);overflow:hidden;
+  background:var(--white);
+  border:1px solid var(--line);
+  display:flex;flex-direction:column;
+  transition:all .28s;cursor:pointer;
+}
+.prog-card:hover{transform:translateY(-8px);box-shadow:var(--s2);border-color:transparent;}
+/* Coloured top area (like ASEAN Foundation image tops) */
+.prog-top{
+  height:120px;display:flex;align-items:center;justify-content:center;
+  font-size:36px;position:relative;
+}
+.prog-card.edu  .prog-top{background:linear-gradient(135deg,#DBEAFE,#EFF6FF);}
+.prog-card.career .prog-top{background:linear-gradient(135deg,#DCFCE7,#F0FFF4);}
+.prog-card.cert .prog-top{background:linear-gradient(135deg,#FEF3C7,#FFFBEB);}
+.prog-card.grant .prog-top{background:linear-gradient(135deg,#FFE4E6,#FFF1F2);}
+/* Colour bar at very top */
+.prog-card.edu   .prog-top::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:#3B82F6;}
+.prog-card.career .prog-top::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:#22C55E;}
+.prog-card.cert  .prog-top::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:#F59E0B;}
+.prog-card.grant .prog-top::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:#E0284F;}
+.prog-body{padding:24px 22px;flex:1;display:flex;flex-direction:column;}
+.prog-cat{
+  font-family:var(--pp);font-size:10px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;
+}
+.prog-card.edu   .prog-cat{color:#3B82F6;}
+.prog-card.career .prog-cat{color:#22C55E;}
+.prog-card.cert  .prog-cat{color:#F59E0B;}
+.prog-card.grant .prog-cat{color:#E0284F;}
+.prog-title{
+  font-family:var(--km);font-size:16px;font-weight:700;
+  color:var(--ink);margin-bottom:8px;line-height:1.4;
+}
+.prog-desc{
+  font-family:var(--km);font-size:13px;color:var(--muted);
+  line-height:1.8;flex:1;
+}
+.prog-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--pp);font-size:12px;font-weight:600;
+  color:var(--blue);margin-top:16px;
+  transition:gap .2s;
+}
+.prog-card:hover .prog-link{gap:10px;}
 
-/* ─── IMPACT ─── */
-.impact-sec{background:var(--blue-dark);padding:96px 48px;}
-.impact-inner{max-width:1160px;margin:0 auto;}
-.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:52px;}
-.impact-counters{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.ic{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:28px;position:relative;overflow:hidden;}
-.ic::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-.ic.r::before{background:var(--red);}
-.ic.y::before{background:var(--yellow);}
-.ic.g::before{background:var(--green);}
-.ic.b::before{background:#6BA3FF;}
-.ic-num{font-family:var(--cond);font-size:46px;font-weight:900;color:#fff;line-height:1;margin-bottom:8px;}
-.ic-num span{font-size:22px;}
-.ic.r .ic-num span{color:#FF7070;}
-.ic.y .ic-num span{color:var(--yellow);}
-.ic.g .ic-num span{color:#7ED957;}
-.ic.b .ic-num span{color:#6BA3FF;}
-.ic-lbl{font-size:13px;color:rgba(255,255,255,.52);line-height:1.55;}
-.ic-lbl-en{font-family:var(--en);font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.05em;margin-top:5px;}
-.ic-bar{height:3px;background:rgba(255,255,255,.07);margin-top:18px;border-radius:2px;overflow:hidden;}
-.ic-fill{height:100%;border-radius:2px;transition:width 1.2s ease;}
+/* ══════════════════════════════════════
+   HOW IT WORKS  — 4 steps with connecting line
+══════════════════════════════════════ */
+.how-sec{background:var(--bg);}
+.how-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  position:relative;
+}
+.how-grid::before{
+  content:'';position:absolute;top:44px;left:12%;right:12%;height:2px;
+  background:linear-gradient(90deg,#E0284F,var(--yellow),#22C55E,var(--blue));
+  opacity:.2;z-index:0;
+}
+.how-card{
+  background:var(--white);border-radius:var(--r);
+  padding:36px 24px 30px;text-align:center;
+  position:relative;z-index:1;
+  border:1px solid var(--line);
+  transition:all .28s;
+}
+.how-card:hover{box-shadow:var(--s2);border-color:transparent;transform:translateY(-7px);}
+.how-num{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--pp);font-size:18px;font-weight:800;color:#fff;
+  margin:0 auto 18px;
+}
+.n1{background:#E0284F;} .n2{background:var(--yellow);color:var(--blue)!important;}
+.n3{background:#22C55E;} .n4{background:var(--blue);}
+.how-icon{font-size:28px;margin-bottom:14px;}
+.how-title{font-family:var(--km);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.4;}
+.how-desc{font-family:var(--km);font-size:14px;color:var(--muted);line-height:1.85;}
+
+/* ══════════════════════════════════════
+   IMPACT  — dark section, large counters + quote
+══════════════════════════════════════ */
+.impact-sec{background:var(--blue-dark);padding:100px 48px;}
+.impact-inner{max-width:1200px;margin:0 auto;}
+.impact-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--pp);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px;
+}
+.impact-kicker::before{content:'';width:18px;height:2px;background:var(--yellow);}
+.impact-h{
+  font-family:var(--km);font-size:38px;font-weight:900;
+  color:#fff;line-height:1.25;margin-bottom:56px;max-width:520px;
+}
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+
+/* Counter cards */
+.counters{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.c-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r);padding:28px 24px;position:relative;overflow:hidden;
+}
+.c-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.c-card.cr::before{background:#E0284F;}
+.c-card.cy::before{background:var(--yellow);}
+.c-card.cg::before{background:#22C55E;}
+.c-card.cb::before{background:#6BA3FF;}
+.c-num{
+  font-family:var(--pp);font-size:48px;font-weight:800;
+  color:#fff;line-height:1;margin-bottom:8px;letter-spacing:-2px;
+}
+.c-num span{font-size:22px;letter-spacing:0;}
+.c-card.cr .c-num span{color:#FF8080;}
+.c-card.cy .c-num span{color:var(--yellow);}
+.c-card.cg .c-num span{color:#5EE087;}
+.c-card.cb .c-num span{color:#80B5FF;}
+.c-lbl{font-family:var(--km);font-size:13px;color:rgba(255,255,255,.52);line-height:1.5;}
+.c-lbl-en{font-family:var(--pp);font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.05em;margin-top:4px;}
+.c-bar{height:3px;background:rgba(255,255,255,.06);margin-top:18px;border-radius:2px;overflow:hidden;}
+.c-fill{height:100%;border-radius:2px;}
+
+/* Right side: quote + GESI */
 .impact-right{display:flex;flex-direction:column;gap:16px;}
-.quote-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-left:4px solid var(--yellow);border-radius:0 var(--r) var(--r) 0;padding:30px;}
-.quote-text{font-size:16px;font-style:italic;color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:20px;}
+.quote{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-left:4px solid var(--yellow);
+  border-radius:0 var(--r) var(--r) 0;padding:32px;
+}
+.quote-text{
+  font-family:var(--km);font-size:17px;font-style:italic;
+  color:rgba(255,255,255,.82);line-height:1.9;margin-bottom:22px;
+}
 .quote-who{display:flex;align-items:center;gap:12px;}
-.quote-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--yellow));display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:12px;font-weight:700;color:#fff;flex-shrink:0;}
-.quote-name{font-size:13px;font-weight:700;color:#fff;}
-.quote-role{font-size:11px;color:rgba(255,255,255,.35);}
-.gesi-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:26px;}
-.gesi-title{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:20px;}
-.gesi-row{display:flex;align-items:center;gap:12px;margin-bottom:13px;}
+.q-av{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#E0284F,var(--yellow));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--pp);font-size:12px;font-weight:700;color:#fff;
+}
+.q-name{font-family:var(--km);font-size:14px;font-weight:700;color:#fff;}
+.q-role{font-family:var(--pp);font-size:11px;color:rgba(255,255,255,.32);}
+.gesi{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r);padding:28px;
+}
+.gesi-hd{
+  font-family:var(--pp);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:22px;
+}
+.gesi-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .gesi-row:last-child{margin-bottom:0;}
-.gesi-lbl{font-size:13px;color:rgba(255,255,255,.52);width:130px;flex-shrink:0;}
+.gesi-lbl{font-family:var(--km);font-size:13px;color:rgba(255,255,255,.5);width:130px;flex-shrink:0;}
 .gesi-bar{flex:1;height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;}
 .gesi-fill{height:100%;border-radius:4px;}
-.gesi-val{font-family:var(--en);font-size:13px;font-weight:700;color:#fff;width:48px;text-align:right;flex-shrink:0;}
+.gesi-val{font-family:var(--pp);font-size:13px;font-weight:700;color:#fff;width:48px;text-align:right;flex-shrink:0;}
 
-/* ─── COUNTRIES ─── */
-.country-sec{background:var(--off);}
-.country-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:34px;flex-wrap:wrap;gap:16px;}
-.ctab-group{display:flex;gap:0;border:1.5px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--white);}
-.ctab{padding:12px 22px;font-family:var(--km);font-size:14px;color:var(--muted);border:none;background:transparent;cursor:pointer;transition:all .2s;border-right:1px solid var(--line);}
-.ctab:last-child{border-right:none;}
-.ctab:hover{color:var(--blue);background:var(--off);}
-.ctab.on{background:var(--blue);color:#fff;font-weight:700;}
+/* ══════════════════════════════════════
+   COUNTRIES  (white bg, clean tabs)
+══════════════════════════════════════ */
+.countries-sec{background:var(--white);}
+.c-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:16px;}
+.tabs{
+  display:flex;background:var(--bg);
+  border-radius:var(--r-sm);padding:4px;gap:4px;
+}
+.tab{
+  padding:10px 20px;font-family:var(--pp);font-size:13px;font-weight:500;
+  color:var(--muted);border:none;background:transparent;border-radius:var(--r-xs);
+  transition:all .2s;
+}
+.tab:hover{color:var(--blue);}
+.tab.on{background:var(--white);color:var(--blue);font-weight:700;box-shadow:var(--s1);}
 .cpanel{display:none;}
-.cpanel.on{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:start;}
-.cp-left h3{font-family:var(--km);font-size:26px;font-weight:900;color:var(--blue);margin-bottom:12px;}
-.cp-left p{font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:26px;}
-.cp-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px;}
-.cps{background:var(--white);border-radius:var(--r-sm);padding:16px 18px;box-shadow:var(--shadow);}
-.cps-n{font-family:var(--cond);font-size:26px;font-weight:900;color:var(--blue);}
-.cps-l{font-size:12px;color:var(--muted);margin-top:3px;}
-.cp-right{background:var(--white);border-radius:var(--r);padding:26px;box-shadow:var(--shadow);}
-.cpr-head{font-family:var(--en);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:18px;}
-.cpr-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);}
-.cpr-row:last-child{border-bottom:none;}
-.cpr-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
-.cpr-name{font-size:14px;font-weight:700;color:var(--blue);}
-.cpr-role{font-size:12px;color:var(--muted);}
+.cpanel.on{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start;}
+.cp-title{font-family:var(--km);font-size:28px;font-weight:900;color:var(--ink);margin-bottom:14px;}
+.cp-text{font-family:var(--km);font-size:15px;color:var(--muted);line-height:1.95;margin-bottom:28px;}
+.cp-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
+.cstat{background:var(--bg);border-radius:var(--r-sm);padding:18px 20px;}
+.cstat-n{font-family:var(--pp);font-size:28px;font-weight:800;color:var(--blue);}
+.cstat-l{font-family:var(--km);font-size:12px;color:var(--muted);margin-top:3px;}
+.cp-right-box{background:var(--bg);border-radius:var(--r);padding:28px;}
+.cp-right-hd{
+  font-family:var(--pp);font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:18px;
+}
+.partner-row{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 0;border-bottom:1px solid var(--line);
+}
+.partner-row:last-child{border-bottom:none;}
+.partner-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.partner-name{font-family:var(--pp);font-size:14px;font-weight:600;color:var(--ink);}
+.partner-role{font-family:var(--km);font-size:12px;color:var(--muted);}
 
-/* ─── eLMS ─── */
-.lms-sec{background:var(--white);}
-.lms-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-.lms-courses{display:flex;flex-direction:column;gap:12px;}
-.lc{display:flex;gap:16px;align-items:flex-start;padding:20px;border-radius:var(--r-sm);cursor:pointer;transition:all .22s;border:1.5px solid var(--line);}
-.lc:hover{border-color:var(--blue);box-shadow:var(--shadow);}
-.lc-icon{width:48px;height:48px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.lc.c1 .lc-icon{background:#DBEAFE;}
-.lc.c2 .lc-icon{background:#DCFCE7;}
-.lc.c3 .lc-icon{background:#FEF3C7;}
-.lc.c4 .lc-icon{background:#FFE4E6;}
-.lc-title{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:4px;line-height:1.4;}
-.lc-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:8px;}
-.lc-badge{display:inline-flex;font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 10px;border-radius:20px;}
-.lc-badge.open{background:#DCFCE7;color:#15803D;}
-.lc-badge.soon{background:var(--off);color:var(--muted);}
+/* ══════════════════════════════════════
+   eLMS  (light bg)
+══════════════════════════════════════ */
+.lms-sec{background:var(--bg);}
+.lms-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.course-list{display:flex;flex-direction:column;gap:12px;}
+.course{
+  display:flex;gap:16px;align-items:flex-start;padding:20px;
+  border-radius:var(--r-sm);border:1.5px solid var(--line);
+  background:var(--white);transition:all .22s;cursor:pointer;
+}
+.course:hover{border-color:var(--blue);box-shadow:var(--s1);}
+.course-icon{
+  width:48px;height:48px;border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+}
+.course.c1 .course-icon{background:#DBEAFE;}
+.course.c2 .course-icon{background:#DCFCE7;}
+.course.c3 .course-icon{background:#FEF3C7;}
+.course.c4 .course-icon{background:#FFE4E6;}
+.course-title{font-family:var(--km);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.4;}
+.course-desc{font-family:var(--km);font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:8px;}
+.badge{
+  display:inline-flex;font-family:var(--pp);font-size:10px;font-weight:600;
+  letter-spacing:.04em;padding:3px 10px;border-radius:20px;
+}
+.badge.open{background:#DCFCE7;color:#166534;}
+.badge.soon{background:var(--bg);color:var(--muted);}
 .lms-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;}
-.lms-stat{text-align:center;padding:22px;background:var(--off);border-radius:var(--r-sm);}
-.lms-stat .n{font-family:var(--cond);font-size:32px;font-weight:900;color:var(--blue);}
-.lms-stat .n span{color:var(--red);}
-.lms-stat .l{font-size:13px;color:var(--muted);margin-top:3px;}
-.lms-right{background:var(--blue);border-radius:var(--r);padding:36px;}
-.lms-r-tag{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;}
-.lms-r-h{font-family:var(--km);font-size:26px;font-weight:900;color:#fff;margin-bottom:14px;line-height:1.35;}
-.lms-r-p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.9;margin-bottom:28px;}
-.lms-tech{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
-.ltech{padding:5px 14px;background:rgba(255,255,255,.08);border-radius:20px;font-family:var(--en);font-size:11px;color:rgba(255,255,255,.42);}
-.lms-btn{background:var(--yellow);color:var(--blue);font-family:var(--km);font-size:15px;font-weight:700;padding:15px 24px;border-radius:var(--r-sm);border:none;cursor:pointer;width:100%;transition:all .22s;display:flex;align-items:center;justify-content:center;gap:9px;}
-.lms-btn:hover{background:var(--yellow-dk);transform:translateY(-1px);}
-.lms-lang-row{display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;margin-top:18px;padding:16px;background:rgba(255,255,255,.05);border-radius:var(--r-sm);border:1px solid rgba(255,255,255,.09);}
-.lms-lang-div{background:rgba(255,255,255,.1);}
-.lms-lang-item{text-align:center;padding:4px;}
-.lms-lang-name{font-family:var(--cond);font-size:18px;font-weight:900;color:#fff;}
-.lms-lang-sub{font-size:10px;color:rgba(255,255,255,.25);}
+.lms-s{text-align:center;padding:20px;background:var(--white);border-radius:var(--r-sm);border:1px solid var(--line);}
+.lms-s .n{font-family:var(--pp);font-size:30px;font-weight:800;color:var(--blue);}
+.lms-s .n em{color:var(--red);font-style:normal;}
+.lms-s .l{font-family:var(--km);font-size:12px;color:var(--muted);margin-top:3px;}
 
-/* ─── NEWS ─── */
-.news-sec{background:var(--off);}
-.news-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:38px;flex-wrap:wrap;gap:12px;}
-.news-all{font-family:var(--en);font-size:14px;font-weight:700;color:var(--red);}
-.news-all:hover{text-decoration:underline;}
-.news-grid{display:grid;grid-template-columns:1.65fr 1fr;gap:20px;}
-.news-main{background:var(--white);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .25s;box-shadow:var(--shadow);}
-.news-main:hover{box-shadow:var(--shadow-lg);transform:translateY(-5px);}
-.nm-img{height:210px;display:flex;align-items:center;justify-content:center;position:relative;}
-.nm-tag{position:absolute;top:18px;left:18px;background:var(--red);color:#fff;font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 14px;border-radius:20px;}
-.nm-body{padding:28px;}
-.nm-date{font-family:var(--en);font-size:11px;color:var(--muted);margin-bottom:8px;}
-.nm-title{font-size:18px;font-weight:700;color:var(--blue);line-height:1.45;margin-bottom:10px;}
-.nm-desc{font-size:14px;color:var(--muted);line-height:1.8;}
+.lms-card{background:var(--blue);border-radius:var(--r);padding:40px;}
+.lms-tag{
+  font-family:var(--pp);font-size:10px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--yellow);margin-bottom:18px;
+}
+.lms-h{font-family:var(--km);font-size:26px;font-weight:900;color:#fff;margin-bottom:14px;line-height:1.35;}
+.lms-p{font-family:var(--km);font-size:14px;color:rgba(255,255,255,.5);line-height:1.95;margin-bottom:28px;}
+.tech-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.tech-pill{
+  padding:5px 14px;background:rgba(255,255,255,.08);border-radius:20px;
+  font-family:var(--pp);font-size:11px;color:rgba(255,255,255,.42);
+}
+.lms-btn{
+  background:var(--yellow);color:var(--blue);font-family:var(--pp);font-size:14px;
+  font-weight:700;padding:15px 24px;border-radius:var(--r-sm);border:none;
+  width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all .22s;
+}
+.lms-btn:hover{background:var(--yellow-dk);transform:translateY(-1px);}
+.lang-row{
+  display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;
+  margin-top:16px;padding:14px;
+  background:rgba(255,255,255,.05);border-radius:var(--r-sm);
+  border:1px solid rgba(255,255,255,.08);
+}
+.lang-div{background:rgba(255,255,255,.1);}
+.lang-item{text-align:center;}
+.lang-name{font-family:var(--pp);font-size:17px;font-weight:700;color:#fff;}
+.lang-label{font-family:var(--pp);font-size:10px;color:rgba(255,255,255,.24);}
+
+/* ══════════════════════════════════════
+   NEWS  (white bg) — ASEAN Foundation card pattern
+══════════════════════════════════════ */
+.news-sec{background:var(--white);}
+.news-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:12px;}
+.see-all{
+  font-family:var(--pp);font-size:13px;font-weight:600;color:var(--blue);
+  display:inline-flex;align-items:center;gap:6px;
+  transition:gap .2s;
+}
+.see-all:hover{gap:10px;}
+.news-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:22px;}
+/* Featured news */
+.news-feat{
+  border-radius:var(--r);overflow:hidden;background:var(--white);
+  border:1px solid var(--line);cursor:pointer;transition:all .25s;
+}
+.news-feat:hover{box-shadow:var(--s2);border-color:transparent;transform:translateY(-5px);}
+.nf-img{
+  height:220px;background:linear-gradient(145deg,var(--blue-dark),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-size:60px;
+  position:relative;
+}
+.nf-tag{
+  position:absolute;top:18px;left:18px;
+  background:var(--red);color:#fff;
+  font-family:var(--pp);font-size:10px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  padding:5px 14px;border-radius:20px;
+}
+.nf-body{padding:28px;}
+.nf-date{font-family:var(--pp);font-size:11px;color:var(--muted);margin-bottom:10px;}
+.nf-title{font-family:var(--km);font-size:18px;font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:10px;}
+.nf-desc{font-family:var(--km);font-size:14px;color:var(--muted);line-height:1.85;}
+/* Side news list */
 .news-list{display:flex;flex-direction:column;gap:14px;}
-.nl-card{background:var(--white);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .22s;box-shadow:var(--shadow);}
-.nl-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);}
-.nl-img{height:92px;display:flex;align-items:center;justify-content:center;font-size:30px;}
+.nl-card{
+  border-radius:var(--r);overflow:hidden;background:var(--white);
+  border:1px solid var(--line);cursor:pointer;transition:all .22s;
+  display:flex;flex-direction:column;
+}
+.nl-card:hover{box-shadow:var(--s2);border-color:transparent;transform:translateY(-4px);}
+.nl-img{height:96px;display:flex;align-items:center;justify-content:center;font-size:30px;}
 .ni1{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);}
 .ni2{background:linear-gradient(135deg,#F0FFF4,#DCFCE7);}
 .ni3{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);}
 .nl-body{padding:16px 18px;}
-.nl-tag{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
-.nl-title{font-size:14px;font-weight:700;color:var(--blue);line-height:1.45;margin-bottom:4px;}
-.nl-date{font-family:var(--en);font-size:11px;color:var(--muted);}
+.nl-kicker{font-family:var(--pp);font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.nl-title{font-family:var(--km);font-size:14px;font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:4px;}
+.nl-date{font-family:var(--pp);font-size:11px;color:var(--muted);}
 
-/* ─── PARTNERS ─── */
-.partners-sec{background:var(--white);padding:48px;}
-.partners-inner{max-width:1160px;margin:0 auto;}
-.partners-lbl{font-family:var(--en);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);text-align:center;margin-bottom:28px;}
-.partners-row{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;}
-.p-badge{padding:10px 24px;border:2px solid var(--line);border-radius:var(--r-sm);font-family:var(--en);font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--muted);transition:all .2s;cursor:default;}
-.p-badge:hover{box-shadow:var(--shadow);}
-.p-badge.asean{border-color:rgba(239,68,68,.28);color:#EF4444;}
-.p-badge.sdc{border-color:rgba(237,28,36,.28);color:var(--red);}
-.p-badge.giz{border-color:rgba(227,30,36,.28);color:#E31E24;}
-.p-badge.helvetas{border-color:rgba(0,48,135,.28);color:#003087;}
-.p-badge.sfuvet{border-color:rgba(0,46,110,.28);color:var(--blue);}
+/* ══════════════════════════════════════
+   PARTNERS STRIP  (light bg, like ASEAN Foundation partner logos row)
+══════════════════════════════════════ */
+.partners-sec{background:var(--bg);padding:56px 48px;}
+.partners-inner{max-width:1200px;margin:0 auto;}
+.partners-kicker{
+  font-family:var(--pp);font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--muted);
+  text-align:center;margin-bottom:32px;
+}
+.partners-logos{
+  display:flex;justify-content:center;align-items:center;
+  gap:16px;flex-wrap:wrap;
+}
+.partner-badge{
+  padding:12px 28px;background:var(--white);
+  border:1.5px solid var(--line);border-radius:var(--r-sm);
+  font-family:var(--pp);font-size:13px;font-weight:700;
+  letter-spacing:.04em;color:var(--muted);
+  transition:all .22s;
+}
+.partner-badge:hover{box-shadow:var(--s1);}
+.partner-badge.asean{border-color:rgba(224,40,79,.22);color:#E0284F;}
+.partner-badge.sdc{border-color:rgba(0,48,135,.22);color:var(--blue);}
+.partner-badge.giz{border-color:rgba(227,30,36,.22);color:#E31E24;}
+.partner-badge.helvetas{border-color:rgba(0,48,135,.22);color:#003087;}
+.partner-badge.sfuvet{border-color:rgba(0,48,135,.22);color:var(--blue);}
 
-/* ─── NEWSLETTER ─── */
-.newsletter-sec{background:var(--blue);padding:88px 48px;}
-.nl-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-.nl-left h2{font-family:var(--km);font-size:34px;font-weight:900;color:#fff;margin-bottom:12px;line-height:1.28;}
-.nl-left p{font-size:15px;color:rgba(255,255,255,.58);line-height:1.9;}
+/* ══════════════════════════════════════
+   NEWSLETTER  (blue bg, clean 2-col)
+══════════════════════════════════════ */
+.nl-sec{background:var(--blue);padding:88px 48px;}
+.nl-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.nl-hl{font-family:var(--km);font-size:36px;font-weight:900;color:#fff;margin-bottom:14px;line-height:1.28;}
+.nl-sub{font-family:var(--km);font-size:15px;color:rgba(255,255,255,.56);line-height:2;}
 .nl-form{display:flex;flex-direction:column;gap:12px;}
-.nl-inp{padding:14px 18px;border-radius:var(--r-sm);border:none;font-family:var(--km);font-size:15px;background:rgba(255,255,255,.95);color:var(--ink);outline:none;}
-.nl-inp:focus{outline:2.5px solid var(--yellow);}
-.nl-select{padding:14px 18px;border-radius:var(--r-sm);border:none;font-family:var(--km);font-size:15px;appearance:none;background:rgba(255,255,255,.95);color:var(--ink);outline:none;}
+.nl-input{
+  padding:14px 18px;border-radius:var(--r-sm);border:none;
+  font-family:var(--km);font-size:15px;
+  background:rgba(255,255,255,.95);color:var(--ink);outline:none;
+}
+.nl-input:focus{outline:2.5px solid var(--yellow);}
+.nl-select{
+  padding:14px 18px;border-radius:var(--r-sm);border:none;
+  font-family:var(--km);font-size:15px;appearance:none;
+  background:rgba(255,255,255,.95);color:var(--ink);outline:none;
+}
 .nl-select:focus{outline:2.5px solid var(--yellow);}
-.nl-submit{background:var(--yellow);color:var(--blue);font-family:var(--km);font-size:15px;font-weight:700;padding:15px;border-radius:var(--r-sm);border:none;cursor:pointer;transition:all .22s;}
+.nl-submit{
+  background:var(--yellow);color:var(--blue);
+  font-family:var(--pp);font-size:14px;font-weight:700;
+  padding:15px;border-radius:var(--r-sm);border:none;
+  transition:all .22s;
+}
 .nl-submit:hover{background:var(--yellow-dk);transform:translateY(-1px);}
 
-/* ─── FOOTER ─── */
-.footer{background:var(--ink);padding:68px 48px 28px;}
-.footer-inner{max-width:1160px;margin:0 auto;}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);}
-.ft-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-.ft-logo-name{font-family:var(--cond);font-size:22px;font-weight:900;color:#fff;letter-spacing:1px;}
-.ft-brand p{font-size:14px;color:rgba(255,255,255,.33);line-height:1.9;max-width:260px;}
-.ft-col h4{font-family:var(--en);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.32);margin-bottom:18px;}
+/* ══════════════════════════════════════
+   FOOTER  (dark, 4-column like ASEAN Foundation)
+══════════════════════════════════════ */
+.footer{background:#0A0F1E;padding:72px 48px 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{
+  display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;
+  gap:56px;margin-bottom:56px;padding-bottom:56px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.ft-brand .ft-logo{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.ft-brand-name{font-family:var(--pp);font-size:20px;font-weight:800;color:#fff;letter-spacing:.5px;}
+.ft-desc{
+  font-family:var(--km);font-size:14px;color:rgba(255,255,255,.3);
+  line-height:2.0;max-width:280px;
+}
+.ft-col h4{
+  font-family:var(--pp);font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;
+  color:rgba(255,255,255,.3);margin-bottom:20px;
+}
 .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:13px;}
-.ft-col ul a{font-size:14px;color:rgba(255,255,255,.35);transition:color .2s;}
-.ft-col ul a:hover{color:rgba(255,255,255,.85);}
+.ft-col ul a{
+  font-family:var(--km);font-size:14px;color:rgba(255,255,255,.35);
+  transition:color .2s;
+}
+.ft-col ul a:hover{color:rgba(255,255,255,.88);}
 .footer-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.fb-copy{font-family:var(--en);font-size:11px;color:rgba(255,255,255,.2);}
-.fb-stripe{display:flex;border-radius:4px;overflow:hidden;}
-.fb-block{width:22px;height:8px;}
-.fb-red{background:var(--red);}
-.fb-yellow{background:var(--yellow);}
-.fb-green{background:var(--green);}
-.fb-blue{background:rgba(255,255,255,.22);}
+.ft-copy{font-family:var(--pp);font-size:11px;color:rgba(255,255,255,.18);}
+.ft-stripe{display:flex;border-radius:4px;overflow:hidden;}
+.ft-s{width:20px;height:7px;}
 
-/* ─── UTILITIES ─── */
-.btn-red{background:var(--red);color:#fff;font-family:var(--km);font-size:13px;font-weight:700;padding:11px 22px;border-radius:var(--r-sm);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .22s;}
-.btn-red:hover{background:#C5151C;transform:translateY(-2px);}
-
-/* ─── RESPONSIVE ─── */
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
 @media(max-width:1024px){
-  .hero-body{grid-template-columns:1fr;gap:36px;}
-  .hstat-row{grid-template-columns:repeat(4,1fr);}
-  .eco-grid,.rm-grid{grid-template-columns:1fr 1fr;}
+  .hero-wrap{grid-template-columns:1fr;gap:40px;}
+  .hgrid{grid-template-columns:repeat(4,1fr);}
+  .prog-grid,.how-grid{grid-template-columns:1fr 1fr;}
   .impact-grid,.lms-layout,.nl-inner,.news-grid{grid-template-columns:1fr;}
-  .footer-top{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
   .cpanel.on{grid-template-columns:1fr;}
-  .is-inner{grid-template-columns:repeat(2,1fr);}
+  .stats-wrap{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:768px){
   .topbar{padding:8px 20px;}
-  .tb-left{display:none;}
+  .tb-text{display:none;}
   .nav{padding:0 20px;height:64px;}
   .nav-links{display:none;}
   .ham{display:flex;}
   .mob-nav{top:64px;}
-  .hero-body{padding:56px 24px 52px;}
+  .hero-wrap{padding:60px 24px 56px;}
   .hero h1{font-size:36px;}
-  .hstat-row{grid-template-columns:1fr 1fr;}
+  .hgrid{grid-template-columns:1fr 1fr;}
   .hero-right{display:none;}
   .sec,.impact-sec{padding:64px 24px;}
-  .impact-sec{padding:64px 24px;}
-  .eco-grid,.rm-grid{grid-template-columns:1fr;}
-  .impact-counters{grid-template-columns:1fr 1fr;}
-  .is-inner{overflow-x:auto;display:flex;}
-  .is-item{min-width:140px;flex-shrink:0;}
-  .partners-sec,.newsletter-sec{padding:56px 24px;}
-  .footer{padding:52px 24px 24px;}
-  .footer-top{grid-template-columns:1fr;}
+  .prog-grid,.how-grid{grid-template-columns:1fr;}
+  .counters{grid-template-columns:1fr 1fr;}
+  .stats-wrap{display:flex;overflow-x:auto;}
+  .stat-item{min-width:150px;flex-shrink:0;}
+  .partners-sec,.nl-sec{padding:56px 24px;}
+  .footer{padding:56px 24px 24px;}
+  .footer-grid{grid-template-columns:1fr;}
   .sec-h{font-size:28px;}
-  .ctab-group{flex-wrap:wrap;}
+  .impact-h{font-size:28px;}
   .news-grid{grid-template-columns:1fr;}
+  .tabs{flex-wrap:wrap;}
 }
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
+<!-- ══ TOP BAR ══ -->
 <div class="topbar">
-  <span class="tb-left">ផ្នែករួមរបស់ SDC · អនុវត្តដោយ GIZ International Services &amp; Helvetas</span>
+  <span class="tb-text">ផ្នែករួមរបស់ SDC · អនុវត្តដោយ GIZ International Services &amp; Helvetas</span>
   <div class="tb-right">
     <div class="lang-sw">
       <button class="lang-btn on">ខ្មែរ</button>
@@ -408,116 +814,114 @@ a{text-decoration:none;}
   </div>
 </div>
 
-<!-- NAV -->
+<!-- ══ NAV ══ -->
 <nav class="nav">
   <a class="nav-logo" href="#">
-    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-      <circle cx="22" cy="22" r="10" fill="none" stroke="#ED1C24" stroke-width="2.5"/>
-      <circle cx="22" cy="22" r="5" fill="#002E6E"/>
-      <rect x="20" y="2" width="4" height="6" rx="1" fill="#ED1C24"/>
-      <rect x="20" y="36" width="4" height="6" rx="1" fill="#8DC63F"/>
+    <svg viewBox="0 0 44 44" fill="none" width="40" height="40">
+      <circle cx="22" cy="22" r="10" stroke="#E0284F" stroke-width="2.5"/>
+      <circle cx="22" cy="22" r="5" fill="#003087"/>
+      <rect x="20" y="2" width="4" height="6" rx="1" fill="#E0284F"/>
+      <rect x="20" y="36" width="4" height="6" rx="1" fill="#22C55E"/>
       <rect x="36" y="20" width="6" height="4" rx="1" fill="#FFD400"/>
-      <rect x="2" y="20" width="6" height="4" rx="1" fill="#002E6E"/>
-      <rect x="30.5" y="7.5" width="4" height="6" rx="1" fill="#8DC63F" transform="rotate(45 32.5 10.5)"/>
+      <rect x="2" y="20" width="6" height="4" rx="1" fill="#003087"/>
+      <rect x="30.5" y="7.5" width="4" height="6" rx="1" fill="#22C55E" transform="rotate(45 32.5 10.5)"/>
       <rect x="7.5" y="30.5" width="4" height="6" rx="1" fill="#FFD400" transform="rotate(45 9.5 33.5)"/>
-      <rect x="30.5" y="30.5" width="4" height="6" rx="1" fill="#ED1C24" transform="rotate(-45 32.5 33.5)"/>
-      <rect x="7.5" y="7.5" width="4" height="6" rx="1" fill="#002E6E" transform="rotate(-45 9.5 10.5)"/>
+      <rect x="30.5" y="30.5" width="4" height="6" rx="1" fill="#E0284F" transform="rotate(-45 32.5 33.5)"/>
+      <rect x="7.5" y="7.5" width="4" height="6" rx="1" fill="#003087" transform="rotate(-45 9.5 10.5)"/>
     </svg>
-    <div class="logo-words">
-      <div class="name">ASTI</div>
-      <div class="sub">ASEAN-Swiss TVET Initiative</div>
+    <div class="nav-logo-text">
+      <div class="brand">ASTI</div>
+      <div class="tagline">ASEAN-Swiss TVET Initiative</div>
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#" class="active">ទំព័រដើម</a></li>
+    <li><a href="#" class="on">ទំព័រដើម</a></li>
     <li><a href="#">អំពី ASTI</a></li>
-    <li><a href="#">ប្រព័ន្ធអេកូឡូស៊ី</a></li>
-    <li><a href="#">ការអភិវឌ្ឍអាជីព</a></li>
+    <li><a href="#">កម្មវិធី</a></li>
     <li><a href="#">លទ្ធផល</a></li>
     <li><a href="#">ប្រទេស</a></li>
-    <li><a href="#">ឯកសារ</a></li>
-    <li><a href="#" class="nav-cta">ចូលរួម</a></li>
+    <li><a href="#">ព័ត៌មាន</a></li>
+    <li><a href="#" class="nav-cta">ចូលរួម →</a></li>
   </ul>
-  <button class="ham" id="ham" aria-label="menu" onclick="toggleNav()">
+  <button class="ham" id="ham" onclick="toggleMobNav()">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MOBILE NAV -->
+<!-- Mobile nav -->
 <div class="mob-nav" id="mob-nav">
   <ul>
-    <li><a href="#" class="active">ទំព័រដើម</a></li>
+    <li><a href="#" class="on">ទំព័រដើម</a></li>
     <li><a href="#">អំពី ASTI</a></li>
-    <li><a href="#">ប្រព័ន្ធអេកូឡូស៊ី</a></li>
-    <li><a href="#">ការអភិវឌ្ឍអាជីព</a></li>
+    <li><a href="#">កម្មវិធី</a></li>
     <li><a href="#">លទ្ធផល</a></li>
     <li><a href="#">ប្រទេស</a></li>
-    <li><a href="#">ឯកសារ</a></li>
+    <li><a href="#">ព័ត៌មាន</a></li>
   </ul>
-  <div class="mob-cta-wrap">
-    <a href="#" class="mob-cta">ចូលរួម →</a>
-  </div>
+  <div class="mob-cta-wrap"><a href="#" class="mob-cta">ចូលរួម →</a></div>
 </div>
 
-<!-- ════════════ HERO ════════════ -->
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
 <section class="hero">
-  <div class="hero-orb1"></div>
-  <div class="hero-orb2"></div>
-  <div class="hero-body">
-    <!-- Left -->
-    <div class="fade">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        គំនិតផ្តួចផ្តើម TVET អាស៊ាន-ស្វីស &nbsp;·&nbsp; ២០២២–២០២៦
+  <div class="hero-wrap">
+
+    <!-- Left content -->
+    <div class="reveal">
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        TVET Initiative · ASEAN–Switzerland · ២០២២–២០២៦
       </div>
       <h1>
-        ជំនាញ<span class="hy">ពិតប្រាកដ</span>។<br>
-        ឱកាស<span class="hg">ចីរភាព</span>។<br>
-        អនាគត<span class="hy">មានន័យ</span>។
+        ជំនាញ<em>ពិតប្រាកដ</em>។<br>
+        ឱកាស<span class="green">ចីរភាព</span>។<br>
+        អនាគត<em>មានន័យ</em>។
       </h1>
-      <div class="hero-en">Real Skills · Lasting Opportunity · Meaningful Future</div>
+      <div class="hero-sub-en">Real Skills · Lasting Opportunity · Meaningful Future</div>
       <p class="hero-desc">
-        ASTI រួមបញ្ចូលការរៀនសូត្រដោយផ្អែកលើការងារ (WBL) ទៅក្នុងប្រព័ន្ធ TVET ជាតិ — ផ្តល់ជូនយុវវ័យ និងកម្មករនូវវឌ្ឍនភាពការងារ ដែលទទួលស្គាល់ដោយនិយោជក នៅកម្ពុជា ឡាវវ និងមីយ៉ាន់ម៉ា។
+        ASTI រួមបញ្ចូលការរៀនសូត្រដោយផ្អែកលើការងារ (WBL) ទៅក្នុងប្រព័ន្ធ TVET ជាតិ — ផ្តល់ជូនយុវវ័យ និងកម្មករនូវវឌ្ឍនភាពការងារ ដែលទទួលស្គាល់ដោយនិយោជក នៅ​ប្រទេស​កម្ពុជា ឡាវវ និងមីយ៉ាន់ម៉ា។
       </p>
       <div class="hero-btns">
-        <a href="#" class="btn-yellow">🌐 ស្វែងយល់ប្រព័ន្ធអេកូឡូស៊ី</a>
-        <a href="#" class="btn-outline">មើលលទ្ធផល →</a>
+        <a href="#" class="btn-accent">ស្វែងយល់កម្មវិធី →</a>
+        <a href="#" class="btn-ghost">មើលលទ្ធផល</a>
       </div>
-      <div class="hero-trust">
-        <span class="trust-lbl">Funded by</span>
-        <div class="trust-badges">
-          <span class="trust-badge">SDC</span>
-          <span class="trust-badge">GIZ</span>
-          <span class="trust-badge">HELVETAS</span>
-          <span class="trust-badge">SFUVET</span>
+      <div class="hero-funded">
+        <span class="funded-lbl">Funded by</span>
+        <div class="funded-badges">
+          <span class="funded-b">SDC Switzerland</span>
+          <span class="funded-b">GIZ</span>
+          <span class="funded-b">HELVETAS</span>
+          <span class="funded-b">SFUVET</span>
         </div>
       </div>
     </div>
-    <!-- Right -->
-    <div class="hero-right fade fade-delay-2">
-      <div class="hstat-row">
-        <div class="hstat r">
-          <div class="hstat-icon">🎓</div>
-          <div class="hstat-num">3,000<span class="u">+</span></div>
-          <div class="hstat-lbl">អ្នកទទួលផលផ្ទាល់</div>
+
+    <!-- Right: stats tiles -->
+    <div class="hero-right reveal d2">
+      <div class="hgrid">
+        <div class="htile tr">
+          <div class="htile-icon">🎓</div>
+          <div class="htile-num">3,000<sup>+</sup></div>
+          <div class="htile-lbl">អ្នកទទួលផលផ្ទាល់</div>
         </div>
-        <div class="hstat y">
-          <div class="hstat-icon">👩</div>
-          <div class="hstat-num">≥50<span class="u">%</span></div>
-          <div class="hstat-lbl">ស្ត្រីចូលរួម</div>
+        <div class="htile ty">
+          <div class="htile-icon">👩‍💼</div>
+          <div class="htile-num">≥50<sup>%</sup></div>
+          <div class="htile-lbl">ស្ត្រីចូលរួម</div>
         </div>
-        <div class="hstat g">
-          <div class="hstat-icon">📋</div>
-          <div class="hstat-num">60<span class="u">+</span></div>
-          <div class="hstat-lbl">វគ្គ WBL បញ្ចូល</div>
+        <div class="htile tg">
+          <div class="htile-icon">📋</div>
+          <div class="htile-num">60<sup>+</sup></div>
+          <div class="htile-lbl">វគ្គ WBL បញ្ចូល</div>
         </div>
-        <div class="hstat b">
-          <div class="hstat-icon">🏭</div>
-          <div class="hstat-num">150<span class="u">+</span></div>
-          <div class="hstat-lbl">ក្រុមហ៊ុនចូលរួម</div>
+        <div class="htile tb">
+          <div class="htile-icon">🏭</div>
+          <div class="htile-num">150<sup>+</sup></div>
+          <div class="htile-lbl">ក្រុមហ៊ុនចូលរួម</div>
         </div>
       </div>
-      <div class="hero-story">
+      <div class="story-tile">
         <div class="story-av">SR</div>
         <div style="flex:1;">
           <div class="story-chip">⬤ រឿងពិត · កម្ពុជា</div>
@@ -531,177 +935,182 @@ a{text-decoration:none;}
   <div class="hero-stripe"></div>
 </section>
 
-<!-- ════════════ IMPACT STRIP ════════════ -->
-<div class="impact-strip">
-  <div class="is-inner">
-    <div class="is-item">
-      <div class="is-num">3,000+</div>
-      <div class="is-lbl">អ្នកទទួលផល</div>
+<!-- ══ STATS STRIP ══ -->
+<div class="stats-strip">
+  <div class="stats-wrap">
+    <div class="stat-item">
+      <div class="stat-num">3,000+</div>
+      <div class="stat-lbl">អ្នកទទួលផល</div>
     </div>
-    <div class="is-item">
-      <div class="is-num">150</div>
-      <div class="is-lbl">ក្រុមហ៊ុនចូលរួម</div>
+    <div class="stat-item">
+      <div class="stat-num">150</div>
+      <div class="stat-lbl">ក្រុមហ៊ុនចូលរួម</div>
     </div>
-    <div class="is-item">
-      <div class="is-num">200+</div>
-      <div class="is-lbl">គ្រូបង្ហាត់បានបណ្តុះបណ្តាល</div>
+    <div class="stat-item">
+      <div class="stat-num">200+</div>
+      <div class="stat-lbl">គ្រូបង្ហាត់បានបណ្តុះបណ្តាល</div>
     </div>
-    <div class="is-item">
-      <div class="is-num">CHF 4M</div>
-      <div class="is-lbl">ថវិកាសរុប</div>
+    <div class="stat-item">
+      <div class="stat-num">CHF 4M</div>
+      <div class="stat-lbl">ថវិការសរុប</div>
     </div>
   </div>
 </div>
 
-<!-- ════════════ ECOSYSTEM ════════════ -->
-<section class="sec eco-sec">
+<!-- ══════════════════════════════════════
+     PROGRAMMES  (like ASEAN Foundation's 6 programme cards)
+══════════════════════════════════════ -->
+<section class="sec prog-sec">
   <div class="sec-inner">
-    <div class="fade">
-      <div class="sec-label">ប្រព័ន្ធអេកូឡូស៊ី</div>
+    <div class="reveal">
+      <div class="sec-kicker">កម្មវិធីរបស់ ASTI</div>
       <h2 class="sec-h">តើលោកអ្នកកំពុងស្វែងរកអ្វី?</h2>
-      <div class="sec-en">Everything Youth Need, In One Place</div>
       <p class="sec-sub">ASTI ភ្ជាប់យុវវ័យ និងកម្មករទៅនឹងការអប់រំ ការអភិវឌ្ឍអាជីព វិញ្ញាបនបត្រ និងមូលនិធិ — ពីរដ្ឋាភិបាល វិស័យឯកជន និងដៃគូអភិវឌ្ឍ។</p>
     </div>
-    <div class="eco-grid">
-      <a href="#" class="eco-card edu fade fade-delay-1">
-        <div class="eco-top">
-          <div class="eco-icon">📚</div>
-          <div class="eco-title">ការអប់រំ និងបណ្តុះបណ្តាល</div>
-          <div class="eco-title-en">Education Pathways</div>
-          <div class="eco-desc">ស្វែងរកគ្រឹះស្ថានសិក្សា និងវគ្គសិក្សា TVET ដែលមានស្តង់ដារខ្ពស់ ស្របតាមតម្រូវការទីផ្សារការងារ។</div>
+    <div class="prog-grid">
+      <a href="#" class="prog-card edu reveal d1">
+        <div class="prog-top">📚</div>
+        <div class="prog-body">
+          <div class="prog-cat">Education Pathways</div>
+          <div class="prog-title">ការអប់រំ និងបណ្តុះបណ្តាល</div>
+          <div class="prog-desc">ស្វែងរកគ្រឹះស្ថានសិក្សា និងវគ្គសិក្សា TVET ដែលមានស្តង់ដារខ្ពស់ ស្របតាមតម្រូវការទីផ្សារការងារ។</div>
+          <div class="prog-link">ស្វែងរកឥឡូវ <span>→</span></div>
         </div>
-        <div class="eco-foot"><span>ស្វែងរកឥឡូវ</span><span>→</span></div>
       </a>
-      <a href="#" class="eco-card career fade fade-delay-2">
-        <div class="eco-top">
-          <div class="eco-icon">🎯</div>
-          <div class="eco-title">ការអភិវឌ្ឍអាជីព</div>
-          <div class="eco-title-en">Career Courses</div>
-          <div class="eco-desc">វគ្គបណ្តុះបណ្តាលដែលផ្ដោតលើជំនាញការងារជាក់ស្ដែង និងតម្រូវការទីផ្សារ។</div>
+      <a href="#" class="prog-card career reveal d2">
+        <div class="prog-top">🎯</div>
+        <div class="prog-body">
+          <div class="prog-cat">Career Development</div>
+          <div class="prog-title">ការអភិវឌ្ឍអាជីព</div>
+          <div class="prog-desc">វគ្គបណ្តុះបណ្តាលដែលផ្ដោតលើជំនាញការងារជាក់ស្ដែង និងតម្រូវការទីផ្សារ បង្ហាត់ដោយអ្នកជំនាញ។</div>
+          <div class="prog-link">រកវគ្គ <span>→</span></div>
         </div>
-        <div class="eco-foot"><span>រកវគ្គ</span><span>→</span></div>
       </a>
-      <a href="#" class="eco-card cert fade fade-delay-3">
-        <div class="eco-top">
-          <div class="eco-icon">🏅</div>
-          <div class="eco-title">វិញ្ញាបនបត្រ</div>
-          <div class="eco-title-en">Certification</div>
-          <div class="eco-desc">ការទទួលស្គាល់ជំនាញផ្លូវការ ស្របតាមក្របខណ្ឌគុណវុឌ្ឍិជាតិ ដែលនិយោជកទទួលស្គាល់។</div>
+      <a href="#" class="prog-card cert reveal d3">
+        <div class="prog-top">🏅</div>
+        <div class="prog-body">
+          <div class="prog-cat">Certification</div>
+          <div class="prog-title">វិញ្ញាបនបត្រ WBL</div>
+          <div class="prog-desc">ការទទួលស្គាល់ជំនាញផ្លូវការ ស្របតាមក្របខណ្ឌគុណវុឌ្ឍិជាតិ ដែលនិយោជកទទួលស្គាល់ពិតប្រាកដ។</div>
+          <div class="prog-link">ស្វែងយល់ <span>→</span></div>
         </div>
-        <div class="eco-foot"><span>ស្វែងយល់</span><span>→</span></div>
       </a>
-      <a href="#" class="eco-card grant fade fade-delay-4">
-        <div class="eco-top">
-          <div class="eco-icon">💰</div>
-          <div class="eco-title">មូលនិធិ និងការគាំទ្រ</div>
-          <div class="eco-title-en">Grants &amp; Support</div>
-          <div class="eco-desc">ស្វែងរកអាហារូបករណ៍ និងជំនួយឧបត្ថម្ភពីវិស័យនានា ដើម្បីផ្ទៀងផ្ទាត់ការសិក្សារបស់អ្នក។</div>
+      <a href="#" class="prog-card grant reveal d4">
+        <div class="prog-top">💰</div>
+        <div class="prog-body">
+          <div class="prog-cat">Grants &amp; Support</div>
+          <div class="prog-title">មូលនិធិ និងការគាំទ្រ</div>
+          <div class="prog-desc">ស្វែងរកអាហារូបករណ៍ និងជំនួយឧបត្ថម្ភពីវិស័យនានា ដើម្បីផ្ទៀងផ្ទាត់ការសិក្សារបស់អ្នក។</div>
+          <div class="prog-link">ស្វែងរកមូលនិធិ <span>→</span></div>
         </div>
-        <div class="eco-foot"><span>ស្វែងរកមូលនិធិ</span><span>→</span></div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ════════════ ROADMAP ════════════ -->
-<section class="sec roadmap-sec">
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════ -->
+<section class="sec how-sec">
   <div class="sec-inner">
-    <div class="fade">
-      <div class="sec-label">ដំណើរការ ៤ ជំហាន</div>
+    <div class="reveal">
+      <div class="sec-kicker">ដំណើរការ ៤ ជំហាន</div>
       <h2 class="sec-h">ផ្លូវឆ្ពោះទៅជោគជ័យ</h2>
-      <div class="sec-en">Your Pathway to Success</div>
-      <p class="sec-sub">ពីការស្វែងយល់ខ្លួនឯង ទៅការបញ្ចូលទីផ្សារការងារ — ASTI ណែនាំអ្នករៀងរាល់ជំហាន។</p>
+      <p class="sec-sub">ពីការស្វែងយល់ខ្លួនឯង ដល់ការឈានចូលទីផ្សារការងារ — ASTI ជួយអ្នករៀងរាល់ជំហាន។</p>
     </div>
-    <div class="rm-grid">
-      <div class="rm-card fade fade-delay-1">
-        <div class="rm-num rm-n1">១</div>
-        <div class="rm-icon">🔍</div>
-        <h3 class="rm-title">ស្វែងយល់ពីខ្លួនឯង</h3>
-        <p class="rm-desc">វិភាគសមត្ថភាព និងចំណង់ចំណូលចិត្ត តាមរយៈប្រព័ន្ធតម្រង់ទិសឆ្លាតវៃ។</p>
+    <div class="how-grid">
+      <div class="how-card reveal d1">
+        <div class="how-num n1">១</div>
+        <div class="how-icon">🔍</div>
+        <h3 class="how-title">ស្វែងយល់ពីខ្លួនឯង</h3>
+        <p class="how-desc">វិភាគសមត្ថភាព និងចំណង់ចំណូលចិត្ត តាមរយៈប្រព័ន្ធតម្រង់ទិសឆ្លាតវៃ ដើម្បីរកវិថីការងារត្រឹមត្រូវ។</p>
       </div>
-      <div class="rm-card fade fade-delay-2">
-        <div class="rm-num rm-n2">២</div>
-        <div class="rm-icon">📘</div>
-        <h3 class="rm-title">ពង្រឹងសមត្ថភាព</h3>
-        <p class="rm-desc">ជ្រើសរើសវគ្គសិក្សា TVET ដែលមានការទទួលស្គាល់ និងអនុវត្តផ្ទាល់ក្នុងរោងចក្រ។</p>
+      <div class="how-card reveal d2">
+        <div class="how-num n2">២</div>
+        <div class="how-icon">📘</div>
+        <h3 class="how-title">ពង្រឹងសមត្ថភាព</h3>
+        <p class="how-desc">ជ្រើសរើសវគ្គសិក្សា TVET ដែលមានការទទួលស្គាល់ ហើយអនុវត្តផ្ទាល់ក្នុងរោងចក្រ។</p>
       </div>
-      <div class="rm-card fade fade-delay-3">
-        <div class="rm-num rm-n3">៣</div>
-        <div class="rm-icon">🏭</div>
-        <h3 class="rm-title">ក្រេបជញ្ជក់បទពិសោធន៍</h3>
-        <p class="rm-desc">ចូលរួមកម្មវិធីសិក្សាការងារជាក់ស្តែង (WBL) និងកម្មសិក្សាការងារ។</p>
+      <div class="how-card reveal d3">
+        <div class="how-num n3">៣</div>
+        <div class="how-icon">🏭</div>
+        <h3 class="how-title">ក្រេបជញ្ជក់បទពិសោធន៍</h3>
+        <p class="how-desc">ចូលរួមកម្មវិធីសិក្សាការងារជាក់ស្តែង (WBL) និងកម្មសិក្សា នៅក្រុមហ៊ុនដៃគូ ASTI។</p>
       </div>
-      <div class="rm-card fade fade-delay-4">
-        <div class="rm-num rm-n4">៤</div>
-        <div class="rm-icon">🚀</div>
-        <h3 class="rm-title">ឈានជើងចូលទីផ្សារការងារ</h3>
-        <p class="rm-desc">រៀបចំខ្លួនជាមួយជំនួយការសរសេរ CV និងការ​ភ្ជាប់ជាមួយនិយោជក។</p>
+      <div class="how-card reveal d4">
+        <div class="how-num n4">៤</div>
+        <div class="how-icon">🚀</div>
+        <h3 class="how-title">ឈានជើងចូលទីផ្សារការងារ</h3>
+        <p class="how-desc">រៀបចំខ្លួនជាមួយជំនួយការសរសេរ CV ការតភ្ជាប់ជាមួយនិយោជក និងវិញ្ញាបនប័ត្រ ASTI។</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ IMPACT ════════════ -->
+<!-- ══════════════════════════════════════
+     IMPACT
+══════════════════════════════════════ -->
 <section class="impact-sec">
   <div class="impact-inner">
-    <div class="fade">
-      <div class="sec-label" style="color:var(--yellow);">លទ្ធផល &amp; ផលប៉ះពាល់</div>
-      <h2 class="sec-h" style="color:#fff;">ការផ្លាស់ប្តូរដែលវាស់វែងបាន</h2>
-      <div class="sec-en" style="color:rgba(255,255,255,.3);">Measurable Change. Real Lives Transformed.</div>
+    <div class="reveal">
+      <div class="impact-kicker">លទ្ធផល &amp; ផលប៉ះពាល់</div>
+      <h2 class="impact-h">ការផ្លាស់ប្តូរដែលវាស់វែងបាន</h2>
     </div>
     <div class="impact-grid">
-      <div class="impact-counters fade">
-        <div class="ic r">
-          <div class="ic-num">[X]<span>/3K</span></div>
-          <div class="ic-lbl">អ្នកទទួលវិញ្ញាបនប័ត្រ WBL</div>
-          <div class="ic-lbl-en">Beneficiaries certified</div>
-          <div class="ic-bar"><div class="ic-fill" style="width:65%;background:var(--red);"></div></div>
+      <!-- Counters -->
+      <div class="counters reveal">
+        <div class="c-card cr">
+          <div class="c-num">[X]<span>/3K</span></div>
+          <div class="c-lbl">អ្នកទទួលវិញ្ញាបនប័ត្រ WBL</div>
+          <div class="c-lbl-en">Beneficiaries certified</div>
+          <div class="c-bar"><div class="c-fill" style="width:65%;background:#E0284F;"></div></div>
         </div>
-        <div class="ic y">
-          <div class="ic-num">[X]<span>/60</span></div>
-          <div class="ic-lbl">វគ្គ WBL បញ្ចូលក្នុង TVET</div>
-          <div class="ic-lbl-en">WBL courses integrated</div>
-          <div class="ic-bar"><div class="ic-fill" style="width:75%;background:var(--yellow);"></div></div>
+        <div class="c-card cy">
+          <div class="c-num">[X]<span>/60</span></div>
+          <div class="c-lbl">វគ្គ WBL បញ្ចូលក្នុង TVET</div>
+          <div class="c-lbl-en">WBL courses integrated</div>
+          <div class="c-bar"><div class="c-fill" style="width:75%;background:#FFD400;"></div></div>
         </div>
-        <div class="ic g">
-          <div class="ic-num">150</div>
-          <div class="ic-lbl">ក្រុមហ៊ុនជាទីកន្លែងបណ្តុះបណ្តាល</div>
-          <div class="ic-lbl-en">Companies as workplaces</div>
-          <div class="ic-bar"><div class="ic-fill" style="width:100%;background:var(--green);"></div></div>
+        <div class="c-card cg">
+          <div class="c-num">150</div>
+          <div class="c-lbl">ក្រុមហ៊ុនជាទីកន្លែងបណ្តុះបណ្តាល</div>
+          <div class="c-lbl-en">Companies as workplaces</div>
+          <div class="c-bar"><div class="c-fill" style="width:100%;background:#22C55E;"></div></div>
         </div>
-        <div class="ic b">
-          <div class="ic-num">6,640</div>
-          <div class="ic-lbl">ក្រុមហ៊ុនទទួលការលើកទឹកចិត្ត</div>
-          <div class="ic-lbl-en">Companies incentivised</div>
-          <div class="ic-bar"><div class="ic-fill" style="width:88%;background:#6BA3FF;"></div></div>
+        <div class="c-card cb">
+          <div class="c-num">6,640</div>
+          <div class="c-lbl">ក្រុមហ៊ុនទទួលការលើកទឹកចិត្ត</div>
+          <div class="c-lbl-en">Companies incentivised</div>
+          <div class="c-bar"><div class="c-fill" style="width:88%;background:#6BA3FF;"></div></div>
         </div>
       </div>
-      <div class="impact-right fade fade-delay-2">
-        <div class="quote-card">
+      <!-- Quote + GESI -->
+      <div class="impact-right reveal d2">
+        <div class="quote">
           <div class="quote-text">«វគ្គ WBL បានផ្តល់ឱ្យខ្ញុំនូវវិញ្ញាបនប័ត្រដែលនិយោជករបស់ខ្ញុំទទួលស្គាល់ពិតប្រាកដ — និងអនាគតដែលខ្ញុំអាចគ្រោងទុកបាន។»</div>
           <div class="quote-who">
-            <div class="quote-av">NK</div>
+            <div class="q-av">NK</div>
             <div>
-              <div class="quote-name">ណាលី ខំភីឡាវ៉ុង</div>
-              <div class="quote-role">បញ្ចប់ WBL · វៀងចន្ទ៍ ឡាវវ</div>
+              <div class="q-name">ណាលី ខំភីឡាវ៉ុង</div>
+              <div class="q-role">បញ្ចប់ WBL · វៀងចន្ទ៍ ឡាវវ</div>
             </div>
           </div>
         </div>
-        <div class="gesi-card">
-          <div class="gesi-title">GESI — ការបែងចែកភេទ &amp; ការបញ្ចូលរួម</div>
+        <div class="gesi">
+          <div class="gesi-hd">GESI — ការបែងចែកភេទ &amp; ការបញ្ចូលរួម</div>
           <div class="gesi-row">
             <div class="gesi-lbl">ស្ត្រី</div>
-            <div class="gesi-bar"><div class="gesi-fill" style="width:52%;background:var(--red);"></div></div>
+            <div class="gesi-bar"><div class="gesi-fill" style="width:52%;background:#E0284F;"></div></div>
             <div class="gesi-val">≥50%</div>
           </div>
           <div class="gesi-row">
             <div class="gesi-lbl">ក្រុម LNOB</div>
-            <div class="gesi-bar"><div class="gesi-fill" style="width:42%;background:var(--yellow);"></div></div>
+            <div class="gesi-bar"><div class="gesi-fill" style="width:42%;background:#FFD400;"></div></div>
             <div class="gesi-val">≥40%</div>
           </div>
           <div class="gesi-row">
             <div class="gesi-lbl">យុវវ័យជនបទ</div>
-            <div class="gesi-bar"><div class="gesi-fill" style="width:35%;background:var(--green);"></div></div>
+            <div class="gesi-bar"><div class="gesi-fill" style="width:35%;background:#22C55E;"></div></div>
             <div class="gesi-val">35%</div>
           </div>
         </div>
@@ -710,200 +1119,205 @@ a{text-decoration:none;}
   </div>
 </section>
 
-<!-- ════════════ COUNTRIES ════════════ -->
-<section class="sec country-sec">
+<!-- ══════════════════════════════════════
+     COUNTRIES
+══════════════════════════════════════ -->
+<section class="sec countries-sec">
   <div class="sec-inner">
-    <div class="country-head fade">
+    <div class="c-head reveal">
       <div>
-        <div class="sec-label">កន្លែងដែលយើងធ្វើការ</div>
+        <div class="sec-kicker">កន្លែងដែលយើងធ្វើការ</div>
         <h2 class="sec-h" style="margin-bottom:0;">ប្រទេស &amp; តំបន់</h2>
       </div>
-      <div class="ctab-group">
-        <button class="ctab on" onclick="switchTab('kh',this)">🇰🇭 កម្ពុជា</button>
-        <button class="ctab" onclick="switchTab('la',this)">🇱🇦 ឡាវវ</button>
-        <button class="ctab" onclick="switchTab('mm',this)">🇲🇲 មីយ៉ាន់ម៉ា</button>
-        <button class="ctab" onclick="switchTab('asn',this)">🌏 អាស៊ាន</button>
+      <div class="tabs">
+        <button class="tab on" onclick="switchTab('kh',this)">🇰🇭 កម្ពុជា</button>
+        <button class="tab" onclick="switchTab('la',this)">🇱🇦 ឡាវវ</button>
+        <button class="tab" onclick="switchTab('mm',this)">🇲🇲 មីយ៉ាន់ម៉ា</button>
+        <button class="tab" onclick="switchTab('asn',this)">🌏 អាស៊ាន</button>
       </div>
     </div>
 
-    <div id="t-kh" class="cpanel on fade">
+    <div id="t-kh" class="cpanel on">
       <div class="cp-left">
-        <h3>🇰🇭 កម្ពុជា</h3>
-        <p>ASTI សហការជិតស្និទ្ធជាមួយ DGTVET នៅក្រោម MoLVT រួមជាមួយបណ្ណាល័យពាណិជ្ជកម្ម CAMFEBA និង IBC ដើម្បីរៀបចំ ផ្តល់ជូន និងផ្ទៀងផ្ទាត់កម្មវិធី WBL នៅក្នុងឧស្សាហកម្មមានគោលដៅ។</p>
+        <h3 class="cp-title">🇰🇭 កម្ពុជា</h3>
+        <p class="cp-text">ASTI សហការជិតស្និទ្ធជាមួយ DGTVET នៅក្រោម MoLVT រួមជាមួយបណ្ណាល័យពាណិជ្ជកម្ម CAMFEBA និង IBC ដើម្បីរៀបចំ ផ្តល់ជូន និងផ្ទៀងផ្ទាត់កម្មវិធី WBL នៅក្នុងឧស្សាហកម្មមានគោលដៅ។</p>
         <div class="cp-stats">
-          <div class="cps"><div class="cps-n">[X]</div><div class="cps-l">អ្នកទទួលវិញ្ញាបនប័ត្រ</div></div>
-          <div class="cps"><div class="cps-n">[X]</div><div class="cps-l">វគ្គ WBL បញ្ចូល</div></div>
-          <div class="cps"><div class="cps-n">DGTVET</div><div class="cps-l">ដៃគូរដ្ឋាភិបាល</div></div>
-          <div class="cps"><div class="cps-n">CAMFEBA</div><div class="cps-l">ដៃគូបណ្ណាល័យ</div></div>
+          <div class="cstat"><div class="cstat-n">[X]</div><div class="cstat-l">អ្នកទទួលវិញ្ញាបនប័ត្រ</div></div>
+          <div class="cstat"><div class="cstat-n">[X]</div><div class="cstat-l">វគ្គ WBL បញ្ចូល</div></div>
+          <div class="cstat"><div class="cstat-n">DGTVET</div><div class="cstat-l">ដៃគូរដ្ឋាភិបាល</div></div>
+          <div class="cstat"><div class="cstat-n">CAMFEBA</div><div class="cstat-l">ដៃគូបណ្ណាល័យ</div></div>
         </div>
-        <a href="#" class="btn-yellow" style="font-size:13px;padding:11px 22px;">ស្វែងយល់ពីកម្ពុជា →</a>
+        <a href="#" class="btn-accent" style="font-size:13px;padding:12px 22px;width:fit-content;">ស្វែងយល់ពីកម្ពុជា →</a>
       </div>
-      <div class="cp-right">
-        <div class="cpr-head">ដៃគូ</div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--blue);"></div><div><div class="cpr-name">DGTVET / MoLVT</div><div class="cpr-role">ដៃគូរដ្ឋាភិបាល</div></div></div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--red);"></div><div><div class="cpr-name">CAMFEBA</div><div class="cpr-role">សហព័ន្ធនិយោជក</div></div></div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--yellow);"></div><div><div class="cpr-name">IBC</div><div class="cpr-role">បណ្ណាល័យពាណិជ្ជកម្មអន្តរជាតិ</div></div></div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--green);"></div><div><div class="cpr-name">ស្ថាប័ន TVET</div><div class="cpr-role">ដៃគូផ្តល់ WBL</div></div></div>
+      <div class="cp-right-box">
+        <div class="cp-right-hd">ដៃគូ</div>
+        <div class="partner-row"><div class="partner-dot" style="background:var(--blue);"></div><div><div class="partner-name">DGTVET / MoLVT</div><div class="partner-role">ដៃគូរដ្ឋាភិបាល</div></div></div>
+        <div class="partner-row"><div class="partner-dot" style="background:#E0284F;"></div><div><div class="partner-name">CAMFEBA</div><div class="partner-role">សហព័ន្ធនិយោជក</div></div></div>
+        <div class="partner-row"><div class="partner-dot" style="background:var(--yellow);"></div><div><div class="partner-name">IBC</div><div class="partner-role">បណ្ណាល័យពាណិជ្ជកម្មអន្តរជាតិ</div></div></div>
+        <div class="partner-row"><div class="partner-dot" style="background:#22C55E;"></div><div><div class="partner-name">ស្ថាប័ន TVET</div><div class="partner-role">ដៃគូផ្តល់ WBL</div></div></div>
       </div>
     </div>
 
     <div id="t-la" class="cpanel">
       <div class="cp-left">
-        <h3>🇱🇦 ឡាវវ</h3>
-        <p>នៅឡាវវ ASTI សហការជាមួយក្រសួងអប់រំ និងកីឡា និង LNCCI ដើម្បីពង្រីកការរួមបញ្ចូល WBL — អភិវឌ្ឍគុណវុឌ្ឍិតាមវិស័យ និងបង្កើតសមត្ថភាពអ្នកផ្តល់ TVET។</p>
+        <h3 class="cp-title">🇱🇦 ឡាវវ</h3>
+        <p class="cp-text">នៅឡាវវ ASTI សហការជាមួយក្រសួងអប់រំ និងកីឡា និង LNCCI ដើម្បីពង្រីកការរួមបញ្ចូល WBL — អភិវឌ្ឍគុណវុឌ្ឍិតាមវិស័យ និងបង្កើតសមត្ថភាពអ្នកផ្តល់ TVET។</p>
         <div class="cp-stats">
-          <div class="cps"><div class="cps-n">[X]</div><div class="cps-l">វគ្គ WBL ដំណើរការ</div></div>
-          <div class="cps"><div class="cps-n">[X]</div><div class="cps-l">ក្រុមហ៊ុនចូលរួម</div></div>
-          <div class="cps"><div class="cps-n">MoES</div><div class="cps-l">ដៃគូរដ្ឋាភិបាល</div></div>
-          <div class="cps"><div class="cps-n">LNCCI</div><div class="cps-l">ដៃគូបណ្ណាល័យ</div></div>
+          <div class="cstat"><div class="cstat-n">[X]</div><div class="cstat-l">វគ្គ WBL ដំណើរការ</div></div>
+          <div class="cstat"><div class="cstat-n">[X]</div><div class="cstat-l">ក្រុមហ៊ុនចូលរួម</div></div>
+          <div class="cstat"><div class="cstat-n">MoES</div><div class="cstat-l">ដៃគូរដ្ឋាភិបាល</div></div>
+          <div class="cstat"><div class="cstat-n">LNCCI</div><div class="cstat-l">ដៃគូបណ្ណាល័យ</div></div>
         </div>
-        <a href="#" class="btn-yellow" style="font-size:13px;padding:11px 22px;">ស្វែងយល់ពីឡាវវ →</a>
+        <a href="#" class="btn-accent" style="font-size:13px;padding:12px 22px;width:fit-content;">ស្វែងយល់ពីឡាវវ →</a>
       </div>
-      <div class="cp-right">
-        <div class="cpr-head">ដៃគូ</div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--blue);"></div><div><div class="cpr-name">ក្រសួងអប់រំ &amp; កីឡា</div><div class="cpr-role">ដៃគូរដ្ឋាភិបាល</div></div></div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--red);"></div><div><div class="cpr-name">LNCCI</div><div class="cpr-role">ប្រាក់ពាណិជ្ជកម្ម &amp; ឧស្សាហកម្មឡាវវ</div></div></div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--green);"></div><div><div class="cpr-name">ស្ថាប័ន TVET</div><div class="cpr-role">ដៃគូផ្តល់ WBL</div></div></div>
+      <div class="cp-right-box">
+        <div class="cp-right-hd">ដៃគូ</div>
+        <div class="partner-row"><div class="partner-dot" style="background:var(--blue);"></div><div><div class="partner-name">ក្រសួងអប់រំ &amp; កីឡា</div><div class="partner-role">ដៃគូរដ្ឋាភិបាល</div></div></div>
+        <div class="partner-row"><div class="partner-dot" style="background:#E0284F;"></div><div><div class="partner-name">LNCCI</div><div class="partner-role">ប្រាក់ពាណិជ្ជកម្ម &amp; ឧស្សាហកម្មឡាវវ</div></div></div>
+        <div class="partner-row"><div class="partner-dot" style="background:#22C55E;"></div><div><div class="partner-name">ស្ថាប័ន TVET</div><div class="partner-role">ដៃគូផ្តល់ WBL</div></div></div>
       </div>
     </div>
 
     <div id="t-mm" class="cpanel">
       <div class="cp-left">
-        <h3>🇲🇲 មីយ៉ាន់ម៉ា</h3>
-        <p>ASTI ចូលរួមជាមួយសមាគមន៍វិស័យជាក់លាក់នៅមីយ៉ាន់ម៉ា ដើម្បីអភិវឌ្ឍ និងផ្តល់កម្មវិធី WBL។ សកម្មភាពបច្ចុប្បន្នមានកម្រិត — សូមបញ្ជាក់ស្ថានភាពថ្មីបំផុតជាមួយក្រុមការងារ។</p>
+        <h3 class="cp-title">🇲🇲 មីយ៉ាន់ម៉ា</h3>
+        <p class="cp-text">ASTI ចូលរួមជាមួយសមាគមន៍វិស័យជាក់លាក់នៅមីយ៉ាន់ម៉ា ដើម្បីអភិវឌ្ឍ និងផ្តល់កម្មវិធី WBL។ សកម្មភាពបច្ចុប្បន្នមានកម្រិត — សូមបញ្ជាក់ស្ថានភាពថ្មីបំផុតជាមួយក្រុមការងារ ASTI។</p>
         <div class="cp-stats">
-          <div class="cps"><div class="cps-n">មានកម្រិត</div><div class="cps-l">កម្រិតសកម្មភាពបច្ចុប្បន្ន</div></div>
-          <div class="cps"><div class="cps-n">វិស័យ</div><div class="cps-l">សមាគមន៍ចូលរួម</div></div>
+          <div class="cstat"><div class="cstat-n">មានកម្រិត</div><div class="cstat-l">កម្រិតសកម្មភាពបច្ចុប្បន្ន</div></div>
+          <div class="cstat"><div class="cstat-n">វិស័យ</div><div class="cstat-l">សមាគមន៍ចូលរួម</div></div>
         </div>
       </div>
-      <div class="cp-right">
+      <div class="cp-right-box">
         <div style="padding:20px;background:#FFFBEB;border-radius:var(--r-sm);border-left:4px solid var(--yellow);">
-          <div style="font-size:14px;font-weight:700;color:#92400E;margin-bottom:8px;">⚠ ស្ថានភាព: មានកម្រិត</div>
-          <div style="font-size:13px;color:var(--muted);line-height:1.8;">សូមបញ្ជាក់ស្ថានភាពសកម្មភាពមីយ៉ាន់ម៉ាបច្ចុប្បន្ន ជាមួយក្រុមការងារ ASTI មុនចុះផ្សាយ content នេះ។</div>
+          <div style="font-family:var(--pp);font-size:13px;font-weight:700;color:#92400E;margin-bottom:8px;">⚠ ស្ថានភាព: មានកម្រិត</div>
+          <div style="font-family:var(--km);font-size:13px;color:var(--muted);line-height:1.85;">សូមបញ្ជាក់ស្ថានភាពសកម្មភាពមីយ៉ាន់ម៉ាបច្ចុប្បន្ន ជាមួយក្រុមការងារ ASTI មុនចុះផ្សាយ content នេះ។</div>
         </div>
       </div>
     </div>
 
     <div id="t-asn" class="cpanel">
       <div class="cp-left">
-        <h3>🌏 អាស៊ាន &amp; តំបន់</h3>
-        <p>នៅកម្រិតតំបន់ ASTI ជួយសម្រួលការផ្លាស់ប្តូរចំណេះដឹង និងការអនុវត្តល្អបំផុតក្នុងចំណោមរដ្ឋប្រព័ន្ធ ASEAN និងជាមួយស្វីស ដើម្បីផ្តល់ការរួមចំណែកដល់ ecosystem ជំនាញតំបន់ ASEAN ដែលសម្របសម្រួលបន្ថែម។</p>
+        <h3 class="cp-title">🌏 អាស៊ាន &amp; តំបន់</h3>
+        <p class="cp-text">នៅកម្រិតតំបន់ ASTI ជួយសម្រួលការផ្លាស់ប្តូរចំណេះដឹង និងការអនុវត្តល្អបំផុតក្នុងចំណោមរដ្ឋប្រព័ន្ធ ASEAN និងជាមួយស្វីស ដើម្បីផ្តល់ការរួមចំណែកដល់ ecosystem ជំនាញតំបន់ ASEAN។</p>
         <div class="cp-stats">
-          <div class="cps"><div class="cps-n">2</div><div class="cps-l">ការផ្លាស់ប្តូរតំបន់</div></div>
-          <div class="cps"><div class="cps-n">3</div><div class="cps-l">យុទ្ធសាស្ត្រ ASEAN</div></div>
+          <div class="cstat"><div class="cstat-n">2</div><div class="cstat-l">ការផ្លាស់ប្តូរតំបន់</div></div>
+          <div class="cstat"><div class="cstat-n">3</div><div class="cstat-l">យុទ្ធសាស្ត្រ ASEAN</div></div>
         </div>
-        <a href="#" class="btn-yellow" style="font-size:13px;padding:11px 22px;">ស្វែងយល់ការងារតំបន់ →</a>
+        <a href="#" class="btn-accent" style="font-size:13px;padding:12px 22px;width:fit-content;">ស្វែងយល់ការងារតំបន់ →</a>
       </div>
-      <div class="cp-right">
-        <div class="cpr-head">ការងារតំបន់</div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--blue);"></div><div><div class="cpr-name">រដ្ឋប្រព័ន្ធ ASEAN</div><div class="cpr-role">ការផ្លាស់ប្តូរចំណេះដឹងឆ្លងប្រទេស</div></div></div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--red);"></div><div><div class="cpr-name">ASEAN TVET Council</div><div class="cpr-role">ការសន្ទនានយោបាយ</div></div></div>
-        <div class="cpr-row"><div class="cpr-dot" style="background:var(--yellow);"></div><div><div class="cpr-name">ស្វីស (SDC)</div><div class="cpr-role">ដៃគូសហប្រតិបត្តិការអភិវឌ្ឍ</div></div></div>
+      <div class="cp-right-box">
+        <div class="cp-right-hd">ការងារតំបន់</div>
+        <div class="partner-row"><div class="partner-dot" style="background:var(--blue);"></div><div><div class="partner-name">រដ្ឋប្រព័ន្ធ ASEAN</div><div class="partner-role">ការផ្លាស់ប្តូរចំណេះដឹងឆ្លងប្រទេស</div></div></div>
+        <div class="partner-row"><div class="partner-dot" style="background:#E0284F;"></div><div><div class="partner-name">ASEAN TVET Council</div><div class="partner-role">ការសន្ទនានយោបាយ</div></div></div>
+        <div class="partner-row"><div class="partner-dot" style="background:var(--yellow);"></div><div><div class="partner-name">ស្វីស (SDC)</div><div class="partner-role">ដៃគូសហប្រតិបត្តិការអភិវឌ្ឍ</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ eLMS ════════════ -->
+<!-- ══════════════════════════════════════
+     eLMS
+══════════════════════════════════════ -->
 <section class="sec lms-sec">
   <div class="sec-inner">
     <div class="lms-layout">
-      <div class="fade">
-        <div class="sec-label">eLearning Platform</div>
+      <div class="reveal">
+        <div class="sec-kicker">eLearning Platform</div>
         <h2 class="sec-h">រៀនគ្រប់ពេល។<br>រីកលូតលាស់គ្រប់ទី។</h2>
-        <div class="sec-en">Learn Anywhere. Grow Everywhere.</div>
-        <p class="sec-sub">eLMS ប្រភព open-source របស់ ASTI ផ្តល់ជូនយុវវ័យ កម្មករ និងអ្នកអនុវត្ត TVET ការចូលដំណើរការ WBL courses ការវាយតម្លៃ និងផ្លូវវិញ្ញាបនប័ត្រ — ដោយឥតគិតថ្លៃ — នៅលើឧបករណ៍ណាមួយ។</p>
-        <div class="lms-courses">
-          <div class="lc c1">
-            <div class="lc-icon">🎓</div>
+        <p class="sec-sub">eLMS ប្រភព open-source របស់ ASTI ផ្តល់ជូនយុវវ័យ កម្មករ និងអ្នកអនុវត្ត TVET ការចូលដំណើរការ WBL courses ដោយឥតគិតថ្លៃ នៅលើឧបករណ៍ណាមួយ។</p>
+        <div class="course-list">
+          <div class="course c1">
+            <div class="course-icon">🎓</div>
             <div>
-              <div class="lc-title">ជំនាញស្នូល WBL</div>
-              <div class="lc-desc">កម្មវិធី WBL មូលដ្ឋានសម្រាប់យុវវ័យ ចូលដំណើរការបាននៅ mobile ។</div>
-              <span class="lc-badge open">Open Access</span>
+              <div class="course-title">ជំនាញស្នូល WBL</div>
+              <div class="course-desc">កម្មវិធី WBL មូលដ្ឋានសម្រាប់យុវវ័យ ចូលដំណើរការបាននៅ mobile ។</div>
+              <span class="badge open">Open Access</span>
             </div>
           </div>
-          <div class="lc c2">
-            <div class="lc-icon">🏗️</div>
+          <div class="course c2">
+            <div class="course-icon">🏗️</div>
             <div>
-              <div class="lc-title">វគ្គផ្ទៀងផ្ទាត់អ្នកវាស់វែង</div>
-              <div class="lc-desc">ការអភិវឌ្ឍន៍វិជ្ជាជីវៈសម្រាប់គ្រូ TVET និងអ្នកវាស់វែងកន្លែងការងារ។</div>
-              <span class="lc-badge open">Open Access</span>
+              <div class="course-title">វគ្គផ្ទៀងផ្ទាត់អ្នកវាស់វែង</div>
+              <div class="course-desc">ការអភិវឌ្ឍន៍វិជ្ជាជីវៈសម្រាប់គ្រូ TVET និងអ្នកវាស់វែងកន្លែងការងារ។</div>
+              <span class="badge open">Open Access</span>
             </div>
           </div>
-          <div class="lc c3">
-            <div class="lc-icon">📊</div>
+          <div class="course c3">
+            <div class="course-icon">📊</div>
             <div>
-              <div class="lc-title">GESI &amp; ការអន្តរាគមន៍</div>
-              <div class="lc-desc">ម៉ូឌុលសម្រាប់ការផ្តល់ WBL ដែលឆ្លើយតបទៅនឹងយេនឌ័រ។</div>
-              <span class="lc-badge soon">Coming Soon</span>
+              <div class="course-title">GESI &amp; ការអន្តរាគមន៍</div>
+              <div class="course-desc">ម៉ូឌុលសម្រាប់ការផ្តល់ WBL ដែលឆ្លើយតបទៅនឹងយេនឌ័រ។</div>
+              <span class="badge soon">Coming Soon</span>
             </div>
           </div>
-          <div class="lc c4">
-            <div class="lc-icon">📋</div>
+          <div class="course c4">
+            <div class="course-icon">📋</div>
             <div>
-              <div class="lc-title">ការធានាគុណភាព TVET</div>
-              <div class="lc-desc">ស្តង់ដារ ឧបករណ៍ និងពិធីការ សម្រាប់ WBL ។</div>
-              <span class="lc-badge soon">Coming Soon</span>
+              <div class="course-title">ការធានាគុណភាព TVET</div>
+              <div class="course-desc">ស្តង់ដារ ឧបករណ៍ និងពិធីការ សម្រាប់ WBL ។</div>
+              <span class="badge soon">Coming Soon</span>
             </div>
           </div>
         </div>
         <div class="lms-stats">
-          <div class="lms-stat"><div class="n">[X]<span>+</span></div><div class="l">អ្នករៀន</div></div>
-          <div class="lms-stat"><div class="n">60<span>+</span></div><div class="l">វគ្គ</div></div>
-          <div class="lms-stat"><div class="n">3</div><div class="l">ភាសា</div></div>
+          <div class="lms-s"><div class="n">[X]<em>+</em></div><div class="l">អ្នករៀន</div></div>
+          <div class="lms-s"><div class="n">60<em>+</em></div><div class="l">វគ្គ</div></div>
+          <div class="lms-s"><div class="n">3</div><div class="l">ភាសា</div></div>
         </div>
       </div>
-      <div class="lms-right fade fade-delay-2">
-        <div class="lms-r-tag">eLearning Platform</div>
-        <div class="lms-r-h">ចូលដំណើរការ eLMS<br>ASTI ឥឡូវនេះ</div>
-        <p class="lms-r-p">មានផ្អែកលើបច្ចេកវិទ្យា open-source — ចូល ស្វែងរកវគ្គ និងចាប់ផ្តើមរៀនដោយឥតគិតថ្លៃ។</p>
-        <div class="lms-tech">
-          <span class="ltech">Moodle</span>
-          <span class="ltech">Open edX</span>
-          <span class="ltech">H5P</span>
-          <span class="ltech">SCORM</span>
+      <div class="lms-card reveal d2">
+        <div class="lms-tag">eLearning Platform</div>
+        <div class="lms-h">ចូលដំណើរការ eLMS<br>ASTI ឥឡូវនេះ</div>
+        <p class="lms-p">មានផ្អែកលើបច្ចេកវិទ្យា open-source — ចូល ស្វែងរកវគ្គ និងចាប់ផ្តើមរៀនដោយឥតគិតថ្លៃ នៅលើ Mobile, Tablet ឬ Computer។</p>
+        <div class="tech-pills">
+          <span class="tech-pill">Moodle</span>
+          <span class="tech-pill">Open edX</span>
+          <span class="tech-pill">H5P</span>
+          <span class="tech-pill">SCORM</span>
         </div>
         <button class="lms-btn">🎓 ចូលដំណើរការ eLMS →</button>
-        <div class="lms-lang-row">
-          <div class="lms-lang-item"><div class="lms-lang-name">ខ្មែរ</div><div class="lms-lang-sub">Khmer</div></div>
-          <div class="lms-lang-div"></div>
-          <div class="lms-lang-item"><div class="lms-lang-name">English</div><div class="lms-lang-sub">English</div></div>
-          <div class="lms-lang-div"></div>
-          <div class="lms-lang-item"><div class="lms-lang-name">ລາວ</div><div class="lms-lang-sub">Lao</div></div>
+        <div class="lang-row">
+          <div class="lang-item"><div class="lang-name">ខ្មែរ</div><div class="lang-label">Khmer</div></div>
+          <div class="lang-div"></div>
+          <div class="lang-item"><div class="lang-name">English</div><div class="lang-label">English</div></div>
+          <div class="lang-div"></div>
+          <div class="lang-item"><div class="lang-name">ລາວ</div><div class="lang-label">Lao</div></div>
         </div>
-        <div style="margin-top:14px;font-size:11px;color:rgba(255,255,255,.28);text-align:center;">ឥតគិតថ្លៃ · ចូលបានគ្រប់ devices</div>
+        <div style="margin-top:12px;font-family:var(--pp);font-size:11px;color:rgba(255,255,255,.24);text-align:center;">ឥតគិតថ្លៃ · ចូលបានគ្រប់ devices</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ NEWS ════════════ -->
+<!-- ══════════════════════════════════════
+     NEWS  (ASEAN Foundation card layout)
+══════════════════════════════════════ -->
 <section class="sec news-sec">
   <div class="sec-inner">
-    <div class="news-head fade">
+    <div class="news-header reveal">
       <div>
-        <div class="sec-label">ព័ត៌មានថ្មី</div>
+        <div class="sec-kicker">ព័ត៌មានថ្មី</div>
         <h2 class="sec-h" style="margin-bottom:0;">ព័ត៌មាន &amp; ព្រឹត្តការណ៍</h2>
       </div>
-      <a href="#" class="news-all">មើលទាំងអស់ →</a>
+      <a href="#" class="see-all">មើលទាំងអស់ <span>→</span></a>
     </div>
     <div class="news-grid">
-      <div class="news-main fade" style="background:linear-gradient(145deg,#002E6E,#001A3E);">
-        <div class="nm-img" style="background:linear-gradient(145deg,#003A8A,#002255);">
-          <span style="font-size:56px;">🎓</span>
-          <div class="nm-tag">ព្រឹត្តការណ៍ · កម្ពុជា</div>
+      <div class="news-feat reveal d1" style="background:linear-gradient(145deg,var(--blue-dark),var(--blue));">
+        <div class="nf-img">
+          <span>🎓</span>
+          <div class="nf-tag">ព្រឹត្តការណ៍ · កម្ពុជា</div>
         </div>
-        <div class="nm-body">
-          <div class="nm-date" style="color:rgba(255,255,255,.38);">ថ្ងៃទី ១០ ខែមីនា ២០២៦</div>
-          <div class="nm-title" style="color:#fff;">វេទិកាផ្លាស់ប្តូរ WBL តំបន់ ២០២៦: ការរៀនសូត្រឆ្លងប្រទេសក្នុងសកម្មភាព</div>
-          <div class="nm-desc" style="color:rgba(255,255,255,.48);">ព្រឹត្តការណ៍ប្រចាំឆ្នាំ ASTI ប្រមូលផ្តុំអ្នកអនុវត្ត TVET មន្ត្រីរដ្ឋាភិបាល និងនិយោជកពីទូទាំង ASEAN ដើម្បីចែករំលែក និងពង្រីកអ្វីដែលដំណើរការ។</div>
+        <div class="nf-body">
+          <div class="nf-date" style="color:rgba(255,255,255,.35);">ថ្ងៃទី ១០ ខែមីនា ២០២៦</div>
+          <div class="nf-title" style="color:#fff;">វេទិកាផ្លាស់ប្តូរ WBL តំបន់ ២០២៦: ការរៀនសូត្រឆ្លងប្រទេសក្នុងសកម្មភាព</div>
+          <div class="nf-desc" style="color:rgba(255,255,255,.45);">ព្រឹត្តការណ៍ប្រចាំឆ្នាំ ASTI ប្រមូលផ្តុំអ្នកអនុវត្ត TVET មន្ត្រីរដ្ឋាភិបាល និងនិយោជកពីទូទាំង ASEAN ដើម្បីចែករំលែក និងពង្រីកអ្វីដែលដំណើរការ។</div>
         </div>
       </div>
-      <div class="news-list fade fade-delay-2">
+      <div class="news-list reveal d2">
         <div class="nl-card">
           <div class="nl-img ni1">📝</div>
           <div class="nl-body">
-            <div class="nl-tag">ការបោះពុម្ព · តំបន់</div>
+            <div class="nl-kicker">ការបោះពុម្ព · តំបន់</div>
             <div class="nl-title">ឧបករណ៍វាស់វែង WBL ថ្មីត្រូវបានចេញផ្សាយ</div>
             <div class="nl-date">ថ្ងៃទី ២៨ ខែកុម្ភៈ ២០២៦</div>
           </div>
@@ -911,7 +1325,7 @@ a{text-decoration:none;}
         <div class="nl-card">
           <div class="nl-img ni2">🤝</div>
           <div class="nl-body">
-            <div class="nl-tag">ភាពជាដៃគូ · ឡាវវ</div>
+            <div class="nl-kicker">ភាពជាដៃគូ · ឡាវវ</div>
             <div class="nl-title">LNCCI និង MoES ចុះហត្ថលេខាលើកិច្ចព្រមព្រៀង WBL</div>
             <div class="nl-date">ថ្ងៃទី ១៥ ខែកុម្ភៈ ២០២៦</div>
           </div>
@@ -919,7 +1333,7 @@ a{text-decoration:none;}
         <div class="nl-card">
           <div class="nl-img ni3">📊</div>
           <div class="nl-body">
-            <div class="nl-tag">ទិន្នន័យ · តំបន់</div>
+            <div class="nl-kicker">ទិន្នន័យ · តំបន់</div>
             <div class="nl-title">របាយការណ៍លទ្ធផលប្រចាំឆ្នាំ ASTI ២០២៥ អាចទាញយកបានហើយ</div>
             <div class="nl-date">ថ្ងៃទី ៣០ ខែមករា ២០២៦</div>
           </div>
@@ -929,31 +1343,31 @@ a{text-decoration:none;}
   </div>
 </section>
 
-<!-- ════════════ PARTNERS ════════════ -->
+<!-- ══ PARTNERS  (ASEAN Foundation logo row pattern) ══ -->
 <div class="partners-sec">
   <div class="partners-inner">
-    <div class="partners-lbl">ដៃគូ &amp; អ្នកផ្តល់មូលនិធិ</div>
-    <div class="partners-row">
-      <div class="p-badge asean">ASEAN</div>
-      <div class="p-badge sdc">SDC Switzerland</div>
-      <div class="p-badge giz">GIZ International Services</div>
-      <div class="p-badge helvetas">HELVETAS</div>
-      <div class="p-badge sfuvet">SFUVET</div>
+    <div class="partners-kicker">ដៃគូ &amp; អ្នកផ្តល់មូលនិធិ</div>
+    <div class="partners-logos">
+      <div class="partner-badge asean">ASEAN</div>
+      <div class="partner-badge sdc">SDC Switzerland</div>
+      <div class="partner-badge giz">GIZ International Services</div>
+      <div class="partner-badge helvetas">HELVETAS</div>
+      <div class="partner-badge sfuvet">SFUVET</div>
     </div>
   </div>
 </div>
 
-<!-- ════════════ NEWSLETTER ════════════ -->
-<div class="newsletter-sec">
+<!-- ══ NEWSLETTER ══ -->
+<div class="nl-sec">
   <div class="nl-inner">
-    <div class="fade">
-      <h2 class="nl-title">ស្ថិតនៅជិតការងារ ASTI</h2>
-      <p class="nl-p">ព័ត៌មានថ្មី លទ្ធផល ធនធានថ្មី និងការអញ្ជើញព្រឹត្តការណ៍ — ចូករូបដើម្បីទទួលបានព័ត៌មានដំណឹងផ្ទាល់ខ្លួន។</p>
+    <div class="reveal">
+      <h2 class="nl-hl">ស្ថិតនៅជិតការងារ ASTI</h2>
+      <p class="nl-sub">ព័ត៌មានថ្មី លទ្ធផល ធនធានថ្មី និងការអញ្ជើញព្រឹត្តការណ៍ — ចូករូបដើម្បីទទួលបានព័ត៌មានដំណឹងផ្ទាល់ខ្លួន។</p>
     </div>
-    <div class="fade fade-delay-2">
+    <div class="reveal d2">
       <div class="nl-form">
-        <input type="text" class="nl-inp" placeholder="ឈ្មោះពេញ"/>
-        <input type="email" class="nl-inp" placeholder="your@email.com"/>
+        <input type="text" class="nl-input" placeholder="ឈ្មោះពេញ"/>
+        <input type="email" class="nl-input" placeholder="your@email.com"/>
         <select class="nl-select">
           <option>ខ្ញុំជា... (ជ្រើសតួនាទីរបស់អ្នក)</option>
           <option>ម្ចាស់ជំនួយ / SDC</option>
@@ -969,23 +1383,23 @@ a{text-decoration:none;}
   </div>
 </div>
 
-<!-- ════════════ FOOTER ════════════ -->
+<!-- ══ FOOTER ══ -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-top">
+    <div class="footer-grid">
       <div class="ft-brand">
-        <div class="ft-logo-row">
-          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" width="34" height="34">
-            <circle cx="22" cy="22" r="10" fill="none" stroke="#ED1C24" stroke-width="2.5"/>
-            <circle cx="22" cy="22" r="5" fill="rgba(255,255,255,.25)"/>
-            <rect x="20" y="2" width="4" height="6" rx="1" fill="#ED1C24"/>
-            <rect x="20" y="36" width="4" height="6" rx="1" fill="#8DC63F"/>
+        <div class="ft-logo">
+          <svg viewBox="0 0 44 44" fill="none" width="36" height="36">
+            <circle cx="22" cy="22" r="10" stroke="#E0284F" stroke-width="2.5"/>
+            <circle cx="22" cy="22" r="5" fill="rgba(255,255,255,.22)"/>
+            <rect x="20" y="2" width="4" height="6" rx="1" fill="#E0284F"/>
+            <rect x="20" y="36" width="4" height="6" rx="1" fill="#22C55E"/>
             <rect x="36" y="20" width="6" height="4" rx="1" fill="#FFD400"/>
-            <rect x="2" y="20" width="6" height="4" rx="1" fill="rgba(255,255,255,.35)"/>
+            <rect x="2" y="20" width="6" height="4" rx="1" fill="rgba(255,255,255,.3)"/>
           </svg>
-          <span class="ft-logo-name">ASTI</span>
+          <span class="ft-brand-name">ASTI</span>
         </div>
-        <p>គំនិតផ្តួចផ្តើម TVET អាស៊ាន-ស្វីស — ពង្រឹងប្រព័ន្ធការរៀនសូត្រដោយផ្អែកលើការងារ នៅកម្ពុជា ឡាវវ និងមីយ៉ាន់ម៉ា — បង្កើតហេដ្ឋារចនាសម្ព័ន្ធជំនាញចីរភាព។</p>
+        <p class="ft-desc">គំនិតផ្តួចផ្តើម TVET អាស៊ាន-ស្វីស — ពង្រឹងប្រព័ន្ធការរៀនសូត្រដោយផ្អែកលើការងារ នៅកម្ពុជា ឡាវវ និងមីយ៉ាន់ម៉ា — បង្កើតហេដ្ឋារចនាសម្ព័ន្ធជំនាញចីរភាព។</p>
       </div>
       <div class="ft-col">
         <h4>Platform</h4>
@@ -994,7 +1408,7 @@ a{text-decoration:none;}
           <li><a href="#">ការអភិវឌ្ឍអាជីព</a></li>
           <li><a href="#">លទ្ធផល &amp; ផលប៉ះពាល់</a></li>
           <li><a href="#">ប្រទេស</a></li>
-          <li><a href="#">បណ្ណាល័យឯកសារ</a></li>
+          <li><a href="#">eLearning (eLMS)</a></li>
         </ul>
       </div>
       <div class="ft-col">
@@ -1019,53 +1433,46 @@ a{text-decoration:none;}
       </div>
     </div>
     <div class="footer-bot">
-      <div class="fb-copy">© ២០២៦ ASTI · ផ្នែករួមដោយ SDC · អនុវត្តដោយ GIZ International Services &amp; Helvetas</div>
-      <div class="fb-stripe">
-        <div class="fb-block fb-red"></div>
-        <div class="fb-block fb-yellow"></div>
-        <div class="fb-block fb-green"></div>
-        <div class="fb-block fb-blue"></div>
+      <div class="ft-copy">© ២០២៦ ASTI · ផ្នែករួមដោយ SDC · អនុវត្តដោយ GIZ International Services &amp; Helvetas</div>
+      <div class="ft-stripe">
+        <div class="ft-s" style="background:#E0284F;"></div>
+        <div class="ft-s" style="background:#FFD400;"></div>
+        <div class="ft-s" style="background:#22C55E;"></div>
+        <div class="ft-s" style="background:rgba(255,255,255,.18);"></div>
       </div>
     </div>
   </div>
 </footer>
 
+<!-- ══ SCRIPTS ══ -->
 <script>
-/* ── Country tabs ── */
+/* Country tabs */
 function switchTab(id, btn) {
   document.querySelectorAll('.cpanel').forEach(p => p.classList.remove('on'));
-  document.querySelectorAll('.ctab').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
   document.getElementById('t-' + id).classList.add('on');
   btn.classList.add('on');
 }
 
-/* ── Mobile nav ── */
-function toggleNav() {
-  const ham = document.getElementById('ham');
-  const nav = document.getElementById('mob-nav');
-  ham.classList.toggle('open');
-  nav.classList.toggle('open');
+/* Mobile nav */
+function toggleMobNav() {
+  document.getElementById('ham').classList.toggle('open');
+  document.getElementById('mob-nav').classList.toggle('open');
 }
-
-/* Close mobile nav on link click */
-document.querySelectorAll('.mob-nav a').forEach(link => {
-  link.addEventListener('click', () => {
+document.querySelectorAll('.mob-nav a').forEach(a =>
+  a.addEventListener('click', () => {
     document.getElementById('ham').classList.remove('open');
     document.getElementById('mob-nav').classList.remove('open');
-  });
-});
+  })
+);
 
-/* ── Scroll fade-in ── */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+/* Scroll reveal */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
   });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
