@@ -57,48 +57,85 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
 .nav-cta:hover{background:var(--red2)!important;}
 
 /* ── HERO ── */
-.hero{background:var(--blue);position:relative;overflow:hidden;min-height:86vh;display:flex;flex-direction:column;}
-.hero-geo{position:absolute;inset:0;pointer-events:none;}
-.hero-geo::before{content:'';position:absolute;right:-80px;top:-80px;width:500px;height:500px;border:60px solid rgba(255,212,0,.08);border-radius:50%;}
-.hero-geo::after{content:'';position:absolute;right:80px;bottom:-100px;width:340px;height:340px;border:40px solid rgba(141,198,63,.07);border-radius:50%;}
-.hero-stripe{height:6px;background:linear-gradient(90deg,var(--red) 25%,var(--yellow) 25%,var(--yellow) 50%,var(--green) 50%,var(--green) 75%,var(--blue2) 75%);}
-.hero-main{flex:1;display:grid;grid-template-columns:1fr 420px;gap:0;max-width:1200px;margin:0 auto;width:100%;padding:64px 40px 0;align-items:end;position:relative;z-index:1;}
-.hero-left{padding-bottom:60px;}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,212,0,.15);border:1px solid rgba(255,212,0,.3);color:var(--yellow);font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:24px;}
-.htdot{width:6px;height:6px;border-radius:50%;background:var(--yellow);animation:blink 2s infinite;}
+.hero{background:var(--blue);position:relative;overflow:hidden;min-height:92vh;display:flex;flex-direction:column;}
+
+/* Bold diagonal slash graphic behind content */
+.hero-slash{position:absolute;top:0;right:0;width:52%;height:100%;background:rgba(0,0,0,.12);clip-path:polygon(18% 0,100% 0,100% 100%,0% 100%);pointer-events:none;}
+.hero-slash::after{content:'';position:absolute;top:0;left:-3px;width:6px;height:100%;background:var(--red);}
+
+/* Gear watermark top-right */
+.hero-gear-bg{position:absolute;right:-60px;top:-60px;width:400px;height:400px;opacity:.04;pointer-events:none;}
+
+/* Bottom color accent bar */
+.hero-stripe{height:8px;background:linear-gradient(90deg,var(--red) 25%,var(--yellow) 25%,var(--yellow) 50%,var(--green) 50%,var(--green) 75%,var(--blue2) 75%);}
+
+/* Main layout — left content takes 55%, right panel 45% */
+.hero-main{flex:1;display:grid;grid-template-columns:1fr 460px;max-width:1280px;margin:0 auto;width:100%;align-items:stretch;position:relative;z-index:1;}
+
+/* LEFT — text zone, generous padding, left-aligned */
+.hero-left{padding:72px 48px 56px 56px;display:flex;flex-direction:column;justify-content:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;color:var(--yellow);font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px;}
+.htdot{width:6px;height:6px;border-radius:50%;background:var(--yellow);animation:blink 2s infinite;flex-shrink:0;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-family:var(--km);font-size:48px;font-weight:900;color:var(--white);line-height:1.15;margin-bottom:10px;}
+.hero-tag-line{width:28px;height:1px;background:var(--yellow);}
+
+.hero h1{font-family:var(--km);font-size:54px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:6px;letter-spacing:-.5px;}
 .hero h1 .hl{color:var(--yellow);}
 .hero h1 .hl2{color:var(--green);}
-.hero-en{font-family:var(--cond);font-size:16px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.05em;margin-bottom:20px;text-transform:uppercase;}
-.hero-sub{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75;max-width:520px;margin-bottom:32px;font-weight:300;}
-.hero-btns{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap;}
-.btn-yellow{background:var(--yellow);color:var(--blue);font-family:var(--km);font-size:14px;font-weight:700;padding:13px 26px;border-radius:3px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
-.btn-yellow:hover{background:var(--yellow2);}
-.btn-white-out{background:transparent;color:rgba(255,255,255,.8);font-family:var(--km);font-size:14px;font-weight:400;padding:13px 26px;border-radius:3px;border:1px solid rgba(255,255,255,.2);cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;}
-.btn-white-out:hover{border-color:rgba(255,255,255,.5);color:#fff;}
-.hero-partners{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-.hp-label{font-family:var(--en);font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase;}
-.hp-badges{display:flex;gap:8px;}
-.hpb{padding:4px 10px;border:1px solid rgba(255,255,255,.12);border-radius:2px;font-family:var(--en);font-size:10px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:.06em;}
+.hero-en{font-family:var(--cond);font-size:13px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px;padding-left:2px;}
 
-/* Hero right — stat cards */
-.hero-right{display:flex;flex-direction:column;gap:10px;padding-bottom:0;}
-.hstat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.hsc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px 18px;}
-.hsc-top{display:flex;align-items:baseline;gap:4px;margin-bottom:3px;}
-.hsc-num{font-family:var(--cond);font-size:34px;font-weight:900;color:var(--white);line-height:1;}
-.hsc-unit{font-family:var(--en);font-size:16px;font-weight:700;color:var(--yellow);}
-.hsc-lbl{font-size:12px;color:rgba(255,255,255,.4);line-height:1.3;}
-.hsc.accent-red{border-top:3px solid var(--red);}
-.hsc.accent-yellow{border-top:3px solid var(--yellow);}
-.hsc.accent-green{border-top:3px solid var(--green);}
-.hsc.accent-blue{border-top:3px solid #4D8EFF;}
-.hero-story{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:18px;display:flex;gap:12px;align-items:flex-start;}
-.hs-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--yellow));display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:14px;font-weight:700;color:var(--white);flex-shrink:0;}
-.hs-chip{font-family:var(--en);font-size:10px;color:var(--yellow);letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;}
-.hs-name{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
-.hs-txt{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;}
+/* Thin red line separator before description */
+.hero-rule{width:40px;height:3px;background:var(--red);margin-bottom:20px;border-radius:2px;}
+
+.hero-sub{font-size:15px;color:rgba(255,255,255,.62);line-height:1.8;max-width:480px;margin-bottom:36px;font-weight:300;}
+
+.hero-btns{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap;}
+.btn-yellow{background:var(--yellow);color:var(--blue);font-family:var(--km);font-size:14px;font-weight:700;padding:14px 28px;border-radius:3px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;letter-spacing:.01em;}
+.btn-yellow:hover{background:var(--yellow2);transform:translateY(-1px);}
+.btn-white-out{background:transparent;color:rgba(255,255,255,.75);font-family:var(--km);font-size:14px;font-weight:400;padding:14px 28px;border-radius:3px;border:1px solid rgba(255,255,255,.22);cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-white-out:hover{border-color:rgba(255,255,255,.55);color:#fff;}
+
+.hero-partners{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.hp-label{font-family:var(--en);font-size:10px;color:rgba(255,255,255,.25);letter-spacing:.1em;text-transform:uppercase;}
+.hp-badges{display:flex;gap:8px;}
+.hpb{padding:4px 10px;border:1px solid rgba(255,255,255,.1);border-radius:2px;font-family:var(--en);font-size:10px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.06em;}
+
+/* RIGHT — dark panel with strong stat cards + story */
+.hero-right{background:rgba(0,0,0,.22);border-left:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;padding:0;}
+
+/* Stat cards — 2x2 grid taking top portion of right panel */
+.hstat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;flex:1;}
+
+.hsc{padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;border-right:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden;transition:background .2s;cursor:default;}
+.hsc:hover{background:rgba(255,255,255,.04);}
+.hsc:nth-child(2){border-right:none;}
+.hsc:nth-child(3){border-bottom:none;}
+.hsc:nth-child(4){border-right:none;border-bottom:none;}
+
+/* Bold colored left-edge accent per card */
+.hsc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;}
+.hsc.accent-red::before{background:var(--red);}
+.hsc.accent-yellow::before{background:var(--yellow);}
+.hsc.accent-green::before{background:var(--green);}
+.hsc.accent-blue::before{background:#6BA3FF;}
+
+/* Large number */
+.hsc-num{font-family:var(--cond);font-size:48px;font-weight:900;color:var(--white);line-height:1;letter-spacing:-1px;}
+.hsc-unit{font-family:var(--cond);font-size:24px;font-weight:900;}
+.hsc.accent-red .hsc-unit{color:var(--red);}
+.hsc.accent-yellow .hsc-unit{color:var(--yellow);}
+.hsc.accent-green .hsc-unit{color:var(--green);}
+.hsc.accent-blue .hsc-unit{color:#6BA3FF;}
+
+.hsc-lbl{font-size:12px;color:rgba(255,255,255,.38);margin-top:6px;line-height:1.4;font-weight:300;}
+
+/* Story card — bottom strip of right panel */
+.hero-story{border-top:1px solid rgba(255,255,255,.08);padding:20px 24px;display:flex;gap:14px;align-items:center;background:rgba(255,212,0,.06);}
+.hs-av{width:44px;height:44px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:13px;font-weight:700;color:var(--white);flex-shrink:0;border:2px solid rgba(255,255,255,.15);}
+.hs-chip{font-family:var(--en);font-size:9px;color:var(--yellow);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;font-weight:700;}
+.hs-name{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;line-height:1.3;}
+.hs-txt{font-size:11px;color:rgba(255,255,255,.4);line-height:1.5;}
+.hs-arrow{margin-left:auto;color:rgba(255,255,255,.2);font-size:18px;flex-shrink:0;}
 
 /* ── STATS STRIP ── */
 .stats-strip{background:var(--yellow);}
@@ -311,9 +348,11 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
   .topbar,.hero-right,.hero-partners{display:none;}
   .nav{padding:0 20px;height:60px;}
   .nav-menu{display:none;}
-  .hero-main{grid-template-columns:1fr;padding:40px 20px 0;}
-  .hero h1{font-size:32px;}
-  .hero-left{padding-bottom:40px;}
+  .hero-main{grid-template-columns:1fr;}
+  .hero-left{padding:48px 24px 40px;}
+  .hero-slash{display:none;}
+  .hero-gear-bg{display:none;}
+  .hero h1{font-size:36px;}
   .stats-strip .ss-inner{display:flex;overflow-x:auto;}
   .ss-item{min-width:140px;flex-shrink:0;}
   .eco-grid,.impact-grid,.lms-layout,.cpanel.on,.nl-inner,.news-layout,.footer-top{grid-template-columns:1fr;}
@@ -375,24 +414,40 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-stripe"></div>
-  <div class="hero-geo"></div>
+  <div class="hero-slash"></div>
+  <svg class="hero-gear-bg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="90" fill="none" stroke="#fff" stroke-width="24"/>
+    <circle cx="200" cy="200" r="48" fill="#fff"/>
+    <rect x="188" y="20" width="24" height="56" rx="6" fill="#fff"/>
+    <rect x="188" y="324" width="24" height="56" rx="6" fill="#fff"/>
+    <rect x="20" y="188" width="56" height="24" rx="6" fill="#fff"/>
+    <rect x="324" y="188" width="56" height="24" rx="6" fill="#fff"/>
+    <rect x="88" y="56" width="24" height="56" rx="6" fill="#fff" transform="rotate(45 100 84)"/>
+    <rect x="268" y="284" width="24" height="56" rx="6" fill="#fff" transform="rotate(45 280 312)"/>
+    <rect x="56" y="268" width="24" height="56" rx="6" fill="#fff" transform="rotate(-45 68 296)"/>
+    <rect x="284" y="56" width="24" height="56" rx="6" fill="#fff" transform="rotate(-45 296 84)"/>
+  </svg>
   <div class="hero-main">
     <div class="hero-left">
-      <div class="hero-tag"><span class="htdot"></span>គំនិតផ្តួចផ្តើម TVET អាស៊ាន-ស្វីស · ២០២២–២០២៦</div>
+      <div class="hero-tag">
+        <span class="htdot"></span>
+        <span class="hero-tag-line"></span>
+        គំនិតផ្តួចផ្តើម TVET អាស៊ាន-ស្វីស &nbsp;·&nbsp; ២០២២–២០២៦
+      </div>
       <h1>
         ជំនាញ<span class="hl">ពិតប្រាកដ</span>។<br>
         ឱកាស<span class="hl2">ចីរភាព</span>។<br>
         អនាគត<span class="hl">មានន័យ</span>។
       </h1>
-      <div class="hero-en">Real Skills. Lasting Opportunity. Meaningful Future.</div>
+      <div class="hero-en">Real Skills · Lasting Opportunity · Meaningful Future</div>
+      <div class="hero-rule"></div>
       <p class="hero-sub">ASTI រួមបញ្ចូលការរៀនសូត្រដោយផ្អែកលើការងារ (WBL) ទៅក្នុងប្រព័ន្ធ TVET ជាតិ — ផ្តល់ជូនយុវវ័យ និងកម្មករនូវវឌ្ឍនភាពការងារ ដែលទទួលស្គាល់ដោយនិយោជក នៅកម្ពុជា ឡាវ និងមីយ៉ាន់ម៉ា។</p>
       <div class="hero-btns">
         <a href="#" class="btn-yellow">🌐 ស្វែងយល់ Ecosystem</a>
         <a href="#" class="btn-white-out">មើលលទ្ធផល →</a>
       </div>
       <div class="hero-partners">
-        <span class="hp-label">Partners</span>
+        <span class="hp-label">Funded by</span>
         <div class="hp-badges">
           <span class="hpb">SDC</span>
           <span class="hpb">GIZ</span>
@@ -404,32 +459,34 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
     <div class="hero-right">
       <div class="hstat-grid">
         <div class="hsc accent-red">
-          <div class="hsc-top"><div class="hsc-num">3,000</div><div class="hsc-unit">+</div></div>
-          <div class="hsc-lbl">អ្នកទទួលផលផ្ទាល់</div>
+          <div class="hsc-num">3,000<span class="hsc-unit">+</span></div>
+          <div class="hsc-lbl">អ្នកទទួលផលផ្ទាល់<br>Direct beneficiaries</div>
         </div>
         <div class="hsc accent-yellow">
-          <div class="hsc-top"><div class="hsc-num">≥50</div><div class="hsc-unit">%</div></div>
-          <div class="hsc-lbl">ស្ត្រីចូលរួម</div>
+          <div class="hsc-num">≥50<span class="hsc-unit">%</span></div>
+          <div class="hsc-lbl">ស្ត្រីចូលរួម<br>Women participants</div>
         </div>
         <div class="hsc accent-green">
-          <div class="hsc-top"><div class="hsc-num">60</div></div>
-          <div class="hsc-lbl">វគ្គ WBL បញ្ចូល</div>
+          <div class="hsc-num">60<span class="hsc-unit" style="font-size:18px;color:var(--green);">+</span></div>
+          <div class="hsc-lbl">វគ្គ WBL បញ្ចូល<br>WBL courses integrated</div>
         </div>
         <div class="hsc accent-blue">
-          <div class="hsc-top"><div class="hsc-num">150</div></div>
-          <div class="hsc-lbl">ក្រុមហ៊ុនចូលរួម</div>
+          <div class="hsc-num">150<span class="hsc-unit" style="font-size:18px;color:#6BA3FF;">+</span></div>
+          <div class="hsc-lbl">ក្រុមហ៊ុនចូលរួម<br>Companies engaged</div>
         </div>
       </div>
       <div class="hero-story">
         <div class="hs-av">SR</div>
-        <div>
-          <div class="hs-chip">រឿងពិត · កម្ពុជា</div>
-          <div class="hs-name">សុភា រស់ អាយុ ២៤ ឆ្នាំ</div>
-          <div class="hs-txt">ពីការងារក្រៅផ្លូវការ ទៅជាអ្នកវាស់វែងដែលមានវិញ្ញាបនប័ត្រ — តាមរយៈ WBL របស់ ASTI នៅភ្នំពេញ។</div>
+        <div style="flex:1;">
+          <div class="hs-chip">⬤ រឿងពិត · កម្ពុជា</div>
+          <div class="hs-name">សុភា រស់ — អាយុ ២៤ ឆ្នាំ</div>
+          <div class="hs-txt">ពីការងារក្រៅផ្លូវការ ទៅជាអ្នកវាស់វែងដែលមានវិញ្ញាបនប័ត្រ តាមរយៈ WBL របស់ ASTI នៅភ្នំពេញ។</div>
         </div>
+        <div class="hs-arrow">›</div>
       </div>
     </div>
   </div>
+  <div class="hero-stripe"></div>
 </section>
 
 <!-- STATS STRIP -->
