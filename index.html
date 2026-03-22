@@ -314,6 +314,21 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
 .fs-green{background:var(--green);}
 .fs-blue{background:rgba(255,255,255,.3);}
 
+/* ── ROADMAP ── */
+.roadmap-sec{background:var(--light);}
+.roadmap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:8px;position:relative;}
+.roadmap-grid::before{content:'';position:absolute;top:44px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--red),var(--yellow),var(--green),var(--blue));opacity:.2;z-index:0;}
+.rm-step{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px 20px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;transition:all .25s;}
+.rm-step:hover{transform:translateY(-5px);box-shadow:0 14px 36px rgba(0,46,110,.1);}
+.rm-num{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--cond);font-size:18px;font-weight:900;color:#fff;margin-bottom:14px;flex-shrink:0;}
+.rm-n1{background:var(--red);}
+.rm-n2{background:var(--yellow);color:var(--blue);}
+.rm-n3{background:var(--green);}
+.rm-n4{background:var(--blue);}
+.rm-icon{font-size:26px;margin-bottom:10px;}
+.rm-title{font-family:var(--km);font-size:15px;font-weight:700;color:var(--blue);margin-bottom:8px;line-height:1.4;}
+.rm-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+
 /* ── MOBILE ── */
 @media(max-width:900px){
   .topbar,.hero-right,.hero-partners{display:none;}
@@ -324,8 +339,10 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
   .stats-strip .ss-inner{display:flex;overflow-x:auto;}
   .ss-item{min-width:140px;flex-shrink:0;}
   .eco-grid,.impact-grid,.lms-layout,.cpanel.on,.nl-inner,.news-layout,.footer-top{grid-template-columns:1fr;}
+  .roadmap-grid{grid-template-columns:1fr 1fr;}
+  .roadmap-grid::before{display:none;}
   .impact-counters{grid-template-columns:1fr 1fr;}
-  .sec,.eco-sec,.impact-sec,.country-sec,.lms-sec,.news-sec,.nl-band,.footer{padding:48px 20px;}
+  .sec,.eco-sec,.impact-sec,.country-sec,.lms-sec,.news-sec,.nl-band,.footer,.roadmap-sec{padding:48px 20px;}
   .sec-h{font-size:26px;}
 }
 </style>
@@ -371,11 +388,11 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
   <ul class="nav-menu">
     <li><a href="#" class="active">ទំព័រដើម</a></li>
     <li><a href="#">អំពី ASTI</a></li>
-    <li><a href="#">Ecosystem</a></li>
-    <li><a href="#">eLMS</a></li>
+    <li><a href="#">ប្រព័ន្ធអេកូឡូស៊ី</a></li>
+    <li><a href="#">ការអភិវឌ្ឍអាជីព</a></li>
     <li><a href="#">លទ្ធផល</a></li>
     <li><a href="#">ប្រទេស</a></li>
-    <li><a href="#">ព័ត៌មាន</a></li>
+    <li><a href="#">បណ្ណាល័យឯកសារ</a></li>
     <li><a href="#" class="nav-cta">ចូលរួម</a></li>
   </ul>
 </nav>
@@ -396,7 +413,7 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
       <div class="hero-en">Real Skills · Lasting Opportunity · Meaningful Future</div>
       <p class="hero-sub">ASTI រួមបញ្ចូលការរៀនសូត្រដោយផ្អែកលើការងារ (WBL) ទៅក្នុងប្រព័ន្ធ TVET ជាតិ — ផ្តល់ជូនយុវវ័យ និងកម្មករនូវវឌ្ឍនភាពការងារ ដែលទទួលស្គាល់ដោយនិយោជក នៅកម្ពុជា ឡាវ និងមីយ៉ាន់ម៉ា។</p>
       <div class="hero-btns">
-        <a href="#" class="btn-yellow">🌐 ស្វែងយល់ Ecosystem</a>
+        <a href="#" class="btn-yellow">🌐 ស្វែងយល់ប្រព័ន្ធអេកូឡូស៊ី</a>
         <a href="#" class="btn-white-out">មើលលទ្ធផល →</a>
       </div>
       <div class="hero-partners">
@@ -460,17 +477,17 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
 <!-- ECOSYSTEM -->
 <section class="sec eco-sec">
   <div class="sec-inner">
-    <div class="sec-tag">Ecosystem សម្រាប់យុវវ័យ</div>
-    <h2 class="sec-h">ព័ត៌មានល្អ ក្នុងដៃអ្នក</h2>
+    <div class="sec-tag">ប្រព័ន្ធអេកូឡូស៊ី សម្រាប់យុវវ័យ</div>
+    <h2 class="sec-h">តើលោកអ្នកកំពុងស្វែងរកអ្វី?</h2>
     <div class="sec-en">Everything Youth Need, In One Place</div>
-    <p class="sec-p">ASTI ភ្ជាប់យុវវ័យ និងកម្មករទៅនឹងការអប់រំ ការងារ វិញ្ញាបនប័ត្រ និងជំនួយហិរញ្ញវត្ថុ — ពីរដ្ឋាភិបាល វិស័យឯកជន និងដៃគូអភិវឌ្ឍ។</p>
+    <p class="sec-p">ASTI ភ្ជាប់យុវវ័យ និងកម្មករទៅនឹងការអប់រំ ការអភិវឌ្ឍអាជីព វិញ្ញាបនបត្រ និងមូលនិធិ — ពីរដ្ឋាភិបាល វិស័យឯកជន និងដៃគូអភិវឌ្ឍ។</p>
     <div class="eco-grid">
       <a href="#" class="eco-card edu">
         <div class="eco-top">
           <div class="eco-icon-wrap">📚</div>
-          <div class="eco-title-km">ផ្លូវវប្បធម៌ការអប់រំ</div>
+          <div class="eco-title-km">ការអប់រំ និងបណ្តុះបណ្តាល</div>
           <div class="eco-title-en">Education Pathways</div>
-          <div class="eco-desc">ស្វែងរកវគ្គ TVET ផ្លូវការ WBL និងផ្លូវរៀនសូត្រដែលទទួលស្គាល់ដោយក្របខ័ណ្ឌគុណវុឌ្ឍិជាតិ។</div>
+          <div class="eco-desc">ស្វែងរកគ្រឹះស្ថានសិក្សា និងវគ្គសិក្សា TVET ដែលមានស្តង់ដារខ្ពស់។</div>
         </div>
         <div class="eco-bottom">
           <span class="eco-bottom-link">ស្វែងរកឥឡូវ →</span>
@@ -479,9 +496,9 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
       <a href="#" class="eco-card career">
         <div class="eco-top">
           <div class="eco-icon-wrap">🎯</div>
-          <div class="eco-title-km">វគ្គការងារ</div>
+          <div class="eco-title-km">ការអភិវឌ្ឍអាជីព</div>
           <div class="eco-title-en">Career Courses</div>
-          <div class="eco-desc">ស្វែងរកកម្មវិធីជំនាញផ្នែកជាក់លាក់ ដែលភ្ជាប់ទៅនឹងតម្រូវការនិយោជក — សណ្ឋាគារ សំណង់ ឧស្សាហកម្ម និងច្រើនទៀត។</div>
+          <div class="eco-desc">វគ្គបណ្តុះបណ្តាលដែលផ្ដោតលើជំនាញការងារជាក់ស្ដែង និងតម្រូវការទីផ្សារ។</div>
         </div>
         <div class="eco-bottom">
           <span class="eco-bottom-link">រកវគ្គ →</span>
@@ -490,9 +507,9 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
       <a href="#" class="eco-card cert">
         <div class="eco-top">
           <div class="eco-icon-wrap">🏅</div>
-          <div class="eco-title-km">វិញ្ញាបនប័ត្រ</div>
+          <div class="eco-title-km">វិញ្ញាបនបត្រ</div>
           <div class="eco-title-en">Certification</div>
-          <div class="eco-desc">យល់ដឹងអំពីដំណើរការវិញ្ញាបនប័ត្រជាតិ RPL និងរបៀបធ្វើឱ្យជំនាញរបស់អ្នកទទួលស្គាល់ផ្លូវការ។</div>
+          <div class="eco-desc">ការទទួលស្គាល់ជំនាញផ្លូវការ ស្របតាមក្របខណ្ឌគុណវុឌ្ឍិជាតិ។</div>
         </div>
         <div class="eco-bottom">
           <span class="eco-bottom-link">ស្វែងយល់ →</span>
@@ -501,14 +518,49 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
       <a href="#" class="eco-card grant">
         <div class="eco-top">
           <div class="eco-icon-wrap">💰</div>
-          <div class="eco-title-km">ជំនួយ & ក្រាន់</div>
+          <div class="eco-title-km">មូលនិធិ និងការគាំទ្រ</div>
           <div class="eco-title-en">Grants & Support</div>
-          <div class="eco-desc">ស្វែងរកជំនួយហិរញ្ញវត្ថុ លើកទឹកចិត្តនិយោជក និងកម្មវិធីដៃគូអភិវឌ្ឍ សម្រាប់យុវវ័យ កម្មករ និងស្ថាប័ន TVET។</div>
+          <div class="eco-desc">ស្វែងរកអាហារូបករណ៍ និងជំនួយឧបត្ថម្ភពីវិស័យនានា។</div>
         </div>
         <div class="eco-bottom">
-          <span class="eco-bottom-link">ស្វែងរកជំនួយ →</span>
+          <span class="eco-bottom-link">ស្វែងរកមូលនិធិ →</span>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="sec roadmap-sec">
+  <div class="sec-inner">
+    <div class="sec-tag">ដំណើរការ ៤ ជំហាន</div>
+    <h2 class="sec-h">ផ្លូវឆ្ពោះទៅជោគជ័យ</h2>
+    <div class="sec-en">Your Pathway to Success</div>
+    <div class="roadmap-grid">
+      <div class="rm-step">
+        <div class="rm-num rm-n1">១</div>
+        <div class="rm-icon">🔍</div>
+        <h3 class="rm-title">ស្វែងយល់ពីខ្លួនឯង</h3>
+        <p class="rm-desc">វិភាគសមត្ថភាព និងចំណង់ចំណូលចិត្ត តាមរយៈប្រព័ន្ធតម្រង់ទិសឆ្លាតវៃ។</p>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num rm-n2">២</div>
+        <div class="rm-icon">📘</div>
+        <h3 class="rm-title">ពង្រឹងសមត្ថភាព</h3>
+        <p class="rm-desc">ជ្រើសរើសវគ្គសិក្សា TVET ដែលមានការទទួលស្គាល់ និងអនុវត្តផ្ទាល់។</p>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num rm-n3">៣</div>
+        <div class="rm-icon">🏭</div>
+        <h3 class="rm-title">ក្រេបជញ្ជក់បទពិសោធន៍</h3>
+        <p class="rm-desc">ចូលរួមកម្មវិធីសិក្សាការងារជាក់ស្តែង (WBL) និងកម្មសិក្សាការងារ។</p>
+      </div>
+      <div class="rm-step">
+        <div class="rm-num rm-n4">៤</div>
+        <div class="rm-icon">🚀</div>
+        <h3 class="rm-title">ឈានជើងចូលទីផ្សារការងារ</h3>
+        <p class="rm-desc">រៀបចំខ្លួនសម្រាប់ការងារក្នុងក្តីស្រមៃ ជាមួយជំនួយការសរសេរប្រវត្តិរូប (CV)។</p>
+      </div>
     </div>
   </div>
 </section>
@@ -869,29 +921,29 @@ body{font-family:var(--km);background:var(--white);color:var(--ink);line-height:
       <div class="ft-col">
         <h4>Platform</h4>
         <ul>
-          <li><a href="#">Ecosystem យុវវ័យ</a></li>
-          <li><a href="#">eLearning (LMS)</a></li>
-          <li><a href="#">Insights & លទ្ធផល</a></li>
+          <li><a href="#">ប្រព័ន្ធអេកូឡូស៊ី</a></li>
+          <li><a href="#">ការអភិវឌ្ឍអាជីព</a></li>
+          <li><a href="#">លទ្ធផល & ផលប៉ះពាល់</a></li>
           <li><a href="#">ប្រទេស</a></li>
-          <li><a href="#">ព័ត៌មាន & ព្រឹត្តការណ៍</a></li>
+          <li><a href="#">បណ្ណាល័យឯកសារ</a></li>
         </ul>
       </div>
       <div class="ft-col">
         <h4>ធនធាន</h4>
         <ul>
-          <li><a href="#">Knowledge Hub</a></li>
+          <li><a href="#">មជ្ឈមណ្ឌលចំណេះដឹង</a></li>
           <li><a href="#">ការណែនាំ WBL</a></li>
-          <li><a href="#">Dashboard លទ្ធផល</a></li>
+          <li><a href="#">ផ្ទាំងព័ត៌មានលទ្ធផល</a></li>
           <li><a href="#">ព្រឹត្តិប័ត្រ</a></li>
           <li><a href="#">ការ Download</a></li>
         </ul>
       </div>
       <div class="ft-col">
-        <h4>ច្បាប់ & ការគ្រប់គ្រង</h4>
+        <h4>ច្បាប់ និងការគ្រប់គ្រង</h4>
         <ul>
-          <li><a href="#">គោលការណ៍ភាពឯកជន</a></li>
-          <li><a href="#">ភាពទទួលបាន</a></li>
-          <li><a href="#">ការការពារ</a></li>
+          <li><a href="#">គោលការណ៍ឯកជនភាព</a></li>
+          <li><a href="#">លទ្ធភាពទទួលបាន</a></li>
+          <li><a href="#">កិច្ចការពារ និងសុវត្ថិភាព</a></li>
           <li><a href="#">មតិ & ការតវ៉ា</a></li>
           <li><a href="#">ទំនាក់ទំនង</a></li>
         </ul>
