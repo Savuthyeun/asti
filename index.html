@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ASTI — ASEAN Swiss TVET Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#003366;--navy2:#002244;--blue:#0055A5;--blue2:#1A70C8;
+  --teal:#00897B;--teal2:#00695C;--amber:#E65100;
+  --green:#2E7D32;--red:#C62828;--purple:#6A1B9A;
+  --bg:#F5F7FA;--white:#fff;--ink:#1A202C;--muted:#64748B;
+  --line:#E2E8F0;--serif:'Merriweather',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--navy2);padding:6px 40px;display:flex;justify-content:space-between;align-items:center;}
+.topbar-l{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.04em;}
+.topbar-r{display:flex;gap:16px;}
+.topbar-r a{font-size:11px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .15s;}
+.topbar-r a:hover{color:#fff;}
+
+/* ── NAV ── */
+.nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-box{width:38px;height:38px;background:var(--teal);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:17px;font-weight:700;color:#fff;}
+.logo-text .name{font-size:16px;font-weight:700;color:#fff;letter-spacing:-.2px;}
+.logo-text .full{font-size:10px;color:rgba(255,255,255,.4);font-weight:300;letter-spacing:.03em;}
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;height:64px;}
+.nav-menu a{display:flex;align-items:center;height:64px;padding:0 16px;font-size:13px;font-weight:400;color:rgba(255,255,255,.7);text-decoration:none;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;}
+.nav-menu a:hover{color:#fff;background:rgba(255,255,255,.05);}
+.nav-menu a.active{color:#fff;border-bottom-color:var(--teal);}
+.nav-cta{background:var(--teal);color:#fff!important;border-radius:4px;padding:8px 18px!important;height:auto!important;margin-left:12px;border-bottom:none!important;font-weight:600!important;font-size:12px!important;}
+.nav-cta:hover{background:var(--teal2)!important;}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:72px 40px 0;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;right:0;top:0;width:45%;height:100%;background:linear-gradient(135deg,rgba(0,137,123,.08),rgba(26,112,200,.06));clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%);}
+.hero-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:end;}
+.hero-left{padding-bottom:56px;position:relative;z-index:1;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(0,137,123,.2);border:1px solid rgba(0,137,123,.35);color:#4DB6AC;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:24px;}
+.pulse{width:6px;height:6px;border-radius:50%;background:#4DB6AC;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.hero h1{font-family:var(--serif);font-size:44px;font-weight:700;color:#fff;line-height:1.15;margin-bottom:20px;letter-spacing:-.5px;}
+.hero h1 em{font-style:italic;color:#4DB6AC;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75;max-width:500px;margin-bottom:32px;font-weight:300;}
+.hero-btns{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap;}
+.btn-primary{background:var(--teal);color:#fff;font-family:var(--sans);font-size:13px;font-weight:600;padding:13px 26px;border-radius:4px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
+.btn-primary:hover{background:var(--teal2);}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.8);font-family:var(--sans);font-size:13px;font-weight:400;padding:13px 26px;border-radius:4px;border:1px solid rgba(255,255,255,.2);cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff;}
+.hero-partners{display:flex;align-items:center;gap:16px;}
+.hp-label{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.06em;text-transform:uppercase;}
+.hp-badges{display:flex;gap:8px;}
+.hpb{padding:4px 10px;border:1px solid rgba(255,255,255,.12);border-radius:3px;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.05em;}
+
+.hero-right{position:relative;z-index:1;}
+.hero-card-stack{display:flex;flex-direction:column;gap:12px;}
+.hc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:18px;backdrop-filter:blur(4px);}
+.hc-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.hc-stat .num{font-family:var(--serif);font-size:30px;font-weight:700;color:#fff;line-height:1;}
+.hc-stat .num span{color:#4DB6AC;}
+.hc-stat .lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:3px;}
+.hc-story{display:flex;gap:12px;align-items:center;}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--blue2));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
+.hcs-chip{font-size:10px;color:#4DB6AC;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;}
+.hcs-name{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px;}
+.hcs-txt{font-size:11px;color:rgba(255,255,255,.45);line-height:1.4;}
+
+/* ── STATS STRIP ── */
+.stats-strip{background:var(--navy2);border-top:1px solid rgba(255,255,255,.06);}
+.ss-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
+.ss-item{padding:20px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.06);}
+.ss-item:last-child{border-right:none;}
+.ss-num{font-family:var(--serif);font-size:28px;font-weight:700;color:#fff;line-height:1;}
+.ss-num span{color:#4DB6AC;}
+.ss-lbl{font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;}
+
+/* ── ECOSYSTEM SECTION ── */
+.eco-sec{padding:72px 40px;background:var(--white);}
+.eco-inner{max-width:1160px;margin:0 auto;}
+.sec-eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.sec-eyebrow::before{content:'';width:24px;height:2px;background:var(--teal);}
+.sec-h{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--navy);line-height:1.25;margin-bottom:10px;letter-spacing:-.3px;}
+.sec-sub{font-size:15px;color:var(--muted);max-width:580px;line-height:1.75;margin-bottom:40px;font-weight:300;}
+
+.eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.eco-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:24px;cursor:pointer;transition:all .25s;border-top:4px solid transparent;text-decoration:none;display:block;}
+.eco-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,51,102,.1);border-color:var(--line);}
+.eco-card.edu{border-top-color:#1565C0;}
+.eco-card.career{border-top-color:var(--teal);}
+.eco-card.cert{border-top-color:var(--amber);}
+.eco-card.grant{border-top-color:var(--green);}
+.eco-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;}
+.eco-card.edu .eco-icon{background:#E3F2FD;}
+.eco-card.career .eco-icon{background:#E0F2F1;}
+.eco-card.cert .eco-icon{background:#FBE9E7;}
+.eco-card.grant .eco-icon{background:#E8F5E9;}
+.eco-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.eco-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
+.eco-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.etag{font-size:10px;padding:3px 8px;border-radius:3px;font-weight:500;}
+
+/* ── INSIGHT / STATS ── */
+.insight-sec{padding:72px 40px;background:var(--bg);}
+.insight-inner{max-width:1160px;margin:0 auto;}
+.insight-layout{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px;}
+.dash-panel{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:28px;}
+.dp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.dp-title{font-size:14px;font-weight:700;color:var(--navy);}
+.dp-badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;background:#E8F5E9;color:var(--green);}
+.indicator-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);}
+.indicator-row:last-child{border-bottom:none;}
+.ir-label{flex:1;font-size:13px;color:var(--ink);}
+.ir-val{font-size:14px;font-weight:700;color:var(--navy);min-width:60px;text-align:right;}
+.ir-bar{flex:2;height:6px;background:var(--line);border-radius:3px;overflow:hidden;}
+.ir-fill{height:100%;border-radius:3px;transition:width 1s ease;}
+.bar-blue{background:var(--blue2);}
+.bar-teal{background:var(--teal);}
+.bar-amber{background:var(--amber);}
+.bar-green{background:var(--green);}
+.bar-purple{background:var(--purple);}
+.chart-wrap{margin-top:16px;}
+.chart-bars{display:flex;align-items:flex-end;gap:8px;height:120px;}
+.cb{flex:1;border-radius:4px 4px 0 0;background:var(--blue2);opacity:.7;transition:opacity .2s;cursor:pointer;position:relative;}
+.cb:hover{opacity:1;}
+.cb-label{font-size:10px;color:var(--muted);text-align:center;margin-top:6px;}
+.gesi-split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.gs-box{padding:14px;border-radius:8px;text-align:center;}
+.gs-box.w{background:#FCE4EC;}
+.gs-box.m{background:#E3F2FD;}
+.gs-pct{font-family:var(--serif);font-size:32px;font-weight:700;}
+.gs-box.w .gs-pct{color:#880E4F;}
+.gs-box.m .gs-pct{color:#0D47A1;}
+.gs-lbl{font-size:11px;color:var(--muted);margin-top:4px;}
+
+/* ── eLMS ── */
+.lms-sec{padding:72px 40px;background:var(--navy);position:relative;overflow:hidden;}
+.lms-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(0,137,123,.12) 0%,transparent 60%);}
+.lms-inner{max-width:1160px;margin:0 auto;position:relative;z-index:1;}
+.lms-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px;}
+.lms-left{}
+.lms-right{display:flex;flex-direction:column;gap:14px;}
+.lms-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:20px;display:flex;gap:16px;align-items:flex-start;cursor:pointer;transition:all .2s;}
+.lms-card:hover{background:rgba(255,255,255,.12);transform:translateX(4px);}
+.lms-icon{width:40px;height:40px;border-radius:8px;background:rgba(0,137,123,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.lms-info{}
+.lms-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px;}
+.lms-desc{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;}
+.lms-badge{display:inline-block;margin-top:6px;font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600;}
+.badge-open{background:rgba(0,137,123,.25);color:#4DB6AC;}
+.badge-coming{background:rgba(255,255,255,.1);color:rgba(255,255,255,.4);}
+.lms-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;}
+.lms-stat{text-align:center;padding:16px;background:rgba(255,255,255,.05);border-radius:8px;border:1px solid rgba(255,255,255,.08);}
+.lms-stat .n{font-family:var(--serif);font-size:26px;font-weight:700;color:#fff;}
+.lms-stat .n span{color:#4DB6AC;}
+.lms-stat .l{font-size:11px;color:rgba(255,255,255,.35);}
+
+/* ── CMS / COUNTRIES ── */
+.country-sec{padding:72px 40px;background:var(--white);}
+.country-inner{max-width:1160px;margin:0 auto;}
+.country-tabs{display:flex;gap:0;border-bottom:2px solid var(--line);margin-bottom:32px;}
+.ctab{padding:12px 24px;font-size:13px;font-weight:500;color:var(--muted);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;font-family:var(--sans);}
+.ctab:hover{color:var(--navy);}
+.ctab.on{color:var(--navy);border-bottom-color:var(--teal);font-weight:700;}
+.cpanel{display:none;}
+.cpanel.on{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;}
+.cp-left h3{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.cp-left p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px;font-weight:300;}
+.cp-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;}
+.cps{background:var(--bg);border-radius:8px;padding:14px 16px;border:1px solid var(--line);}
+.cps-n{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--navy);}
+.cps-l{font-size:11px;color:var(--muted);}
+.cp-right{background:var(--bg);border-radius:12px;padding:20px;border:1px solid var(--line);}
+.cp-partner-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);}
+.cp-partner-row:last-child{border-bottom:none;}
+.cpr-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.cpr-name{font-size:13px;font-weight:600;color:var(--navy);}
+.cpr-role{font-size:11px;color:var(--muted);}
+
+/* ── NEWS ── */
+.news-sec{padding:72px 40px;background:var(--bg);}
+.news-inner{max-width:1160px;margin:0 auto;}
+.news-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:18px;margin-top:40px;}
+.nc{background:var(--white);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .2s;}
+.nc:hover{box-shadow:0 8px 24px rgba(0,51,102,.1);transform:translateY(-2px);}
+.nc-img{height:150px;display:flex;align-items:center;justify-content:center;font-size:44px;}
+.nc.feat .nc-img{height:190px;}
+.ni1{background:linear-gradient(135deg,#E3F2FD,#BBDEFB);}
+.ni2{background:linear-gradient(135deg,#E0F2F1,#B2DFDB);}
+.ni3{background:linear-gradient(135deg,#FBE9E7,#FFCCBC);}
+.nc-body{padding:18px;}
+.nc-tag{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.nc-title{font-size:14px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:8px;}
+.nc-date{font-size:11px;color:var(--muted);}
+
+/* ── NEWSLETTER ── */
+.nl-band{background:var(--teal);padding:56px 40px;}
+.nl-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.nl-left h2{font-family:var(--serif);font-size:28px;font-weight:700;color:#fff;margin-bottom:8px;}
+.nl-left p{font-size:14px;color:rgba(255,255,255,.7);font-weight:300;line-height:1.7;}
+.nl-form{display:flex;gap:10px;}
+.nl-inp{flex:1;padding:13px 16px;border-radius:4px;border:none;font-family:var(--sans);font-size:13px;outline:none;}
+.nl-btn{background:var(--navy);color:#fff;font-family:var(--sans);font-size:13px;font-weight:700;padding:13px 24px;border-radius:4px;border:none;cursor:pointer;white-space:nowrap;transition:opacity .2s;}
+.nl-btn:hover{opacity:.85;}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy2);padding:56px 40px 24px;}
+.footer-inner{max-width:1160px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08);}
+.ft-brand p{font-size:12px;color:rgba(255,255,255,.35);line-height:1.7;margin-top:12px;max-width:260px;font-weight:300;}
+.ft-col h4{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.ft-col ul a{font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .15s;}
+.ft-col ul a:hover{color:rgba(255,255,255,.8);}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;}
+.fb-copy{font-size:11px;color:rgba(255,255,255,.25);}
+.fb-badges{display:flex;gap:8px;}
+.fb-badge{padding:4px 10px;border:1px solid rgba(255,255,255,.1);border-radius:3px;font-size:10px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.05em;}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  .topbar,.hero-right,.hero-partners{display:none;}
+  .nav{padding:0 20px;}
+  .nav-menu{display:none;}
+  .hero{padding:48px 20px 0;}
+  .hero h1{font-size:32px;}
+  .hero-inner,.stats-strip .ss-inner,.eco-grid,.insight-layout,.lms-grid,.cpanel.on,.nl-inner,.footer-top,.news-grid{grid-template-columns:1fr;}
+  .sec-h{font-size:24px;}
+  .sec,.eco-sec,.insight-sec,.lms-sec,.country-sec,.news-sec,.nl-band,.footer{padding:48px 20px;}
+  .hero-left{padding-bottom:40px;}
+  .ss-inner{display:flex;overflow-x:auto;}
+  .ss-item{min-width:140px;}
+  .gesi-split{grid-template-columns:1fr 1fr;}
+}
+
+/* ── PAGE SECTIONS ── */
+.page-section{display:none;}
+.page-section.active{display:block;}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span class="topbar-l">Funded by SDC · Implemented by GIZ International Services & Helvetas</span>
+  <div class="topbar-r">
+    <a href="#">Khmer</a>
+    <a href="#">Lao</a>
+    <a href="#">Contact</a>
+    <a href="#">Sitemap</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="#">
+    <div class="logo-box">A</div>
+    <div class="logo-text">
+      <div class="name">ASTI</div>
+      <div class="full">ASEAN Swiss TVET Initiative</div>
+    </div>
+  </a>
+  <ul class="nav-menu">
+    <li><a href="#" class="active" onclick="showSection('home',this)">Home</a></li>
+    <li><a href="#" onclick="showSection('ecosystem',this)">Ecosystem</a></li>
+    <li><a href="#" onclick="showSection('elms',this)">eLearning</a></li>
+    <li><a href="#" onclick="showSection('insight',this)">Insights</a></li>
+    <li><a href="#" onclick="showSection('countries',this)">Countries</a></li>
+    <li><a href="#" onclick="showSection('news',this)">News</a></li>
+    <li><a href="#" class="nav-cta" onclick="showSection('contact',this)">Get Involved</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════════ HOME ═══════════════════════ -->
+<div id="sec-home" class="page-section active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag"><span class="pulse"></span>ASEAN · SDC-Funded · 2022–2026</div>
+        <h1>Building Skills.<br>Opening Futures.<br><em>Lasting Change.</em></h1>
+        <p class="hero-sub">ASTI integrates Work-Based Learning into national TVET systems across Cambodia and Lao PDR — equipping youth and workers with employer-recognised qualifications and a real path to formal employment.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn-primary" onclick="showSection('ecosystem',document.querySelector('.nav-menu a:nth-child(2)'));return false;">🌐 Explore Ecosystem</a>
+          <a href="#" class="btn-ghost" onclick="showSection('insight',document.querySelector('.nav-menu a:nth-child(4)'));return false;">View Results →</a>
+        </div>
+        <div class="hero-partners">
+          <span class="hp-label">Partners</span>
+          <div class="hp-badges">
+            <span class="hpb">SDC</span>
+            <span class="hpb">GIZ</span>
+            <span class="hpb">HELVETAS</span>
+            <span class="hpb">SFUVET</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-card-stack">
+          <div class="hc hc-row">
+            <div class="hc-stat"><div class="num">3,000<span>+</span></div><div class="lbl">Beneficiaries</div></div>
+            <div class="hc-stat"><div class="num"><span>≥</span>50<span>%</span></div><div class="lbl">Women</div></div>
+            <div class="hc-stat"><div class="num">60</div><div class="lbl">WBL Courses</div></div>
+            <div class="hc-stat"><div class="num">150</div><div class="lbl">Companies</div></div>
+          </div>
+          <div class="hc hc-story">
+            <div class="av">SR</div>
+            <div>
+              <div class="hcs-chip">Featured Story · Cambodia</div>
+              <div class="hcs-name">Sophea Roth, 24</div>
+              <div class="hcs-txt">From informal work to certified TVET assessor through ASTI's WBL pathway in Phnom Penh.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="ss-inner">
+      <div class="ss-item"><div class="ss-num">3,000<span>+</span></div><div class="ss-lbl">Direct beneficiaries</div></div>
+      <div class="ss-item"><div class="ss-num">150</div><div class="ss-lbl">Companies engaged</div></div>
+      <div class="ss-item"><div class="ss-num">14</div><div class="ss-lbl">Regulations enacted</div></div>
+      <div class="ss-item"><div class="ss-num">200<span>+</span></div><div class="ss-lbl">Trainers trained</div></div>
+      <div class="ss-item"><div class="ss-num">6,640</div><div class="ss-lbl">Companies incentivised</div></div>
+    </div>
+  </div>
+
+  <!-- ECOSYSTEM PREVIEW -->
+  <section class="eco-sec">
+    <div class="eco-inner">
+      <div class="sec-eyebrow">Youth Ecosystem</div>
+      <div class="sec-h">Everything Youth Need,<br>In One Place</div>
+      <p class="sec-sub">ASTI's ecosystem connects young people to education pathways, career courses, certifications, and grants from government, private sector, and development partners.</p>
+      <div class="eco-grid">
+        <a href="#" class="eco-card edu" onclick="showSection('ecosystem',null);return false;">
+          <div class="eco-icon">📚</div>
+          <div class="eco-title">Education Pathways</div>
+          <div class="eco-desc">Explore formal TVET programmes, WBL courses, and learning pathways recognised by national qualification frameworks.</div>
+          <div class="eco-tags">
+            <span class="etag" style="background:#E3F2FD;color:#1565C0;">TVET</span>
+            <span class="etag" style="background:#E0F2F1;color:#00695C;">WBL</span>
+            <span class="etag" style="background:#F3E5F5;color:#6A1B9A;">NQF</span>
+          </div>
+        </a>
+        <a href="#" class="eco-card career" onclick="showSection('ecosystem',null);return false;">
+          <div class="eco-icon">🎯</div>
+          <div class="eco-title">Career Courses</div>
+          <div class="eco-desc">Browse sector-specific skills programmes linked to real employer demand in hospitality, construction, manufacturing, and more.</div>
+          <div class="eco-tags">
+            <span class="etag" style="background:#E0F2F1;color:#00695C;">Hospitality</span>
+            <span class="etag" style="background:#FBE9E7;color:#BF360C;">Construction</span>
+          </div>
+        </a>
+        <a href="#" class="eco-card cert" onclick="showSection('ecosystem',null);return false;">
+          <div class="eco-icon">🏅</div>
+          <div class="eco-title">Certification</div>
+          <div class="eco-desc">Understand national certification processes, recognition of prior learning (RPL), and how to get your skills formally validated.</div>
+          <div class="eco-tags">
+            <span class="etag" style="background:#FBE9E7;color:#BF360C;">NOSS</span>
+            <span class="etag" style="background:#E8F5E9;color:#2E7D32;">RPL</span>
+          </div>
+        </a>
+        <a href="#" class="eco-card grant" onclick="showSection('ecosystem',null);return false;">
+          <div class="eco-icon">💰</div>
+          <div class="eco-title">Grants & Support</div>
+          <div class="eco-desc">Find financial support, employer incentives, and development partner programmes available to youth, workers, and TVET institutions.</div>
+          <div class="eco-tags">
+            <span class="etag" style="background:#E8F5E9;color:#2E7D32;">SDC</span>
+            <span class="etag" style="background:#E3F2FD;color:#1565C0;">Private</span>
+            <span class="etag" style="background:#F3E5F5;color:#6A1B9A;">Gov</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK INSIGHT -->
+  <section class="insight-sec">
+    <div class="insight-inner">
+      <div class="sec-eyebrow">Results Snapshot</div>
+      <div class="sec-h">Measurable Change</div>
+      <div class="insight-layout">
+        <div class="dash-panel">
+          <div class="dp-head">
+            <div class="dp-title">Key Indicators</div>
+            <div class="dp-badge">Live Data</div>
+          </div>
+          <div class="indicator-row">
+            <div class="ir-label">Beneficiaries certified</div>
+            <div class="ir-bar"><div class="ir-fill bar-blue" style="width:65%"></div></div>
+            <div class="ir-val">[X]/3K</div>
+          </div>
+          <div class="indicator-row">
+            <div class="ir-label">WBL courses integrated</div>
+            <div class="ir-bar"><div class="ir-fill bar-teal" style="width:75%"></div></div>
+            <div class="ir-val">[X]/60</div>
+          </div>
+          <div class="indicator-row">
+            <div class="ir-label">Companies engaged</div>
+            <div class="ir-bar"><div class="ir-fill bar-amber" style="width:100%"></div></div>
+            <div class="ir-val">150</div>
+          </div>
+          <div class="indicator-row">
+            <div class="ir-label">Trainers trained</div>
+            <div class="ir-bar"><div class="ir-fill bar-green" style="width:80%"></div></div>
+            <div class="ir-val">200+</div>
+          </div>
+          <div class="indicator-row">
+            <div class="ir-label">Regulations enacted</div>
+            <div class="ir-bar"><div class="ir-fill bar-purple" style="width:88%"></div></div>
+            <div class="ir-val">14</div>
+          </div>
+        </div>
+        <div class="dash-panel">
+          <div class="dp-head">
+            <div class="dp-title">GESI — Gender Breakdown</div>
+            <div class="dp-badge">≥50% Target</div>
+          </div>
+          <div class="gesi-split">
+            <div class="gs-box w"><div class="gs-pct">≥50%</div><div class="gs-lbl">Women beneficiaries</div></div>
+            <div class="gs-box m"><div class="gs-pct">≤50%</div><div class="gs-lbl">Men beneficiaries</div></div>
+          </div>
+          <div class="dp-head" style="margin-top:20px;"><div class="dp-title">Beneficiaries by Year</div></div>
+          <div class="chart-wrap">
+            <div class="chart-bars">
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;">
+                <div class="cb" style="height:40%;background:#1A70C8;"></div>
+                <div class="cb-label">2022</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;">
+                <div class="cb" style="height:60%;background:#1A70C8;"></div>
+                <div class="cb-label">2023</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;">
+                <div class="cb" style="height:80%;background:#1A70C8;"></div>
+                <div class="cb-label">2024</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;">
+                <div class="cb" style="height:65%;background:#00897B;"></div>
+                <div class="cb-label">2025</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;">
+                <div class="cb" style="height:30%;background:#E65100;opacity:.5;"></div>
+                <div class="cb-label">2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- eLMS PREVIEW -->
+  <section class="lms-sec">
+    <div class="lms-inner">
+      <div class="sec-eyebrow" style="color:#4DB6AC;">eLearning Platform</div>
+      <div class="sec-h" style="color:#fff;">Learn Anywhere.<br>Grow Everywhere.</div>
+      <div class="lms-grid">
+        <div class="lms-left">
+          <p style="font-size:15px;color:rgba(255,255,255,.6);line-height:1.75;font-weight:300;margin-bottom:28px;">ASTI's open-source integrated eLMS gives youth and workers access to WBL courses, assessments, and certifications — on any device, at any pace.</p>
+          <div class="lms-stat-row">
+            <div class="lms-stat"><div class="n">[X]<span>+</span></div><div class="l">Enrolled learners</div></div>
+            <div class="lms-stat"><div class="n">60<span>+</span></div><div class="l">Courses available</div></div>
+            <div class="lms-stat"><div class="n">3</div><div class="l">Languages</div></div>
+          </div>
+          <div style="margin-top:28px;">
+            <a href="#" class="btn-primary" onclick="showSection('elms',null);return false;">Explore eLearning →</a>
+          </div>
+        </div>
+        <div class="lms-right">
+          <div class="lms-card">
+            <div class="lms-icon">🎓</div>
+            <div class="lms-info">
+              <div class="lms-title">WBL Core Competencies</div>
+              <div class="lms-desc">Foundational Work-Based Learning programme for youth entering formal employment pathways.</div>
+              <span class="lms-badge badge-open">Open Access</span>
+            </div>
+          </div>
+          <div class="lms-card">
+            <div class="lms-icon">🏗️</div>
+            <div class="lms-info">
+              <div class="lms-title">Assessor Certification Track</div>
+              <div class="lms-desc">Professional development pathway for TVET trainers and workplace assessors.</div>
+              <span class="lms-badge badge-open">Open Access</span>
+            </div>
+          </div>
+          <div class="lms-card">
+            <div class="lms-icon">📊</div>
+            <div class="lms-info">
+              <div class="lms-title">GESI & Inclusive Practice</div>
+              <div class="lms-desc">Training module on gender-responsive and inclusive WBL delivery for institutions.</div>
+              <span class="lms-badge badge-coming">Coming Soon</span>
+            </div>
+          </div>
+          <div class="lms-card">
+            <div class="lms-icon">📋</div>
+            <div class="lms-info">
+              <div class="lms-title">Quality Assurance for TVET</div>
+              <div class="lms-desc">Standards, tools, and protocols for TVET providers implementing WBL programmes.</div>
+              <span class="lms-badge badge-coming">Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS PREVIEW -->
+  <section class="news-sec">
+    <div class="news-inner">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+        <div>
+          <div class="sec-eyebrow">Latest</div>
+          <div class="sec-h">News & Events</div>
+        </div>
+        <a href="#" style="font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;" onclick="showSection('news',null);return false;">View all →</a>
+      </div>
+      <div class="news-grid">
+        <div class="nc feat">
+          <div class="nc-img ni1">🎓</div>
+          <div class="nc-body">
+            <div class="nc-tag">Event · Cambodia</div>
+            <div class="nc-title">Regional WBL Exchange Forum 2026: Cross-Country Learning in Action</div>
+            <div class="nc-date">March 10, 2026</div>
+          </div>
+        </div>
+        <div class="nc">
+          <div class="nc-img ni2">📝</div>
+          <div class="nc-body">
+            <div class="nc-tag">Publication · Regional</div>
+            <div class="nc-title">New WBL Assessment Toolkit Released</div>
+            <div class="nc-date">February 28, 2026</div>
+          </div>
+        </div>
+        <div class="nc">
+          <div class="nc-img ni3">🤝</div>
+          <div class="nc-body">
+            <div class="nc-tag">Partnership · Lao PDR</div>
+            <div class="nc-title">LNCCI and MoES Sign WBL Cooperation Agreement</div>
+            <div class="nc-date">February 15, 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="nl-band">
+    <div class="nl-inner">
+      <div class="nl-left">
+        <h2>Stay Connected to ASTI</h2>
+        <p>Updates, results briefs, new resources, and event invitations — delivered directly to you.</p>
+      </div>
+      <div>
+        <div class="nl-form">
+          <input type="email" class="nl-inp" placeholder="your@email.com"/>
+          <button class="nl-btn">Subscribe</button>
+        </div>
+        <p style="font-size:11px;color:rgba(255,255,255,.5);margin-top:8px;">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /home -->
+
+<!-- ══════════════════════════════════════ ECOSYSTEM ══════════════════════ -->
+<div id="sec-ecosystem" class="page-section">
+  <div style="background:var(--navy);padding:48px 40px;">
+    <div style="max-width:1160px;margin:0 auto;">
+      <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:12px;">Home / Ecosystem</div>
+      <h1 style="font-family:var(--serif);font-size:36px;font-weight:700;color:#fff;margin-bottom:12px;">Youth Ecosystem</h1>
+      <p style="font-size:15px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.7;">Your gateway to education, career courses, certification, and grants — all connected through ASTI's WBL network.</p>
+    </div>
+  </div>
+  <div style="padding:56px 40px;max-width:1160px;margin:0 auto;">
+    <div class="eco-grid" style="margin-bottom:40px;">
+      <a href="#" class="eco-card edu">
+        <div class="eco-icon">📚</div>
+        <div class="eco-title">Education Pathways</div>
+        <div class="eco-desc">Formal TVET programmes, WBL courses, and learning pathways under national qualification frameworks in Cambodia and Lao PDR.</div>
+        <div class="eco-tags"><span class="etag" style="background:#E3F2FD;color:#1565C0;">TVET</span><span class="etag" style="background:#E0F2F1;color:#00695C;">WBL</span><span class="etag" style="background:#F3E5F5;color:#6A1B9A;">NQF</span></div>
+      </a>
+      <a href="#" class="eco-card career">
+        <div class="eco-icon">🎯</div>
+        <div class="eco-title">Career Courses</div>
+        <div class="eco-desc">Sector-specific skills programmes directly linked to employer demand — hospitality, construction, manufacturing, and more.</div>
+        <div class="eco-tags"><span class="etag" style="background:#E0F2F1;color:#00695C;">Hospitality</span><span class="etag" style="background:#FBE9E7;color:#BF360C;">Construction</span></div>
+      </a>
+      <a href="#" class="eco-card cert">
+        <div class="eco-icon">🏅</div>
+        <div class="eco-title">Certification</div>
+        <div class="eco-desc">National certification processes, RPL, and how to get your existing skills formally validated by recognised authorities.</div>
+        <div class="eco-tags"><span class="etag" style="background:#FBE9E7;color:#BF360C;">NOSS</span><span class="etag" style="background:#E8F5E9;color:#2E7D32;">RPL</span></div>
+      </a>
+      <a href="#" class="eco-card grant">
+        <div class="eco-icon">💰</div>
+        <div class="eco-title">Grants & Support</div>
+        <div class="eco-desc">Financial support, employer incentives, and development partner programmes for youth, workers, and TVET institutions.</div>
+        <div class="eco-tags"><span class="etag" style="background:#E8F5E9;color:#2E7D32;">SDC</span><span class="etag" style="background:#E3F2FD;color:#1565C0;">Private Sector</span><span class="etag" style="background:#F3E5F5;color:#6A1B9A;">Government</span></div>
+      </a>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--line);border-radius:12px;padding:32px;">
+      <h3 style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;">Browse by Sector</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <span style="padding:8px 16px;background:var(--bg);border:1px solid var(--line);border-radius:20px;font-size:13px;cursor:pointer;">🏨 Hospitality & Tourism</span>
+        <span style="padding:8px 16px;background:var(--bg);border:1px solid var(--line);border-radius:20px;font-size:13px;cursor:pointer;">🏗️ Construction</span>
+        <span style="padding:8px 16px;background:var(--bg);border:1px solid var(--line);border-radius:20px;font-size:13px;cursor:pointer;">🏭 Manufacturing</span>
+        <span style="padding:8px 16px;background:var(--bg);border:1px solid var(--line);border-radius:20px;font-size:13px;cursor:pointer;">🌾 Agriculture</span>
+        <span style="padding:8px 16px;background:var(--bg);border:1px solid var(--line);border-radius:20px;font-size:13px;cursor:pointer;">💻 ICT</span>
+        <span style="padding:8px 16px;background:var(--bg);border:1px solid var(--line);border-radius:20px;font-size:13px;cursor:pointer;">⚕️ Healthcare</span>
+        <span style="padding:8px 16px;background:var(--bg);border:1px solid var(--line);border-radius:20px;font-size:13px;cursor:pointer;">🔧 Auto & Engineering</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ eLMS ════════════════════════ -->
+<div id="sec-elms" class="page-section">
+  <section class="lms-sec" style="min-height:60vh;">
+    <div class="lms-inner">
+      <div class="sec-eyebrow" style="color:#4DB6AC;">eLearning Platform</div>
+      <div class="sec-h" style="color:#fff;">ASTI eLMS — Open Learning for All</div>
+      <p style="font-size:15px;color:rgba(255,255,255,.6);max-width:600px;line-height:1.75;margin:16px 0 32px;font-weight:300;">Built on open-source technology, the ASTI eLMS gives youth, workers, and TVET practitioners access to WBL courses, self-paced modules, and certification pathways — free and accessible on any device.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px;">
+        <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:20px;text-align:center;">
+          <div style="font-family:var(--serif);font-size:32px;font-weight:700;color:#fff;">[X]<span style="color:#4DB6AC;">+</span></div>
+          <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;">Enrolled learners</div>
+        </div>
+        <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:20px;text-align:center;">
+          <div style="font-family:var(--serif);font-size:32px;font-weight:700;color:#fff;">60<span style="color:#4DB6AC;">+</span></div>
+          <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;">Courses available</div>
+        </div>
+        <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:20px;text-align:center;">
+          <div style="font-family:var(--serif);font-size:32px;font-weight:700;color:#fff;">3</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;">Languages</div>
+        </div>
+        <div style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:20px;text-align:center;">
+          <div style="font-family:var(--serif);font-size:32px;font-weight:700;color:#fff;">Free</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;">Open access</div>
+        </div>
+      </div>
+      <div class="lms-right" style="max-width:700px;">
+        <div class="lms-card"><div class="lms-icon">🎓</div><div class="lms-info"><div class="lms-title">WBL Core Competencies</div><div class="lms-desc">Foundational WBL programme for youth entering formal employment pathways. Self-paced, mobile-friendly.</div><span class="lms-badge badge-open">Open Access</span></div></div>
+        <div class="lms-card"><div class="lms-icon">🏗️</div><div class="lms-info"><div class="lms-title">Assessor Certification Track</div><div class="lms-desc">Professional development for TVET trainers and workplace assessors. Includes practical assessment tools.</div><span class="lms-badge badge-open">Open Access</span></div></div>
+        <div class="lms-card"><div class="lms-icon">📊</div><div class="lms-info"><div class="lms-title">GESI & Inclusive Practice</div><div class="lms-desc">Gender-responsive and inclusive WBL delivery for institutions and trainers.</div><span class="lms-badge badge-coming">Coming Soon</span></div></div>
+        <div class="lms-card"><div class="lms-icon">📋</div><div class="lms-info"><div class="lms-title">Quality Assurance for TVET</div><div class="lms-desc">Standards, tools, and protocols for TVET providers implementing WBL.</div><span class="lms-badge badge-coming">Coming Soon</span></div></div>
+      </div>
+      <div style="margin-top:32px;padding:20px;background:rgba(255,255,255,.05);border-radius:8px;border:1px solid rgba(255,255,255,.1);max-width:500px;">
+        <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;">Powered by open source</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <span style="padding:5px 12px;background:rgba(255,255,255,.08);border-radius:3px;font-size:12px;color:rgba(255,255,255,.5);">Moodle</span>
+          <span style="padding:5px 12px;background:rgba(255,255,255,.08);border-radius:3px;font-size:12px;color:rgba(255,255,255,.5);">Open edX</span>
+          <span style="padding:5px 12px;background:rgba(255,255,255,.08);border-radius:3px;font-size:12px;color:rgba(255,255,255,.5);">H5P</span>
+          <span style="padding:5px 12px;background:rgba(255,255,255,.08);border-radius:3px;font-size:12px;color:rgba(255,255,255,.5);">SCORM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════ INSIGHTS ══════════════════════ -->
+<div id="sec-insight" class="page-section">
+  <div style="background:var(--navy);padding:48px 40px;">
+    <div style="max-width:1160px;margin:0 auto;">
+      <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:12px;">Home / Insights</div>
+      <h1 style="font-family:var(--serif);font-size:36px;font-weight:700;color:#fff;margin-bottom:12px;">Results & Insights</h1>
+      <p style="font-size:15px;color:rgba(255,255,255,.6);max-width:560px;line-height:1.7;">Measurable impact tracked against a formal results framework — disaggregated by gender, country, and inclusion status.</p>
+    </div>
+  </div>
+  <section class="insight-sec">
+    <div class="insight-inner">
+      <div style="display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;">
+        <button style="padding:7px 16px;background:var(--navy);color:#fff;border:none;border-radius:20px;font-size:12px;cursor:pointer;font-family:var(--sans);">All Countries</button>
+        <button style="padding:7px 16px;background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:20px;font-size:12px;cursor:pointer;font-family:var(--sans);">Cambodia</button>
+        <button style="padding:7px 16px;background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:20px;font-size:12px;cursor:pointer;font-family:var(--sans);">Lao PDR</button>
+        <button style="padding:7px 16px;background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:20px;font-size:12px;cursor:pointer;font-family:var(--sans);">Myanmar</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;">
+        <div class="dash-panel" style="border-top:4px solid var(--blue2);">
+          <div class="dp-head"><div class="dp-title">Beneficiaries Certified</div></div>
+          <div style="font-family:var(--serif);font-size:48px;font-weight:700;color:var(--navy);line-height:1;">[X]</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Target: 3,000</div>
+          <div class="ir-bar" style="height:8px;"><div class="ir-fill bar-blue" style="width:65%;"></div></div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;">65% of target reached</div>
+          <div class="gesi-split" style="margin-top:14px;">
+            <div class="gs-box w" style="padding:10px;"><div class="gs-pct" style="font-size:22px;">≥50%</div><div class="gs-lbl">Women</div></div>
+            <div class="gs-box m" style="padding:10px;"><div class="gs-pct" style="font-size:22px;">≥40%</div><div class="gs-lbl">LNOB</div></div>
+          </div>
+        </div>
+        <div class="dash-panel" style="border-top:4px solid var(--teal);">
+          <div class="dp-head"><div class="dp-title">WBL Courses Integrated</div></div>
+          <div style="font-family:var(--serif);font-size:48px;font-weight:700;color:var(--navy);line-height:1;">[X]</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Target: 60</div>
+          <div class="ir-bar" style="height:8px;"><div class="ir-fill bar-teal" style="width:75%;"></div></div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;">75% of target reached</div>
+        </div>
+        <div class="dash-panel" style="border-top:4px solid var(--amber);">
+          <div class="dp-head"><div class="dp-title">Companies Engaged</div></div>
+          <div style="font-family:var(--serif);font-size:48px;font-weight:700;color:var(--navy);line-height:1;">150</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Target: 150 — Achieved</div>
+          <div class="ir-bar" style="height:8px;"><div class="ir-fill bar-amber" style="width:100%;"></div></div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;">Target met ✓</div>
+        </div>
+      </div>
+      <div class="insight-layout">
+        <div class="dash-panel">
+          <div class="dp-head"><div class="dp-title">All Indicators</div><div class="dp-badge">Updated Q1 2026</div></div>
+          <div class="indicator-row"><div class="ir-label">Beneficiaries certified</div><div class="ir-bar"><div class="ir-fill bar-blue" style="width:65%"></div></div><div class="ir-val">[X]/3K</div></div>
+          <div class="indicator-row"><div class="ir-label">WBL courses integrated</div><div class="ir-bar"><div class="ir-fill bar-teal" style="width:75%"></div></div><div class="ir-val">[X]/60</div></div>
+          <div class="indicator-row"><div class="ir-label">Companies as workplaces</div><div class="ir-bar"><div class="ir-fill bar-amber" style="width:100%"></div></div><div class="ir-val">150</div></div>
+          <div class="indicator-row"><div class="ir-label">Companies incentivised</div><div class="ir-bar"><div class="ir-fill bar-green" style="width:88%"></div></div><div class="ir-val">6,640</div></div>
+          <div class="indicator-row"><div class="ir-label">Trainers & assessors trained</div><div class="ir-bar"><div class="ir-fill bar-purple" style="width:80%"></div></div><div class="ir-val">200+</div></div>
+          <div class="indicator-row"><div class="ir-label">Regulations enacted</div><div class="ir-bar"><div class="ir-fill bar-blue" style="width:88%"></div></div><div class="ir-val">14</div></div>
+        </div>
+        <div class="dash-panel">
+          <div class="dp-head"><div class="dp-title">Beneficiaries by Year</div></div>
+          <div class="chart-wrap">
+            <div class="chart-bars">
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;"><div class="cb" style="height:35%;background:#0055A5;width:100%;border-radius:4px 4px 0 0;"></div><div class="cb-label">2022</div></div>
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;"><div class="cb" style="height:55%;background:#0055A5;width:100%;border-radius:4px 4px 0 0;"></div><div class="cb-label">2023</div></div>
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;"><div class="cb" style="height:80%;background:#0055A5;width:100%;border-radius:4px 4px 0 0;"></div><div class="cb-label">2024</div></div>
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;"><div class="cb" style="height:65%;background:#00897B;width:100%;border-radius:4px 4px 0 0;"></div><div class="cb-label">2025</div></div>
+              <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;"><div class="cb" style="height:25%;background:#E65100;opacity:.5;width:100%;border-radius:4px 4px 0 0;"></div><div class="cb-label">2026</div></div>
+            </div>
+          </div>
+          <div class="dp-head" style="margin-top:20px;"><div class="dp-title">Gender Split</div></div>
+          <div class="gesi-split">
+            <div class="gs-box w"><div class="gs-pct">≥50%</div><div class="gs-lbl">Women</div></div>
+            <div class="gs-box m"><div class="gs-pct">≥40%</div><div class="gs-lbl">LNOB groups</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════ COUNTRIES ══════════════════════ -->
+<div id="sec-countries" class="page-section">
+  <div style="background:var(--navy);padding:48px 40px;">
+    <div style="max-width:1160px;margin:0 auto;">
+      <h1 style="font-family:var(--serif);font-size:36px;font-weight:700;color:#fff;margin-bottom:12px;">Where We Work</h1>
+      <p style="font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;">ASTI operates in three countries plus regional ASEAN — each with tailored partnerships, activities, and results.</p>
+    </div>
+  </div>
+  <section class="country-sec">
+    <div class="country-inner">
+      <div class="country-tabs">
+        <button class="ctab on" onclick="switchTab('kh',this)">🇰🇭 Cambodia</button>
+        <button class="ctab" onclick="switchTab('la',this)">🇱🇦 Lao PDR</button>
+        <button class="ctab" onclick="switchTab('mm',this)">🇲🇲 Myanmar</button>
+        <button class="ctab" onclick="switchTab('asn',this)">🌏 Regional / ASEAN</button>
+      </div>
+      <div id="t-kh" class="cpanel on">
+        <div class="cp-left">
+          <h3>Cambodia</h3>
+          <p>ASTI works closely with DGTVET under the Ministry of Labor and Vocational Training, alongside business chambers CAMFEBA and IBC, to design, deliver, and certify WBL programmes across targeted industrial sectors in Cambodia.</p>
+          <div class="cp-stats">
+            <div class="cps"><div class="cps-n">[X]</div><div class="cps-l">Beneficiaries certified</div></div>
+            <div class="cps"><div class="cps-n">[X]</div><div class="cps-l">WBL courses integrated</div></div>
+            <div class="cps"><div class="cps-n">DGTVET</div><div class="cps-l">Government partner</div></div>
+            <div class="cps"><div class="cps-n">CAMFEBA</div><div class="cps-l">Chamber partner</div></div>
+          </div>
+          <a href="#" class="btn-primary" style="font-size:12px;padding:10px 20px;">Explore Cambodia →</a>
+        </div>
+        <div class="cp-right">
+          <h4 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Key Partners</h4>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--blue2);"></div><div><div class="cpr-name">DGTVET / MoLVT</div><div class="cpr-role">Government counterpart</div></div></div>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--teal);"></div><div><div class="cpr-name">CAMFEBA</div><div class="cpr-role">National business federation</div></div></div>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--amber);"></div><div><div class="cpr-name">IBC</div><div class="cpr-role">International Business Chamber</div></div></div>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--green);"></div><div><div class="cpr-name">TVET Institutions</div><div class="cpr-role">WBL delivery partners</div></div></div>
+        </div>
+      </div>
+      <div id="t-la" class="cpanel">
+        <div class="cp-left">
+          <h3>Lao PDR</h3>
+          <p>In Lao PDR, ASTI collaborates with the Ministry of Education and Sports and LNCCI to advance WBL integration — developing sector-relevant qualifications and building the capacity of TVET providers to deliver certified WBL programmes.</p>
+          <div class="cp-stats">
+            <div class="cps"><div class="cps-n">[X]</div><div class="cps-l">WBL courses operational</div></div>
+            <div class="cps"><div class="cps-n">[X]</div><div class="cps-l">Companies engaged</div></div>
+            <div class="cps"><div class="cps-n">MoES</div><div class="cps-l">Government partner</div></div>
+            <div class="cps"><div class="cps-n">LNCCI</div><div class="cps-l">Chamber partner</div></div>
+          </div>
+          <a href="#" class="btn-primary" style="font-size:12px;padding:10px 20px;">Explore Lao PDR →</a>
+        </div>
+        <div class="cp-right">
+          <h4 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Key Partners</h4>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--blue2);"></div><div><div class="cpr-name">Ministry of Education & Sports</div><div class="cpr-role">Government counterpart</div></div></div>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--teal);"></div><div><div class="cpr-name">LNCCI</div><div class="cpr-role">Lao National Chamber of Commerce</div></div></div>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--green);"></div><div><div class="cpr-name">TVET Institutions</div><div class="cpr-role">WBL delivery partners</div></div></div>
+        </div>
+      </div>
+      <div id="t-mm" class="cpanel">
+        <div class="cp-left">
+          <h3>Myanmar</h3>
+          <p>ASTI engages sector-specific associations in Myanmar to develop and deliver WBL programmes. Current activity is limited — confirm latest status with the project team.</p>
+          <div class="cp-stats">
+            <div class="cps"><div class="cps-n">Limited</div><div class="cps-l">Current activity level</div></div>
+            <div class="cps"><div class="cps-n">Sector</div><div class="cps-l">Associations engaged</div></div>
+          </div>
+        </div>
+        <div class="cp-right">
+          <div style="padding:20px;background:var(--amber-l);border-radius:8px;border-left:4px solid var(--amber);">
+            <div style="font-size:13px;font-weight:600;color:var(--amber);margin-bottom:6px;">Activity Status: Limited</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.6;">Please confirm current Myanmar activity status with the ASTI project team before publishing this content.</div>
+          </div>
+        </div>
+      </div>
+      <div id="t-asn" class="cpanel">
+        <div class="cp-left">
+          <h3>Regional / ASEAN</h3>
+          <p>At the regional level, ASTI facilitates cross-country learning exchanges and supports ASEAN strategies on TVET and WBL — contributing to a more coordinated regional skills ecosystem.</p>
+          <div class="cp-stats">
+            <div class="cps"><div class="cps-n">2</div><div class="cps-l">Regional exchanges</div></div>
+            <div class="cps"><div class="cps-n">3</div><div class="cps-l">ASEAN strategies supported</div></div>
+          </div>
+          <a href="#" class="btn-primary" style="font-size:12px;padding:10px 20px;">Explore Regional Work →</a>
+        </div>
+        <div class="cp-right">
+          <h4 style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Regional Focus</h4>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--purple);"></div><div><div class="cpr-name">ASEAN Member States</div><div class="cpr-role">Cross-country learning exchange</div></div></div>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--blue2);"></div><div><div class="cpr-name">ASEAN TVET Council</div><div class="cpr-role">Policy dialogue & coordination</div></div></div>
+          <div class="cp-partner-row"><div class="cpr-dot" style="background:var(--teal);"></div><div><div class="cpr-name">Switzerland (SDC)</div><div class="cpr-role">Development cooperation partner</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════ NEWS ══════════════════════════ -->
+<div id="sec-news" class="page-section">
+  <div style="background:var(--navy);padding:48px 40px;">
+    <div style="max-width:1160px;margin:0 auto;">
+      <h1 style="font-family:var(--serif);font-size:36px;font-weight:700;color:#fff;margin-bottom:12px;">News & Events</h1>
+    </div>
+  </div>
+  <section class="news-sec">
+    <div class="news-inner">
+      <div class="news-grid">
+        <div class="nc feat"><div class="nc-img ni1">🎓</div><div class="nc-body"><div class="nc-tag">Event · Cambodia</div><div class="nc-title">Regional WBL Exchange Forum 2026</div><div class="nc-date">March 10, 2026</div></div></div>
+        <div class="nc"><div class="nc-img ni2">📝</div><div class="nc-body"><div class="nc-tag">Publication</div><div class="nc-title">New WBL Assessment Toolkit Released</div><div class="nc-date">February 28, 2026</div></div></div>
+        <div class="nc"><div class="nc-img ni3">🤝</div><div class="nc-body"><div class="nc-tag">Partnership · Lao PDR</div><div class="nc-title">LNCCI and MoES Sign WBL Agreement</div><div class="nc-date">February 15, 2026</div></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════ CONTACT ════════════════════════ -->
+<div id="sec-contact" class="page-section">
+  <div style="background:var(--navy);padding:48px 40px;">
+    <div style="max-width:1160px;margin:0 auto;">
+      <h1 style="font-family:var(--serif);font-size:36px;font-weight:700;color:#fff;margin-bottom:12px;">Get Involved</h1>
+      <p style="font-size:15px;color:rgba(255,255,255,.6);line-height:1.7;">Connect with ASTI as a partner, employer, youth participant, or researcher.</p>
+    </div>
+  </div>
+  <section style="padding:56px 40px;background:var(--bg);">
+    <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;">
+      <div style="background:var(--white);border:1px solid var(--line);border-radius:12px;padding:32px;">
+        <h3 style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:24px;">Send a Message</h3>
+        <div style="margin-bottom:16px;"><label style="font-size:12px;font-weight:600;color:var(--navy);display:block;margin-bottom:6px;">Full Name</label><input type="text" placeholder="Your name" style="width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:4px;font-family:var(--sans);font-size:13px;outline:none;"/></div>
+        <div style="margin-bottom:16px;"><label style="font-size:12px;font-weight:600;color:var(--navy);display:block;margin-bottom:6px;">Email</label><input type="email" placeholder="your@email.com" style="width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:4px;font-family:var(--sans);font-size:13px;outline:none;"/></div>
+        <div style="margin-bottom:16px;"><label style="font-size:12px;font-weight:600;color:var(--navy);display:block;margin-bottom:6px;">I am a...</label><select style="width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:4px;font-family:var(--sans);font-size:13px;outline:none;appearance:none;"><option>Select your role</option><option>Donor / Funding agency</option><option>Government official</option><option>Employer / Business chamber</option><option>TVET institution</option><option>Youth / Trainee</option><option>Researcher / Media</option></select></div>
+        <div style="margin-bottom:20px;"><label style="font-size:12px;font-weight:600;color:var(--navy);display:block;margin-bottom:6px;">Message</label><textarea placeholder="How can we help?" style="width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:4px;font-family:var(--sans);font-size:13px;outline:none;min-height:100px;resize:vertical;"></textarea></div>
+        <button class="btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+      </div>
+      <div>
+        <h3 style="font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:16px;">Country Focal Points</h3>
+        <div style="background:var(--blue-l);border:1px solid rgba(29,78,216,.15);border-radius:10px;padding:18px;margin-bottom:12px;">
+          <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;">🇰🇭 Cambodia</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);">[Country Coordinator Name]</div>
+          <div style="font-size:11px;color:var(--muted);">ASTI Focal Point · Phnom Penh</div>
+          <div style="font-size:11px;color:var(--blue2);margin-top:4px;">[email@giz.de]</div>
+        </div>
+        <div style="background:var(--blue-l);border:1px solid rgba(29,78,216,.15);border-radius:10px;padding:18px;margin-bottom:12px;">
+          <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;">🇱🇦 Lao PDR</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);">[Country Coordinator Name]</div>
+          <div style="font-size:11px;color:var(--muted);">ASTI Focal Point · Vientiane</div>
+          <div style="font-size:11px;color:var(--blue2);margin-top:4px;">[email@giz.de]</div>
+        </div>
+        <div style="background:var(--blue-l);border:1px solid rgba(29,78,216,.15);border-radius:10px;padding:18px;">
+          <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;">🌏 Regional</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);">[Regional Coordinator Name]</div>
+          <div style="font-size:11px;color:var(--muted);">Regional Programme Manager</div>
+          <div style="font-size:11px;color:var(--blue2);margin-top:4px;">[email@giz.de]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- GLOBAL FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="ft-brand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="logo-box">A</div>
+          <span style="font-size:15px;font-weight:700;color:rgba(255,255,255,.8);">ASTI</span>
+        </div>
+        <p>The ASEAN Swiss TVET Initiative strengthens Work-Based Learning across Cambodia, Lao PDR, and Myanmar — creating lasting skills infrastructure for youth and workers.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#" onclick="showSection('ecosystem',null);return false;">Ecosystem</a></li>
+          <li><a href="#" onclick="showSection('elms',null);return false;">eLearning (LMS)</a></li>
+          <li><a href="#" onclick="showSection('insight',null);return false;">Insights</a></li>
+          <li><a href="#" onclick="showSection('countries',null);return false;">Countries</a></li>
+          <li><a href="#" onclick="showSection('news',null);return false;">News & Events</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Knowledge Hub</a></li>
+          <li><a href="#">WBL Guidelines</a></li>
+          <li><a href="#">Results Dashboard</a></li>
+          <li><a href="#">Partner Directory</a></li>
+          <li><a href="#">Media Kit</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Safeguarding</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="#" onclick="showSection('contact',null);return false;">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <div class="fb-copy">© 2026 ASTI · Funded by SDC · Implemented by GIZ International Services & Helvetas</div>
+      <div class="fb-badges">
+        <span class="fb-badge">SDC</span>
+        <span class="fb-badge">GIZ</span>
+        <span class="fb-badge">HELVETAS</span>
+        <span class="fb-badge">SFUVET</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showSection(name, btn) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + name).classList.add('active');
+  document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function switchTab(id, btn) {
+  document.querySelectorAll('.cpanel').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.ctab').forEach(b => b.classList.remove('on'));
+  document.getElementById('t-' + id).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
