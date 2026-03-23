@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ASTI — រៀន TVET ទទួលការងារ | ASEAN Swiss TVET Initiative</title>
+<meta name="description" content="ASTI ជួយយុវជនកម្ពុជា ឡាវវ មីយ៉ាន់ម៉ា ទទួលបានជំនាញ WBL ពិតប្រាកដ ហើយចូលទីផ្សារការងារ។ eLMS ឥតគិតថ្លៃ។"/>
+<meta name="keywords" content="TVET Cambodia, WBL, Work-Based Learning, ASTI, eLMS, vocational training, youth jobs Cambodia, ASEAN skills, SDC GIZ Helvetas"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="ASTI — ជំនាញ TVET ពិត ការងារពិត"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="km_KH"/>
+<link rel="canonical" href="https://asti-tvet.org/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ══════════════════════════════════════
+   TOKENS — V2 Government Digital
+══════════════════════════════════════ */
+:root{
+  --primary:   #0B3D91;   /* Deep government blue */
+  --primary2:  #0A2E6E;
+  --accent:    #E8A020;   /* Warm gold */
+  --teal:      #00796B;
+  --red:       #C62828;
+  --green:     #2E7D32;
+  --white:     #FFFFFF;
+  --off:       #F4F6FB;
+  --bg2:       #EEF2FA;
+  --ink:       #0D1B2A;
+  --body:      #2C3E50;
+  --muted:     #5D6D7E;
+  --line:      #D8E0EE;
+  --font:      'DM Sans', sans-serif;
+  --km:        'Hanuman', serif;
+  --r:         12px;
+  --rsm:       8px;
+  --s1: 0 2px 8px rgba(11,61,145,.08);
+  --s2: 0 6px 32px rgba(11,61,145,.12);
+  --s3: 0 16px 64px rgba(11,61,145,.16);
+}
+
+/* ══════════════════════════════════════
+   RESET
+══════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--km);background:var(--white);color:var(--body);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+button{cursor:pointer;font-family:inherit;border:none;background:none;}
+
+/* ══════════════════════════════════════
+   REVEAL
+══════════════════════════════════════ */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
+.d4{transition-delay:.32s;}.d5{transition-delay:.40s;}.d6{transition-delay:.48s;}
+
+/* ══════════════════════════════════════
+   SYSTEM BAR — Gov Portal style
+══════════════════════════════════════ */
+.sysbar{
+  background:var(--primary2);
+  height:36px;display:flex;align-items:center;
+  padding:0 64px;justify-content:space-between;
+  border-bottom:2px solid var(--accent);
+}
+.sb-l{display:flex;align-items:center;gap:24px;}
+.sb-item{
+  font-family:var(--font);font-size:11px;
+  color:rgba(255,255,255,.5);
+  display:flex;align-items:center;gap:7px;
+  letter-spacing:.03em;
+}
+.sb-sep{color:rgba(255,255,255,.15);font-size:10px;}
+.sb-r{display:flex;align-items:center;gap:16px;}
+.sb-link{font-family:var(--font);font-size:11px;color:rgba(255,255,255,.45);transition:color .2s;}
+.sb-link:hover{color:rgba(255,255,255,.8);}
+.lang-sw{display:flex;gap:2px;padding:2px;background:rgba(255,255,255,.08);border-radius:6px;}
+.ls-btn{
+  font-family:var(--font);font-size:10px;font-weight:700;
+  padding:3px 10px;border-radius:4px;
+  color:rgba(255,255,255,.4);transition:all .15s;
+}
+.ls-btn.on{background:var(--accent);color:var(--primary2);}
+
+/* ══════════════════════════════════════
+   NAV — Clean institutional
+══════════════════════════════════════ */
+.nav{
+  background:var(--white);
+  height:68px;display:flex;align-items:center;
+  justify-content:space-between;padding:0 64px;
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:900;
+  box-shadow:var(--s1);
+}
+.nav-logo{display:flex;align-items:center;gap:14px;}
+.logo-mark{
+  width:44px;height:44px;
+  background:var(--primary);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+.logo-mark::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--red) 33%,var(--accent) 33% 66%,var(--green) 66%);
+}
+.logo-mark svg{position:relative;z-index:1;}
+.logo-text .lt1{
+  font-family:var(--font);font-size:18px;font-weight:700;
+  color:var(--primary);line-height:1;letter-spacing:-.3px;
+}
+.logo-text .lt2{
+  font-family:var(--font);font-size:10px;font-weight:400;
+  color:var(--muted);margin-top:2px;letter-spacing:.02em;
+}
+.nav-divider{width:1px;height:32px;background:var(--line);margin:0 8px;}
+.nav-links{display:flex;align-items:center;list-style:none;height:68px;}
+.nav-links a{
+  display:flex;align-items:center;height:68px;
+  padding:0 16px;
+  font-family:var(--font);font-size:13.5px;font-weight:500;
+  color:var(--muted);
+  border-bottom:2px solid transparent;
+  transition:all .18s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--primary);border-bottom-color:var(--accent);}
+.nav-links a.on{color:var(--primary);font-weight:600;border-bottom-color:var(--primary);}
+.nav-end{display:flex;align-items:center;gap:10px;}
+.btn-outline{
+  font-family:var(--font);font-size:13px;font-weight:500;
+  color:var(--primary);border:1.5px solid var(--primary);
+  padding:8px 18px;border-radius:var(--rsm);transition:all .18s;
+}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+.btn-solid{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  background:var(--primary);color:#fff;
+  padding:9px 20px;border-radius:var(--rsm);
+  transition:all .2s;display:flex;align-items:center;gap:7px;
+}
+.btn-solid:hover{background:#0A3280;transform:translateY(-1px);box-shadow:var(--s1);}
+.btn-solid.accent{background:var(--accent);color:var(--primary2);}
+.btn-solid.accent:hover{background:#D4901A;}
+.ham{display:none;flex-direction:column;gap:5px;padding:6px;}
+.ham span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
+.ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.ham.open span:nth-child(2){opacity:0;}
+.ham.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob-nav{display:none;position:fixed;top:68px;left:0;right:0;background:var(--white);border-top:1px solid var(--line);box-shadow:var(--s2);z-index:899;padding:8px 0 24px;}
+.mob-nav.open{display:block;}
+.mob-nav a{display:block;padding:13px 28px;font-family:var(--font);font-size:15px;color:var(--ink);border-bottom:1px solid var(--off);}
+.mob-nav a:hover{background:var(--off);color:var(--primary);}
+.mob-cta-area{padding:16px 28px 0;}
+.mob-cta-btn{display:block;background:var(--primary);color:#fff;font-family:var(--font);font-size:14px;font-weight:700;padding:14px;border-radius:var(--rsm);text-align:center;}
+
+/* ══════════════════════════════════════
+   HERO — ASEAN Foundation Style
+   Full-bleed photo · text overlay · clean minimal
+══════════════════════════════════════ */
+.hero{
+  position:relative;
+  min-height:92vh;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+
+/* Full-bleed background photo */
+.hero-bg-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 30%;
+  z-index:0;
+}
+
+/* Multi-layer gradient overlay — ASEAN Foundation style */
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(
+      105deg,
+      rgba(10,46,110,.88) 0%,
+      rgba(10,46,110,.72) 45%,
+      rgba(10,46,110,.35) 75%,
+      rgba(10,46,110,.15) 100%
+    );
+}
+
+/* Subtle bottom fade */
+.hero-overlay::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:220px;
+  background:linear-gradient(to top,rgba(10,46,110,.7),transparent);
+}
+
+/* Top gold accent line */
+.hero-topline{
+  position:absolute;top:0;left:0;right:0;
+  height:4px;z-index:3;
+  background:linear-gradient(90deg,
+    var(--primary) 0%,
+    var(--accent) 35%,
+    var(--teal) 65%,
+    var(--primary) 100%
+  );
+}
+
+/* Content container */
+.hero-content{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;
+  padding:100px 64px 80px;
+  width:100%;flex:1;
+  display:flex;align-items:center;
+}
+
+.hero-inner{max-width:680px;}
+
+/* Live badge — youth signal */
+.youth-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:40px;
+  padding:8px 18px 8px 8px;
+  margin-bottom:28px;width:fit-content;
+  backdrop-filter:blur(6px);
+}
+.yb-av{
+  width:30px;height:30px;border-radius:50%;
+  overflow:hidden;flex-shrink:0;
+  border:2px solid var(--accent);
+}
+.yb-av img{width:100%;height:100%;object-fit:cover;}
+.yb-text{font-family:var(--font);font-size:12px;font-weight:600;
+  color:rgba(255,255,255,.9);}
+.yb-text span{color:var(--accent);}
+.yb-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#4ADE80;flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(74,222,128,.2);
+  animation:ybpulse 2s ease-in-out infinite;
+}
+@keyframes ybpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+/* Headline */
+.hero h1{
+  font-family:var(--km);
+  font-size:clamp(42px,5vw,70px);
+  font-weight:900;color:#fff;
+  line-height:1.18;margin-bottom:8px;
+  letter-spacing:-.5px;
+  text-shadow:0 2px 20px rgba(0,0,0,.2);
+}
+.hero h1 .hl {color:var(--accent);}
+.hero h1 .hl2{
+  color:transparent;
+  background:linear-gradient(90deg,#34D399,#6EE7B7);
+  -webkit-background-clip:text;background-clip:text;
+}
+
+.hero-en{
+  font-family:var(--font);font-size:11px;font-weight:600;
+  color:rgba(255,255,255,.45);letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:22px;
+}
+
+.hero-lead{
+  font-family:var(--km);font-size:19px;
+  color:rgba(255,255,255,.75);
+  line-height:2;max-width:560px;margin-bottom:28px;
+}
+.hero-lead strong{color:#fff;}
+
+/* Outcome pills */
+.outcome-pills{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;
+}
+.op{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 17px;border-radius:40px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(6px);
+  font-family:var(--font);font-size:13px;font-weight:600;
+  color:rgba(255,255,255,.88);transition:all .22s;cursor:default;
+}
+.op:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.36);}
+.op-ic{font-size:14px;}
+.op strong{color:#fff;}
+
+/* CTA buttons */
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+.ha-accent{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--accent);color:var(--primary2);
+  font-family:var(--font);font-size:15px;font-weight:700;
+  padding:15px 30px;border-radius:var(--rsm);
+  transition:all .22s;
+  box-shadow:0 4px 20px rgba(232,160,32,.4);
+}
+.ha-accent:hover{background:#D4901A;transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,160,32,.5);}
+.ha-primary{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  font-family:var(--font);font-size:15px;font-weight:600;
+  padding:15px 30px;border-radius:var(--rsm);
+  border:1.5px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(6px);
+  transition:all .22s;
+}
+.ha-primary:hover{background:rgba(255,255,255,.22);}
+.ha-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:rgba(255,255,255,.6);
+  font-family:var(--font);font-size:14px;font-weight:500;
+  padding:15px 22px;border-radius:var(--rsm);
+  transition:color .22s;
+}
+.ha-secondary:hover{color:rgba(255,255,255,.9);}
+
+/* Trust row */
+.trust-row{
+  display:flex;align-items:center;gap:12px;
+  padding-top:28px;
+  border-top:1px solid rgba(255,255,255,.15);
+  flex-wrap:wrap;
+}
+.tr-lbl{
+  font-family:var(--font);font-size:11px;
+  color:rgba(255,255,255,.4);white-space:nowrap;
+}
+.tr-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.tr-chip{
+  font-family:var(--font);font-size:11px;font-weight:600;
+  padding:4px 13px;border-radius:20px;
+  background:rgba(255,255,255,.1);
+  color:rgba(255,255,255,.55);
+  border:1px solid rgba(255,255,255,.15);
+}
+
+/* Floating story card — bottom right */
+.hero-story-card{
+  position:absolute;
+  bottom:36px;right:64px;
+  z-index:3;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(12px);
+  border-radius:14px;
+  padding:18px 22px;
+  box-shadow:0 16px 48px rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.6);
+  display:flex;align-items:center;gap:14px;
+  max-width:320px;
+}
+.hsc-photo{
+  width:46px;height:46px;border-radius:50%;
+  overflow:hidden;flex-shrink:0;
+  border:2.5px solid var(--accent);
+}
+.hsc-photo img{width:100%;height:100%;object-fit:cover;}
+.hsc-info{flex:1;}
+.hsc-tag{
+  font-family:var(--font);font-size:9px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:3px;
+}
+.hsc-name{
+  font-family:var(--km);font-size:13px;font-weight:700;
+  color:var(--ink);margin-bottom:2px;
+}
+.hsc-quote{
+  font-family:var(--km);font-size:12px;
+  color:var(--muted);line-height:1.5;
+}
+
+/* Scroll indicator */
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  opacity:.55;animation:scrollbounce 2s ease-in-out infinite;
+}
+@keyframes scrollbounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+.hero-scroll span{
+  font-family:var(--font);font-size:10px;font-weight:600;
+  color:#fff;letter-spacing:.1em;text-transform:uppercase;
+}
+.scroll-arrow{width:18px;height:18px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);}
+
+/* Stats band */
+.hero-band{
+  background:var(--primary);
+  padding:20px 64px;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  gap:16px;flex-wrap:wrap;
+  border-top:3px solid var(--accent);
+  position:relative;z-index:2;
+}
+.hband-item{display:flex;align-items:center;gap:10px;}
+.hband-n{font-family:var(--font);font-size:26px;font-weight:700;color:#fff;}
+.hband-l{font-family:var(--km);font-size:13px;color:rgba(255,255,255,.5);}
+.hband-div{width:1px;height:32px;background:rgba(255,255,255,.15);}
+
+@media(max-width:1100px){
+  .hero-story-card{right:24px;bottom:80px;max-width:280px;}
+}
+@media(max-width:768px){
+  .hero-content{padding:80px 20px 100px;}
+  .hero h1{font-size:38px;}
+  .hero-lead{font-size:16px;}
+  .hero-story-card{display:none;}
+  .hero-band{padding:16px 20px;}
+  .hband-div{display:none;}
+  .outcome-pills{gap:6px;}
+}
+
+/* ══════════════════════════════════════
+   SECTION BASE
+══════════════════════════════════════ */
+.sec{padding:80px 64px;}
+.si{max-width:1280px;margin:0 auto;}
+.sec.bg-off{background:var(--off);}
+.sec.bg-primary{background:var(--primary);}
+.sec.bg-ink{background:var(--ink);}
+
+.sec-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font);font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--primary);margin-bottom:12px;
+}
+.sec-label::before{content:'';width:16px;height:2px;background:var(--accent);border-radius:1px;}
+.sec-label.w{color:rgba(255,255,255,.6);}
+.sec-label.w::before{background:rgba(255,255,255,.4);}
+
+h2.sh{
+  font-family:var(--km);
+  font-size:clamp(26px,3vw,40px);
+  font-weight:900;color:var(--ink);
+  line-height:1.22;margin-bottom:12px;
+}
+h2.sh.w{color:#fff;}
+.sec-desc{
+  font-family:var(--km);font-size:17px;
+  color:var(--muted);line-height:1.95;
+  max-width:580px;margin-bottom:52px;
+}
+.sec-desc.w{color:rgba(255,255,255,.55);}
+
+/* ══════════════════════════════════════
+   QUICK ACCESS — Gov Portal feature tiles
+══════════════════════════════════════ */
+.qa-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.qa-tile{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:28px 22px;
+  cursor:pointer;
+  transition:all .25s;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:12px;
+}
+.qa-tile::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  transition:height .25s;
+}
+.qa-tile.q1::after{background:var(--primary);}
+.qa-tile.q2::after{background:var(--teal);}
+.qa-tile.q3::after{background:var(--accent);}
+.qa-tile.q4::after{background:var(--green);}
+.qa-tile:hover{transform:translateY(-5px);box-shadow:var(--s2);}
+.qa-tile:hover::after{height:5px;}
+.qa-icon{
+  width:52px;height:52px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;
+}
+.q1 .qa-icon{background:#EBF2FF;}
+.q2 .qa-icon{background:#E0F2F1;}
+.q3 .qa-icon{background:#FFF8E1;}
+.q4 .qa-icon{background:#E8F5E9;}
+.qa-title{font-family:var(--km);font-size:17px;font-weight:900;color:var(--ink);}
+.qa-desc{font-family:var(--km);font-size:13px;color:var(--muted);line-height:1.75;flex:1;}
+.qa-link{
+  font-family:var(--font);font-size:12px;font-weight:700;
+  color:var(--primary);display:flex;align-items:center;gap:5px;
+  transition:gap .2s;
+}
+.qa-tile:hover .qa-link{gap:8px;}
+
+/* ══════════════════════════════════════
+   SKILLS — Clean list + visual
+══════════════════════════════════════ */
+.skills-layout{
+  display:grid;grid-template-columns:1fr 420px;
+  gap:56px;align-items:start;
+}
+.skill-list{display:flex;flex-direction:column;gap:10px;}
+.sl-item{
+  display:flex;align-items:center;gap:18px;
+  padding:18px 22px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  cursor:pointer;
+  transition:all .22s;
+}
+.sl-item:hover,.sl-item.active{
+  border-color:var(--primary);
+  box-shadow:var(--s1);
+  background:var(--off);
+}
+.sl-item.active{border-left:4px solid var(--primary);}
+.sl-ic{
+  width:48px;height:48px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;
+  background:var(--bg2);
+}
+.sl-info{flex:1;}
+.sl-name{font-family:var(--km);font-size:16px;font-weight:700;color:var(--ink);}
+.sl-meta{font-family:var(--font);font-size:12px;color:var(--muted);margin-top:2px;}
+.sl-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0;}
+.sl-salary{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  color:var(--green);
+  background:#E8F5E9;padding:3px 10px;border-radius:20px;
+}
+.sl-badge{
+  font-family:var(--font);font-size:10px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:2px 9px;border-radius:20px;
+  background:var(--bg2);color:var(--muted);
+}
+.sl-badge.hot{background:#FFF3E0;color:#E65100;}
+
+/* Skills right panel */
+.skills-panel{
+  background:var(--primary);
+  border-radius:16px;padding:36px;
+  position:sticky;top:88px;
+}
+.sp-label{
+  font-family:var(--font);font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:20px;
+}
+.sp-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
+.sp-stat{
+  background:rgba(255,255,255,.07);
+  border-radius:var(--rsm);padding:18px;
+  border:1px solid rgba(255,255,255,.08);
+}
+.sp-n{font-family:var(--font);font-size:30px;font-weight:700;color:#fff;line-height:1;}
+.sp-l{font-family:var(--km);font-size:12px;color:rgba(255,255,255,.45);margin-top:4px;}
+.sp-btn{
+  display:block;background:var(--accent);color:var(--primary2);
+  font-family:var(--font);font-size:14px;font-weight:700;
+  padding:14px;border-radius:var(--rsm);
+  text-align:center;transition:all .2s;margin-bottom:16px;
+}
+.sp-btn:hover{background:#D4901A;transform:translateY(-1px);}
+.sp-note{font-family:var(--km);font-size:13px;color:rgba(255,255,255,.38);text-align:center;line-height:1.6;}
+
+/* ══════════════════════════════════════
+   PATHWAY — IMDA-inspired steps
+══════════════════════════════════════ */
+.pathway-sec{background:var(--off);}
+.pathway-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;position:relative;
+  margin-top:8px;
+}
+.pathway-steps::before{
+  content:'';position:absolute;
+  top:40px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);
+  height:1px;background:var(--line);z-index:0;
+}
+.ps{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;
+  align-items:center;text-align:center;
+  padding:0 20px;
+}
+.ps-num{
+  width:80px;height:80px;border-radius:50%;
+  background:var(--white);
+  border:2px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;margin-bottom:18px;
+  transition:all .3s;cursor:default;
+  position:relative;
+}
+.ps:hover .ps-num{border-color:var(--primary);box-shadow:var(--s1);}
+.ps-step{
+  position:absolute;top:-6px;right:-6px;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--primary);color:#fff;
+  font-family:var(--font);font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.ps-title{font-family:var(--km);font-size:16px;font-weight:900;color:var(--ink);margin-bottom:8px;}
+.ps-desc{font-family:var(--km);font-size:13px;color:var(--muted);line-height:1.8;}
+.ps-tag{
+  font-family:var(--font);font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;
+  padding:3px 10px;border-radius:20px;
+  background:var(--bg2);color:var(--primary);
+  margin-top:10px;
+}
+
+/* ══════════════════════════════════════
+   COUNTRIES — Tab panel
+══════════════════════════════════════ */
+.ctry-tabs{
+  display:flex;gap:0;
+  border-bottom:2px solid var(--line);
+  margin-bottom:40px;
+  overflow-x:auto;
+}
+.ctab{
+  display:flex;align-items:center;gap:8px;
+  padding:13px 24px;
+  font-family:var(--font);font-size:14px;font-weight:500;
+  color:var(--muted);
+  border-bottom:2px solid transparent;
+  margin-bottom:-2px;
+  cursor:pointer;transition:all .18s;white-space:nowrap;
+}
+.ctab:hover{color:var(--primary);}
+.ctab.on{color:var(--primary);font-weight:700;border-bottom-color:var(--primary);}
+.cpanel{display:none;}
+.cpanel.on{
+  display:grid;grid-template-columns:1fr 360px;
+  gap:48px;align-items:start;
+}
+.cp-flag-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font);font-size:11px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 14px;border-radius:20px;
+  background:var(--bg2);color:var(--primary);
+  margin-bottom:16px;
+}
+.cp-h{font-family:var(--km);font-size:28px;font-weight:900;color:var(--ink);margin-bottom:12px;line-height:1.25;}
+.cp-p{font-family:var(--km);font-size:16px;color:var(--body);line-height:2;margin-bottom:24px;}
+.cp-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:28px;}
+.cps{
+  background:var(--off);border-radius:var(--rsm);
+  padding:16px;border-left:3px solid var(--accent);
+}
+.cps-n{font-family:var(--font);font-size:26px;font-weight:700;color:var(--primary);}
+.cps-l{font-family:var(--km);font-size:12px;color:var(--muted);margin-top:2px;}
+.cp-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--primary);color:#fff;
+  font-family:var(--font);font-size:13px;font-weight:600;
+  padding:12px 24px;border-radius:var(--rsm);
+  transition:all .2s;
+}
+.cp-cta:hover{background:#0A3280;transform:translateX(3px);}
+/* Right side */
+.cp-right{display:flex;flex-direction:column;gap:14px;}
+.cp-partners{background:var(--off);border-radius:var(--r);padding:22px;}
+.cp-ptitle{font-family:var(--font);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:14px;}
+.prow{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);}
+.prow:last-child{border-bottom:none;}
+.p-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.p-name{font-family:var(--font);font-size:13px;font-weight:700;color:var(--ink);}
+.p-role{font-family:var(--km);font-size:12px;color:var(--muted);}
+.cp-quote{
+  background:var(--primary);border-radius:var(--r);padding:24px;
+  position:relative;overflow:hidden;
+}
+.cp-quote::before{
+  content:'"';position:absolute;top:-8px;left:14px;
+  font-size:80px;color:rgba(255,255,255,.1);
+  font-family:Georgia,serif;line-height:1;
+}
+.cq-text{font-family:var(--km);font-size:14px;color:rgba(255,255,255,.72);line-height:2;margin-bottom:14px;position:relative;z-index:1;}
+.cq-by{display:flex;align-items:center;gap:9px;}
+.cq-av{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:12px;font-weight:700;color:var(--primary2);}
+.cq-name{font-family:var(--km);font-size:13px;font-weight:700;color:#fff;}
+.cq-info{font-family:var(--font);font-size:11px;color:rgba(255,255,255,.38);}
+
+/* ══════════════════════════════════════
+   eLMS — Clean feature panel
+══════════════════════════════════════ */
+.elms-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:64px;align-items:center;
+}
+.elms-courses{display:flex;flex-direction:column;gap:10px;}
+.ec{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 18px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--rsm);cursor:pointer;transition:all .2s;
+}
+.ec:hover{background:rgba(255,255,255,.12);transform:translateX(4px);}
+.ec-ic{
+  width:44px;height:44px;border-radius:var(--rsm);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.ec:nth-child(1) .ec-ic{background:rgba(0,121,107,.25);}
+.ec:nth-child(2) .ec-ic{background:rgba(232,160,32,.2);}
+.ec:nth-child(3) .ec-ic{background:rgba(11,61,145,.25);}
+.ec:nth-child(4) .ec-ic{background:rgba(46,125,50,.2);}
+.ec-inf{flex:1;}
+.ec-nm{font-family:var(--km);font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;}
+.ec-mt{font-family:var(--km);font-size:12px;color:rgba(255,255,255,.38);}
+.ec-tag{font-family:var(--font);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;flex-shrink:0;}
+.ec-tag.open{background:rgba(46,125,50,.2);color:#81C784;}
+.ec-tag.soon{background:rgba(255,255,255,.06);color:rgba(255,255,255,.3);}
+
+.elms-panel{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:36px;
+}
+.ep-header{margin-bottom:20px;}
+.ep-title{font-family:var(--font);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px;}
+.ep-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;}
+.epst{text-align:center;padding:14px 10px;background:rgba(255,255,255,.04);border-radius:var(--rsm);border:1px solid rgba(255,255,255,.06);}
+.epst-n{font-family:var(--font);font-size:24px;font-weight:700;color:#fff;}
+.epst-n em{color:#80CBC4;font-style:normal;}
+.epst-l{font-family:var(--km);font-size:11px;color:rgba(255,255,255,.3);margin-top:2px;}
+.ep-cta{
+  display:block;background:var(--accent);color:var(--primary2);
+  font-family:var(--font);font-size:14px;font-weight:700;
+  padding:15px;border-radius:var(--rsm);text-align:center;
+  transition:all .2s;margin-bottom:16px;
+}
+.ep-cta:hover{background:#D4901A;transform:translateY(-1px);}
+.ep-langs{
+  display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--rsm);overflow:hidden;
+}
+.ep-lang-div{background:rgba(255,255,255,.08);}
+.ep-lang{padding:12px 8px;text-align:center;}
+.ep-lang-n{font-family:var(--font);font-size:15px;font-weight:700;color:#fff;}
+.ep-lang-s{font-family:var(--font);font-size:10px;color:rgba(255,255,255,.25);margin-top:1px;}
+.ep-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.ep-tp{padding:4px 12px;background:rgba(255,255,255,.05);border-radius:20px;font-family:var(--font);font-size:10px;color:rgba(255,255,255,.35);}
+
+/* ══════════════════════════════════════
+   IMPACT — Clean data viz
+══════════════════════════════════════ */
+.impact-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:72px;align-items:start;
+}
+.impact-nums{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:36px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;}
+.in-box{padding:28px 24px;background:var(--white);border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+.in-box:nth-child(2n){border-right:none;}
+.in-box:nth-child(3),.in-box:nth-child(4){border-bottom:none;}
+.in-n{font-family:var(--font);font-size:38px;font-weight:700;line-height:1;margin-bottom:6px;}
+.in-box:nth-child(1) .in-n{color:var(--primary);}
+.in-box:nth-child(2) .in-n{color:var(--teal);}
+.in-box:nth-child(3) .in-n{color:var(--accent);}
+.in-box:nth-child(4) .in-n{color:var(--green);}
+.in-l{font-family:var(--km);font-size:13px;color:var(--muted);}
+
+.impact-stories{display:flex;flex-direction:column;gap:14px;}
+.ist{
+  background:var(--off);border:1px solid var(--line);
+  border-radius:var(--r);padding:22px;
+  cursor:pointer;transition:all .22s;
+  border-left:4px solid transparent;
+}
+.ist:hover,.ist.active{border-left-color:var(--primary);background:var(--white);box-shadow:var(--s1);}
+.ist-tag{font-family:var(--font);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.ist-q{font-family:var(--km);font-size:14px;color:var(--body);line-height:1.9;margin-bottom:12px;}
+.ist-p{display:flex;align-items:center;gap:9px;}
+.ist-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+.ist-nm{font-family:var(--km);font-size:13px;font-weight:700;color:var(--ink);}
+.ist-info{font-family:var(--font);font-size:11px;color:var(--muted);}
+
+/* ══════════════════════════════════════
+   NEWS
+══════════════════════════════════════ */
+.news-header{
+  display:flex;justify-content:space-between;
+  align-items:flex-end;margin-bottom:28px;
+  flex-wrap:wrap;gap:12px;
+}
+.news-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+.nfp{
+  font-family:var(--font);font-size:12px;font-weight:500;
+  padding:7px 16px;border-radius:4px;
+  border:1px solid var(--line);background:var(--white);
+  color:var(--muted);cursor:pointer;transition:all .18s;
+}
+.nfp:hover{border-color:var(--primary);color:var(--primary);}
+.nfp.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+.see-all{
+  font-family:var(--font);font-size:13px;font-weight:600;
+  color:var(--primary);display:flex;align-items:center;gap:5px;
+  transition:gap .18s;
+}
+.see-all:hover{gap:8px;}
+
+/* Featured news card */
+.news-featured{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--line);
+  margin-bottom:20px;
+  cursor:pointer;transition:all .25s;
+  background:var(--white);
+}
+.news-featured:hover{box-shadow:var(--s2);border-color:transparent;transform:translateY(-3px);}
+.nf-vis{
+  background:linear-gradient(145deg,var(--primary),#163A8F);
+  display:flex;align-items:flex-end;padding:24px;
+  position:relative;overflow:hidden;min-height:300px;
+}
+.nf-vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;transition:opacity .3s;}
+.news-featured:hover .nf-vis img{opacity:.35;}
+.nf-vis::before{content:'';position:absolute;width:250px;height:250px;border-radius:50%;border:1px solid rgba(255,255,255,.07);top:-80px;right:-60px;}
+.nf-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);font-size:72px;opacity:.1;}
+.nf-btm{position:relative;z-index:2;}
+.nf-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--red);color:#fff;
+  font-family:var(--font);font-size:9px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;margin-bottom:8px;
+}
+.nf-flags{display:flex;gap:5px;flex-wrap:wrap;}
+.nf-fl{
+  font-family:var(--font);font-size:10px;color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);
+  padding:2px 10px;border-radius:20px;
+}
+.nf-body{padding:32px;display:flex;flex-direction:column;justify-content:center;}
+.nf-date{
+  font-family:var(--font);font-size:11px;color:var(--muted);
+  margin-bottom:12px;display:flex;align-items:center;gap:6px;
+}
+.nf-date::before{content:'';width:14px;height:2px;background:var(--accent);border-radius:1px;}
+.nf-title{font-family:var(--km);font-size:22px;font-weight:900;color:var(--ink);line-height:1.4;margin-bottom:10px;}
+.nf-desc{font-family:var(--km);font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:20px;}
+.nf-rl{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--font);font-size:13px;font-weight:600;
+  color:var(--primary);transition:gap .18s;
+}
+.nf-rl:hover{gap:9px;}
+.nf-arr{width:26px;height:26px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;}
+
+/* 3-col news grid */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.nc{
+  border-radius:var(--r);overflow:hidden;background:var(--white);
+  border:1px solid var(--line);cursor:pointer;transition:all .25s;
+  display:flex;flex-direction:column;
+}
+.nc:hover{transform:translateY(-4px);box-shadow:var(--s2);border-color:transparent;}
+.nc-th{height:150px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.nc-th.t1{background:linear-gradient(135deg,#E3F2FD,#BBDEFB);}
+.nc-th.t2{background:linear-gradient(135deg,#E0F2F1,#B2DFDB);}
+.nc-th.t3{background:linear-gradient(135deg,#FFF8E1,#FFECB3);}
+.nc-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;}
+.nc:hover .nc-th img{opacity:.45;}
+.nc-ic{font-size:40px;opacity:.4;}
+.nc-bar{position:absolute;bottom:0;left:0;right:0;height:3px;}
+.t1 .nc-bar{background:var(--primary);}
+.t2 .nc-bar{background:var(--teal);}
+.t3 .nc-bar{background:var(--accent);}
+.nc-tg{position:absolute;top:10px;left:10px;font-family:var(--font);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
+.nc-tg.pub{background:rgba(11,61,145,.1);color:var(--primary);}
+.nc-tg.par{background:rgba(0,121,107,.1);color:var(--teal);}
+.nc-tg.dat{background:rgba(232,160,32,.15);color:#B8860B;}
+.nc-body{padding:18px;flex:1;display:flex;flex-direction:column;}
+.nc-date{font-family:var(--font);font-size:11px;color:var(--muted);margin-bottom:7px;}
+.nc-title{font-family:var(--km);font-size:15px;font-weight:700;color:var(--ink);line-height:1.45;flex:1;margin-bottom:12px;}
+.nc-ft{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line);}
+.nc-loc{font-family:var(--font);font-size:11px;font-weight:500;color:var(--muted);}
+.nc-rl{font-family:var(--font);font-size:11px;font-weight:700;color:var(--primary);display:inline-flex;align-items:center;gap:3px;transition:gap .18s;}
+.nc-rl:hover{gap:6px;}
+
+/* ══════════════════════════════════════
+   PARTNERS BAR
+══════════════════════════════════════ */
+.partners-sec{
+  background:var(--off);
+  padding:44px 64px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.ps-in{max-width:1280px;margin:0 auto;}
+.ps-label{
+  font-family:var(--font);font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.12em;
+  color:var(--muted);text-align:center;margin-bottom:24px;
+}
+.ps-logos{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;}
+.ps-chip{
+  padding:10px 24px;background:var(--white);
+  border:1.5px solid var(--line);border-radius:var(--rsm);
+  font-family:var(--font);font-size:13px;font-weight:600;
+  color:var(--muted);transition:all .2s;
+}
+.ps-chip:hover{box-shadow:var(--s1);transform:translateY(-2px);}
+.ps-a{border-color:rgba(198,40,40,.2);color:var(--red);}
+.ps-s{border-color:rgba(11,61,145,.2);color:var(--primary);}
+.ps-g{border-color:rgba(198,40,40,.15);color:#B71C1C;}
+.ps-h{border-color:rgba(11,61,145,.15);color:var(--primary);}
+.ps-sf{border-color:rgba(0,121,107,.2);color:var(--teal);}
+
+/* ══════════════════════════════════════
+   NEWSLETTER
+══════════════════════════════════════ */
+.nl-sec{background:var(--primary);padding:80px 64px;}
+.nl-in{max-width:820px;margin:0 auto;text-align:center;}
+.nl-pretitle{
+  font-family:var(--font);font-size:11px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:16px;
+}
+.nl-h{font-family:var(--km);font-size:clamp(26px,3.5vw,40px);font-weight:900;color:#fff;margin-bottom:12px;}
+.nl-sub{font-family:var(--km);font-size:16px;color:rgba(255,255,255,.5);line-height:2;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto;}
+.nl-form{display:flex;flex-direction:column;gap:10px;max-width:440px;margin:0 auto;}
+.nl-inp,.nl-sel{
+  padding:13px 16px;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.12);
+  border-radius:var(--rsm);
+  font-family:var(--km);font-size:15px;color:#fff;
+  outline:none;transition:border-color .18s;width:100%;
+}
+.nl-inp::placeholder{color:rgba(255,255,255,.3);}
+.nl-inp:focus,.nl-sel:focus{border-color:var(--accent);}
+.nl-sel{color:rgba(255,255,255,.5);-webkit-appearance:none;appearance:none;}
+.nl-sel option{background:var(--primary);color:#fff;}
+.nl-sbt{
+  background:var(--accent);color:var(--primary2);
+  font-family:var(--font);font-size:14px;font-weight:700;
+  padding:14px;border-radius:var(--rsm);width:100%;
+  transition:all .2s;
+}
+.nl-sbt:hover{background:#D4901A;transform:translateY(-1px);}
+.nl-note{font-family:var(--font);font-size:11px;color:rgba(255,255,255,.25);margin-top:8px;}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+.footer{background:var(--ink);padding:64px 64px 0;}
+.ft-in{max-width:1280px;margin:0 auto;}
+.ft-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.ft-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.ft-brand-nm{font-family:var(--font);font-size:18px;font-weight:700;color:#fff;}
+.ft-desc{font-family:var(--km);font-size:13px;color:rgba(255,255,255,.3);line-height:1.9;margin-bottom:18px;}
+.ft-soc{display:flex;gap:8px;}
+.ft-soc a{
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.35);font-size:13px;transition:all .18s;
+}
+.ft-soc a:hover{background:rgba(255,255,255,.12);color:#fff;}
+.ft-col h4{
+  font-family:var(--font);font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;
+  color:rgba(255,255,255,.22);margin-bottom:16px;
+}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.ft-col ul a{font-family:var(--km);font-size:14px;color:rgba(255,255,255,.36);transition:color .18s;}
+.ft-col ul a:hover{color:rgba(255,255,255,.78);}
+.ft-bot{
+  border-top:1px solid rgba(255,255,255,.07);
+  padding:18px 0;
+  display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.ft-copy{font-family:var(--font);font-size:11px;color:rgba(255,255,255,.2);}
+.ft-stripe{display:flex;gap:4px;}
+.ft-s{width:20px;height:4px;border-radius:2px;}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{min-height:420px;}
+  .skills-layout,.elms-layout,.impact-layout{grid-template-columns:1fr;}
+  .ft-grid{grid-template-columns:1fr 1fr;}
+  .qa-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .sysbar{display:none;}
+  .nav{padding:0 20px;}
+  .nav-links,.btn-outline{display:none;}
+  .ham{display:flex;}
+  .hero-left{padding:48px 20px 40px;}
+  .hero h1{font-size:34px;}
+  .hero-lead{font-size:16px;}
+  .hero-band{padding:16px 20px;}
+  .hband-div{display:none;}
+  .sec{padding:56px 20px;}
+  .pathway-steps{grid-template-columns:1fr 1fr;}
+  .pathway-steps::before{display:none;}
+  .qa-grid{grid-template-columns:1fr;}
+  .cpanel.on,.news-featured,.news-grid{grid-template-columns:1fr;}
+  .nf-vis{min-height:180px;}
+  .outcome-bar{flex-direction:column;}
+  .ob-item{border-right:none;border-bottom:1px solid var(--line);}
+  .partners-sec{padding:36px 20px;}
+  .nl-sec{padding:56px 20px;}
+  .footer{padding:48px 20px 0;}
+  .ft-grid{grid-template-columns:1fr;gap:28px;}
+  .impact-nums{grid-template-columns:1fr 1fr;}
+  .ctry-tabs{overflow-x:auto;}
+}
+</style>
+
+<style>
+/* ── Dropdown ទំព័រដើម ── */
+.has-drop { position: relative; }
+
+.has-drop > a {
+  display: flex !important;
+  align-items: center;
+  gap: 5px;
+}
+.has-drop > a::after {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .2s;
+  opacity: .5;
+  flex-shrink: 0;
+}
+.has-drop:hover > a::after {
+  transform: rotate(-135deg) translateY(-2px);
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  min-width: 192px;
+  background: #fff;
+  border: 1px solid #E5EAF2;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(10,35,66,.13);
+  overflow: hidden;
+  z-index: 999;
+  padding: 6px 0;
+}
+.has-drop:hover .dropdown { display: block; }
+
+.dropdown a {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  height: auto !important;
+  padding: 11px 18px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  border-bottom: none !important;
+  transition: background .15s !important;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.dropdown a:hover {
+  background: #F4F6FB;
+  color: #0B3D91 !important;
+}
+.dropdown a.dd-active {
+  background: #EBF2FF;
+  color: #0B3D91 !important;
+  font-weight: 700 !important;
+}
+.dd-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.dd-badge.cur  { background: #E8F5E9; color: #2E7D32; }
+.dd-badge.v1   { background: #F3F4F6; color: #6B7280; }
+.dd-sep { height: 1px; background: #E5EAF2; margin: 4px 0; }
+
+/* Mobile sub-menu */
+.mob-home-wrap { border-bottom: 1px solid #F4F6FB; }
+.mob-drop-btn {
+  width: 100%; text-align: left;
+  padding: 13px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 500;
+  color: #0A1628;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.mob-drop-btn::after { content: '›'; font-size: 18px; color: #8896A8; }
+.mob-sub { display: none; flex-direction: column; background: #F8FAFB; }
+.mob-sub.open { display: flex; }
+.mob-sub a {
+  padding: 12px 44px !important;
+  font-size: 14px !important;
+  color: #374151 !important;
+  border-bottom: 1px solid #E5EAF2;
+  display: flex; align-items: center; gap: 8px;
+}
+.mob-sub a.dd-active { color: #0B3D91 !important; font-weight: 700 !important; }
+</style>
+</head>
+<body>
+
+<!-- SYSTEM BAR -->
+<div class="sysbar">
+  <div class="sb-l">
+    <span class="sb-item">🇨🇭 SDC Switzerland</span>
+    <span class="sb-sep">|</span>
+    <span class="sb-item">GIZ International Services</span>
+    <span class="sb-sep">|</span>
+    <span class="sb-item">Helvetas Swiss Intercooperation</span>
+  </div>
+  <div class="sb-r">
+    <a href="#" class="sb-link">ទំនាក់ទំនង</a>
+    <a href="#" class="sb-link">eLMS Portal</a>
+    <a href="#" class="sb-link">Sitemap</a>
+    <div class="lang-sw">
+      <button class="ls-btn on">ខ្មែរ</button>
+      <button class="ls-btn">EN</button>
+      <button class="ls-btn">ລາວ</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="11" r="4.5" stroke="white" stroke-width="1.6"/>
+        <path d="M11 2.5V5.5M11 16.5V19.5M2.5 11H5.5M16.5 11H19.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="11" cy="11" r="1.8" fill="rgba(255,255,255,.7)"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <div class="lt1">ASTI</div>
+      <div class="lt2">ASEAN Swiss TVET Initiative</div>
+    </div>
+  </a>
+  <div class="nav-divider"></div>
+  <ul class="nav-links">
+    <li class="has-drop">
+      <a href="index_Hompage2.html" class="on">ទំព័រដើម</a>
+      <div class="dropdown">
+        <a href="index.html" class="dd-v1">
+          🏠 Home v1 — Classic
+          <span class="dd-badge v1">v1</span>
+        </a>
+        <div class="dd-sep"></div>
+        <a href="index_Hompage2.html" class="dd-active">
+          ✨ Home v2 — New
+          <span class="dd-badge cur">Current</span>
+        </a>
+      </div>
+    </li>
+    <li><a href="#">អំពី ASTI</a></li>
+    <li><a href="#">ជំនាញ & eLMS</a></li>
+    <li><a href="#">ប្រទេស</a></li>
+    <li><a href="#">ដៃគូ WBL</a></li>
+    <li><a href="#">ធនធាន</a></li>
+    <li><a href="#">លទ្ធផល</a></li>
+  </ul>
+  <div class="nav-end">
+    <a href="#" class="btn-outline">ទំនាក់ទំនង</a>
+    <a href="#" class="btn-solid accent">🎓 ចូល eLMS</a>
+    <button class="ham" id="ham-btn" onclick="togNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob-nav" id="mob-menu">
+  <div class="mob-home-wrap">
+    <button class="mob-drop-btn" onclick="this.nextElementSibling.classList.toggle('open')">ទំព័រដើម</button>
+    <div class="mob-sub">
+      <a href="index.html">🏠 Home v1 — Classic</a>
+      <a href="index_Hompage2.html" class="dd-active">✨ Home v2 — Current</a>
+    </div>
+  </div>
+  <a href="#">អំពី ASTI</a>
+  <a href="#">ជំនាញ & eLMS</a><a href="#">ប្រទេស</a>
+  <a href="#">ដៃគូ WBL</a><a href="#">ធនធាន</a><a href="#">លទ្ធផល</a>
+  <div class="mob-cta-area">
+    <a href="#" class="mob-cta-btn">🎓 ចូល eLMS — ឥតគិតថ្លៃ</a>
+  </div>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+
+  <!-- Full-bleed background: youth photo -->
+  <img class="hero-bg-img"
+    src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=85&fit=crop&crop=center"
+    alt="Youth students learning vocational skills ASEAN"
+    loading="eager"/>
+
+  <!-- Gradient overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Gold top accent line -->
+  <div class="hero-topline"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <div class="hero-inner">
+
+      <!-- Live youth badge -->
+      <div class="youth-badge rv">
+        <div class="yb-av">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=80&q=80&fit=crop&crop=face" alt="Youth" loading="eager"/>
+        </div>
+        <div class="yb-text">យុវវ័យ <span>12,400+</span> ចូលរៀន eLMS ហើយ</div>
+        <div class="yb-dot"></div>
+      </div>
+
+      <h1 class="rv d1">
+        ជំនាញ<span class="hl">ពិតប្រាកដ</span><br>
+        ការងារ<span class="hl">ពិតប្រាកដ</span><br>
+        អនាគត<span class="hl2">ភ្លឺស្វាង</span>
+      </h1>
+      <p class="hero-en rv d2">FOR CAMBODIAN · LAO · MYANMAR YOUTH — WBL · TVET · eLMS FREE</p>
+      <p class="hero-lead rv d2">
+        ASTI ជួយ<strong>យុវវ័យ ASEAN</strong> ទទួលបាន<strong>ជំនាញ WBL ពិត</strong>
+        — ហ្វឹកហ្វឺនក្នុងក្រុមហ៊ុន ទទួល certificate ហើយ<strong>ចូលការងារ</strong>។
+        eLMS <strong>ឥតគិតថ្លៃ</strong> ១០០%។
+      </p>
+
+      <div class="outcome-pills rv d2">
+        <div class="op"><span class="op-ic">💼</span><strong>80%+</strong> បានការងារ</div>
+        <div class="op"><span class="op-ic">💰</span><strong>$300–800</strong>/ខែ</div>
+        <div class="op"><span class="op-ic">⚡</span>Free eLMS</div>
+        <div class="op"><span class="op-ic">⏱</span>3 ខែ → ការងារ</div>
+      </div>
+
+      <div class="hero-actions rv d3">
+        <a href="#" class="ha-accent">🎓 ចូល eLMS ឥឡូវ — Free</a>
+        <a href="#" class="ha-primary">ស្វែងយល់ WBL</a>
+        <a href="#" class="ha-secondary">📥 ទាញ Report</a>
+      </div>
+
+      <div class="trust-row rv d4">
+        <span class="tr-lbl">Funded &amp; implemented by</span>
+        <div class="tr-chips">
+          <span class="tr-chip">🇨🇭 SDC Switzerland</span>
+          <span class="tr-chip">GIZ International</span>
+          <span class="tr-chip">Helvetas</span>
+          <span class="tr-chip">SFUVET</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating story card — bottom right -->
+  <div class="hero-story-card">
+    <div class="hsc-photo">
+      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=100&q=80&fit=crop&crop=face" alt="Graduate" loading="lazy"/>
+    </div>
+    <div class="hsc-info">
+      <div class="hsc-tag">✨ Graduate Story · Cambodia</div>
+      <div class="hsc-name">សុខ ស្រីនាង — Electrical Tech.</div>
+      <div class="hsc-quote">«WBL ជួយខ្ញុំ — ១ ខែក្រោយ ខ្ញុំបានការងារ $450/ខែ»</div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+
+</section>
+
+<!-- STATS BAND -->
+<div class="hero-band">
+  <div class="hband-item">
+    <div><div class="hband-n">12,400+</div><div class="hband-l">Youth Learners</div></div>
+  </div>
+  <div class="hband-div"></div>
+  <div class="hband-item">
+    <div><div class="hband-n">48</div><div class="hband-l">TVET Institutions</div></div>
+  </div>
+  <div class="hband-div"></div>
+  <div class="hband-item">
+    <div><div class="hband-n">200+</div><div class="hband-l">WBL Partners</div></div>
+  </div>
+  <div class="hband-div"></div>
+  <div class="hband-item">
+    <div><div class="hband-n">80%+</div><div class="hband-l">Job Placement</div></div>
+  </div>
+  <div class="hband-div"></div>
+  <div class="hband-item">
+    <div><div class="hband-n">Free</div><div class="hband-l">eLMS 100%</div></div>
+  </div>
+</div>
+
+
+<!-- ══════════ QUICK ACCESS ══════════ -->
+<section class="sec">
+  <div class="si">
+    <div class="rv" style="margin-bottom:40px;">
+      <div class="sec-label">Quick Access</div>
+      <h2 class="sh">ចូល​ប្រើ​ប្រាស់​ ASTI ​ភ្លាម</h2>
+    </div>
+    <div class="qa-grid">
+      <div class="qa-tile q1 rv d1">
+        <div class="qa-icon">🎓</div>
+        <div class="qa-title">eLMS — ចូលរៀន Free</div>
+        <div class="qa-desc">វគ្គ WBL ១០០% ឥតគិតថ្លៃ — Khmer, English, Lao ។ Mobile & offline ready ។</div>
+        <div class="qa-link">ចូល eLMS <span>→</span></div>
+      </div>
+      <div class="qa-tile q2 rv d2">
+        <div class="qa-icon">🏭</div>
+        <div class="qa-title">WBL — ហ្វឹកក្នុងក្រុមហ៊ុន</div>
+        <div class="qa-desc">ក្លាយជា WBL partner — ទទួលអ្នករៀន apprenticeship ។ ១ click register ។</div>
+        <div class="qa-link">ចុះឈ្មោះ WBL <span>→</span></div>
+      </div>
+      <div class="qa-tile q3 rv d3">
+        <div class="qa-icon">📊</div>
+        <div class="qa-title">Impact Dashboard</div>
+        <div class="qa-desc">ទិន្នន័យ ASTI real-time — learners, placements, partners ក្នុង 3 ប្រទេស ។</div>
+        <div class="qa-link">មើល Dashboard <span>→</span></div>
+      </div>
+      <div class="qa-tile q4 rv d4">
+        <div class="qa-icon">📚</div>
+        <div class="qa-title">Knowledge Hub</div>
+        <div class="qa-desc">WBL toolkits, policy papers, salary guide, CV template — free download ។</div>
+        <div class="qa-link">ទាញធនធាន <span>→</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SKILLS ══════════ -->
+<section class="sec bg-off" id="skills">
+  <div class="si">
+    <div class="rv" style="margin-bottom:48px;">
+      <div class="sec-label">ជំនាញ & ទីផ្សារការងារ</div>
+      <h2 class="sh">តើ​អ្នក​ចង់​រៀន​ជំនាញ​អ្វី?</h2>
+      <p class="sec-desc">ជ្រើស skill → ចូល eLMS ។ ក្រុមហ៊ុន 200+ ត្រូវការ WBL graduates — ប្រាក់ខែ ច្បាស់ ។</p>
+    </div>
+    <div class="skills-layout">
+      <div class="skill-list">
+        <div class="sl-item active rv d1">
+          <div class="sl-ic">⚡</div>
+          <div class="sl-info"><div class="sl-name">អគ្គិសនី</div><div class="sl-meta">Electrical · WBL Available in 3 countries</div></div>
+          <div class="sl-right"><div class="sl-salary">$350–600/ខែ</div><div class="sl-badge">WBL</div></div>
+        </div>
+        <div class="sl-item rv d2">
+          <div class="sl-ic">🔧</div>
+          <div class="sl-info"><div class="sl-name">មេកានិក</div><div class="sl-meta">Mechanics & Maintenance · Apprenticeship</div></div>
+          <div class="sl-right"><div class="sl-salary">$300–550/ខែ</div><div class="sl-badge">WBL</div></div>
+        </div>
+        <div class="sl-item rv d3">
+          <div class="sl-ic">💻</div>
+          <div class="sl-info"><div class="sl-name">ឌីជីថល & IT</div><div class="sl-meta">Digital Literacy · Web · Data</div></div>
+          <div class="sl-right"><div class="sl-salary">$400–800/ខែ</div><div class="sl-badge hot">🔥 Hot</div></div>
+        </div>
+        <div class="sl-item rv d4">
+          <div class="sl-ic">🍳</div>
+          <div class="sl-info"><div class="sl-name">ចំអិនអាហារ & ភោជនីយដ្ឋាន</div><div class="sl-meta">Food Processing · Hospitality · Tourism</div></div>
+          <div class="sl-right"><div class="sl-salary">$280–500/ខែ</div><div class="sl-badge">WBL</div></div>
+        </div>
+        <div class="sl-item rv d5">
+          <div class="sl-ic">🏗️</div>
+          <div class="sl-info"><div class="sl-name">សំណង់</div><div class="sl-meta">Construction Technology · Site Training</div></div>
+          <div class="sl-right"><div class="sl-salary">$320–600/ខែ</div><div class="sl-badge">WBL</div></div>
+        </div>
+        <div class="sl-item rv d6">
+          <div class="sl-ic">🧵</div>
+          <div class="sl-info"><div class="sl-name">កាត់ដេរ & វាយនភណ្ឌ</div><div class="sl-meta">Garment & Textile · Most jobs in Cambodia</div></div>
+          <div class="sl-right"><div class="sl-salary">$280–480/ខែ</div><div class="sl-badge hot">📈 Most</div></div>
+        </div>
+      </div>
+      <div class="skills-panel rv d2">
+        <div class="sp-label">eLMS Stats · 2025</div>
+        <div class="sp-stats">
+          <div class="sp-stat"><div class="sp-n">12K+</div><div class="sp-l">Active Learners</div></div>
+          <div class="sp-stat"><div class="sp-n">40+</div><div class="sp-l">Free Courses</div></div>
+          <div class="sp-stat"><div class="sp-n">80%+</div><div class="sp-l">Job Placement</div></div>
+          <div class="sp-stat"><div class="sp-n">3</div><div class="sp-l">Languages</div></div>
+        </div>
+        <a href="#" class="sp-btn">🎓 ចូល eLMS — Free →</a>
+        <p class="sp-note">Free ។ Open-source ។ Offline-ready ។<br/>No account needed to explore ។</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PATHWAY ══════════ -->
+<section class="sec pathway-sec" id="how">
+  <div class="si">
+    <div style="text-align:center;margin-bottom:56px;" class="rv">
+      <div class="sec-label" style="justify-content:center;margin-bottom:12px;">ជំហាន ៤ ចំណុច</div>
+      <h2 class="sh" style="text-align:center;">ពី​រៀន → ទៅ​ការ​ងារ</h2>
+      <p class="sec-desc" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:0;">ASTI ភ្ជាប់ skill + training + certificate + job ក្នុង pathway ១ ដែល clear</p>
+    </div>
+    <div class="pathway-steps">
+      <div class="ps rv d1">
+        <div class="ps-num"><div class="ps-step">1</div>🧑‍🎓</div>
+        <div class="ps-title">ជ្រើស Skill</div>
+        <div class="ps-desc">eLMS ជួយ match ជំនាញ ជាមួយ interest និង job market</div>
+        <div class="ps-tag">eLMS Free</div>
+      </div>
+      <div class="ps rv d2">
+        <div class="ps-num"><div class="ps-step">2</div>🏭</div>
+        <div class="ps-title">ហ្វឹក WBL</div>
+        <div class="ps-desc">Apprenticeship ជាមួយ ក្រុមហ៊ុន 200+ — real workplace training</div>
+        <div class="ps-tag">Work-Based</div>
+      </div>
+      <div class="ps rv d3">
+        <div class="ps-num"><div class="ps-step">3</div>📜</div>
+        <div class="ps-title">Certificate</div>
+        <div class="ps-desc">ASEAN recognized certificate — trusted by governments & employers</div>
+        <div class="ps-tag">ASEAN Cert.</div>
+      </div>
+      <div class="ps rv d4">
+        <div class="ps-num"><div class="ps-step">4</div>💼</div>
+        <div class="ps-title">ការងារ</div>
+        <div class="ps-desc">80%+ placement ក្នុង 3 ខែ — salary ខ្ពស់ជា average ២ ដង</div>
+        <div class="ps-tag">80% Placed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COUNTRIES ══════════ -->
+<section class="sec" id="countries">
+  <div class="si">
+    <div class="rv" style="margin-bottom:40px;">
+      <div class="sec-label">ភូមិសាស្ត្រ</div>
+      <h2 class="sh">ASTI ដំណើរការ 3 ប្រទេស</h2>
+    </div>
+    <div class="ctry-tabs rv d1">
+      <button class="ctab on" onclick="switchTab('kh',this)">🇰🇭 កម្ពុជា</button>
+      <button class="ctab" onclick="switchTab('la',this)">🇱🇦 ឡាវវ</button>
+      <button class="ctab" onclick="switchTab('mm',this)">🇲🇲 មីយ៉ាន់ម៉ា</button>
+    </div>
+    <div id="t-kh" class="cpanel on">
+      <div>
+        <div class="cp-flag-badge">🇰🇭 Cambodia · MLVT & MoEYS</div>
+        <h3 class="cp-h">WBL ពង្រឹង នៅកម្ពុជា</h3>
+        <p class="cp-p">ASTI ធ្វើការជាមួយ MLVT, MoEYS, CCIFKH, TVET schools 18 ។ Cambodia WBL framework leading ក្នុង ASEAN — certified internationally ។ eLMS Khmer access ខ្ពស់បំផុត ។</p>
+        <div class="cp-stats">
+          <div class="cps"><div class="cps-n">3,200+</div><div class="cps-l">eLMS Learners</div></div>
+          <div class="cps"><div class="cps-n">18</div><div class="cps-l">TVET Institutions</div></div>
+          <div class="cps"><div class="cps-n">1,200+</div><div class="cps-l">Trainers Trained</div></div>
+          <div class="cps"><div class="cps-n">7</div><div class="cps-l">WBL Company Partners</div></div>
+        </div>
+        <a href="#" class="cp-cta">ស្វែងយល់ Cambodia →</a>
+      </div>
+      <div class="cp-right">
+        <div class="cp-partners">
+          <div class="cp-ptitle">ដៃគូ Cambodia</div>
+          <div class="prow"><div class="p-dot" style="background:#0B3D91"></div><div><div class="p-name">MLVT</div><div class="p-role">ក្រសួងការងារ & TVET</div></div></div>
+          <div class="prow"><div class="p-dot" style="background:#2E7D32"></div><div><div class="p-name">MoEYS</div><div class="p-role">ក្រសួងអប់រំ យុវជន</div></div></div>
+          <div class="prow"><div class="p-dot" style="background:#E8A020"></div><div><div class="p-name">CCIFKH</div><div class="p-role">ហ្វីសម័ព័ន្ធ CCI</div></div></div>
+          <div class="prow"><div class="p-dot" style="background:#C62828"></div><div><div class="p-name">NTTI / NTTI 2</div><div class="p-role">Technical Training Institute</div></div></div>
+        </div>
+        <div class="cp-quote">
+          <div class="cq-text">«ASTI WBL ប្ដូររបៀបបង្រៀន TVET ពេញ ។ Trainers ខ្ញុំ ឥឡូវ បង្ហាត់ ជំនាញ real-world ១០០% ។ Students work-ready ភ្លាម ។»</div>
+          <div class="cq-by">
+            <div class="cq-av">ដ</div>
+            <div><div class="cq-name">ដាលី — TVET Lead Trainer</div><div class="cq-info">NTTI · Phnom Penh</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="t-la" class="cpanel">
+      <div>
+        <div class="cp-flag-badge">🇱🇦 Lao PDR · MoES & LNCCI</div>
+        <h3 class="cp-h">Dual-Training WBL នៅឡាវវ</h3>
+        <p class="cp-p">Lao PDR WBL ផ្ដោតលើ Dual System — school + workplace ។ LNCCI key partner ។ eLMS Lao-language open-access ។</p>
+        <div class="cp-stats">
+          <div class="cps"><div class="cps-n">2,100+</div><div class="cps-l">eLMS Learners</div></div>
+          <div class="cps"><div class="cps-n">14</div><div class="cps-l">TVET Institutions</div></div>
+          <div class="cps"><div class="cps-n">850+</div><div class="cps-l">Trainers Trained</div></div>
+          <div class="cps"><div class="cps-n">5</div><div class="cps-l">WBL Partners</div></div>
+        </div>
+        <a href="#" class="cp-cta">ស្វែងយល់ Lao PDR →</a>
+      </div>
+      <div class="cp-right">
+        <div class="cp-partners">
+          <div class="cp-ptitle">ដៃគូ Lao PDR</div>
+          <div class="prow"><div class="p-dot" style="background:#0B3D91"></div><div><div class="p-name">MoES</div><div class="p-role">ក្រសួងអប់រំ</div></div></div>
+          <div class="prow"><div class="p-dot" style="background:#2E7D32"></div><div><div class="p-name">LNCCI</div><div class="p-role">Lao National CCI</div></div></div>
+          <div class="prow"><div class="p-dot" style="background:#E8A020"></div><div><div class="p-name">NUOL TVET</div><div class="p-role">National University Lao</div></div></div>
+        </div>
+        <div class="cp-quote">
+          <div class="cq-text">«eLMS Lao-language — quality ខ្ពស់ free ។ Trainers access eLMS update knowledge ជានិច្ច ។ ASTI changed everything ។»</div>
+          <div class="cq-by">
+            <div class="cq-av" style="background:#00796B;">ສ</div>
+            <div><div class="cq-name">ສີວັນ — MoES TVET Officer</div><div class="cq-info">Vientiane, Lao PDR</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="t-mm" class="cpanel">
+      <div>
+        <div class="cp-flag-badge">🇲🇲 Myanmar · MoLIP</div>
+        <h3 class="cp-h">eLMS WBL — Offline Ready</h3>
+        <p class="cp-p">Myanmar eLMS ផ្ដោតលើ mobile + offline ។ TVET trainer capacity building strong ។</p>
+        <div class="cp-stats">
+          <div class="cps"><div class="cps-n">1,800+</div><div class="cps-l">eLMS Learners</div></div>
+          <div class="cps"><div class="cps-n">16</div><div class="cps-l">TVET Institutions</div></div>
+          <div class="cps"><div class="cps-n">620+</div><div class="cps-l">Trainers</div></div>
+          <div class="cps"><div class="cps-n">4</div><div class="cps-l">WBL Partners</div></div>
+        </div>
+        <a href="#" class="cp-cta">ស្វែងយល់ Myanmar →</a>
+      </div>
+      <div class="cp-right">
+        <div class="cp-partners">
+          <div class="cp-ptitle">ដៃគូ Myanmar</div>
+          <div class="prow"><div class="p-dot" style="background:#0B3D91"></div><div><div class="p-name">MoLIP</div><div class="p-role">Ministry of Labour</div></div></div>
+          <div class="prow"><div class="p-dot" style="background:#2E7D32"></div><div><div class="p-name">UMFCCI</div><div class="p-role">Myanmar CCI</div></div></div>
+          <div class="prow"><div class="p-dot" style="background:#E8A020"></div><div><div class="p-name">UMTVET</div><div class="p-role">TVET Institution</div></div></div>
+        </div>
+        <div class="cp-quote">
+          <div class="cq-text">«eLMS offline mode ជួយ trainers — internet ខ្សោយ mobile-first design perfect ។ ASTI understands our context ។»</div>
+          <div class="cq-by">
+            <div class="cq-av" style="background:#1565C0;">မ</div>
+            <div><div class="cq-name">မ — Senior TVET Trainer</div><div class="cq-info">UMTVET · Myanmar</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ eLMS ══════════ -->
+<section class="sec bg-ink" id="elms">
+  <div class="si">
+    <div class="elms-layout">
+      <div>
+        <div class="sec-label w rv">Free eLearning Platform</div>
+        <h2 class="sh w rv d1">eLMS ASTI<br>រៀន Free<br>គ្រប់ Devices</h2>
+        <p class="sec-desc w rv d2">Khmer · English · Lao · Offline Ready · Mobile-first · Open-source</p>
+        <div class="elms-courses">
+          <div class="ec rv d2"><div class="ec-ic">📖</div><div class="ec-inf"><div class="ec-nm">WBL Fundamentals for TVET Trainers</div><div class="ec-mt">KM · EN · LA · ២៤ ម៉ោង</div></div><span class="ec-tag open">Free</span></div>
+          <div class="ec rv d3"><div class="ec-ic">🏭</div><div class="ec-inf"><div class="ec-nm">Industry Partnership & Work Mentorship</div><div class="ec-mt">EN · LA · ១៦ ម៉ោង</div></div><span class="ec-tag open">Free</span></div>
+          <div class="ec rv d4"><div class="ec-ic">📊</div><div class="ec-inf"><div class="ec-nm">Policy Design for WBL Systems</div><div class="ec-mt">Government Officials · ១២ ម៉ោង</div></div><span class="ec-tag soon">ឆាប់</span></div>
+          <div class="ec rv d5"><div class="ec-ic">🎯</div><div class="ec-inf"><div class="ec-nm">Quality Assurance in TVET</div><div class="ec-mt">EN · ១០ ម៉ោង</div></div><span class="ec-tag soon">ឆាប់</span></div>
+        </div>
+      </div>
+      <div class="elms-panel rv d2">
+        <div class="ep-header">
+          <div class="ep-title">Platform Statistics · 2025</div>
+          <div class="ep-stats">
+            <div class="epst"><div class="epst-n">12<em>K</em></div><div class="epst-l">Learners</div></div>
+            <div class="epst"><div class="epst-n">40+</div><div class="epst-l">Courses</div></div>
+            <div class="epst"><div class="epst-n">3</div><div class="epst-l">Languages</div></div>
+          </div>
+        </div>
+        <div class="ep-tech"><span class="ep-tp">Moodle</span><span class="ep-tp">Open edX</span><span class="ep-tp">H5P</span><span class="ep-tp">Offline</span><span class="ep-tp">SCORM</span></div>
+        <a href="#" class="ep-cta">🎓 ចូល eLMS ឥឡូវ →</a>
+        <div class="ep-langs">
+          <div class="ep-lang"><div class="ep-lang-n">ខ្មែរ</div><div class="ep-lang-s">Khmer</div></div>
+          <div class="ep-lang-div"></div>
+          <div class="ep-lang"><div class="ep-lang-n">EN</div><div class="ep-lang-s">English</div></div>
+          <div class="ep-lang-div"></div>
+          <div class="ep-lang"><div class="ep-lang-n">ລາວ</div><div class="ep-lang-s">Lao</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ IMPACT ══════════ -->
+<section class="sec bg-off" id="impact">
+  <div class="si">
+    <div class="impact-layout">
+      <div>
+        <div class="sec-label rv">Impact 2022–2025</div>
+        <h2 class="sh rv d1">លទ្ធផលពិតប្រាកដ</h2>
+        <p class="sec-desc rv d2" style="margin-bottom:0;">Measurable outcomes — youth, trainers, institutions, employers, governments</p>
+        <div class="impact-nums rv d2">
+          <div class="in-box"><div class="in-n">12,400+</div><div class="in-l">eLMS Active Learners</div></div>
+          <div class="in-box"><div class="in-n">3,600+</div><div class="in-l">Trainers WBL trained</div></div>
+          <div class="in-box"><div class="in-n">200+</div><div class="in-l">WBL Company Partners</div></div>
+          <div class="in-box"><div class="in-n">80%+</div><div class="in-l">Job Placement Rate</div></div>
+        </div>
+      </div>
+      <div class="impact-stories rv d2">
+        <div class="ist active">
+          <div class="ist-tag">✨ Youth · Cambodia</div>
+          <div class="ist-q">«WBL internship ក្នុងក្រុមហ៊ុន — ១ ខែក្រោយ ខ្ញុំបានការងារ $450/ខែ ។ ជំនាញ ready ១០០% ។»</div>
+          <div class="ist-p"><div class="ist-av" style="background:#E8A020;">ស</div><div><div class="ist-nm">សុខ ចំរើន · Electrical Tech.</div><div class="ist-info">NTTI Graduate · Phnom Penh</div></div></div>
+        </div>
+        <div class="ist">
+          <div class="ist-tag">🏭 Employer · Lao PDR</div>
+          <div class="ist-q">«WBL graduates job-ready ។ Training cost ក្រុមហ៊ុន ៥០% ថោកជាមុន ។ Highly recommend ។»</div>
+          <div class="ist-p"><div class="ist-av" style="background:#00796B;">ສ</div><div><div class="ist-nm">ສົມສີ · HR Director</div><div class="ist-info">Manufacturing · Vientiane</div></div></div>
+        </div>
+        <div class="ist">
+          <div class="ist-tag">🏛️ Policy · Cambodia</div>
+          <div class="ist-q">«ASTI helped MLVT design WBL legal framework ។ Cambodia WBL internationally recognized ។»</div>
+          <div class="ist-p"><div class="ist-av" style="background:#0B3D91;">ម</div><div><div class="ist-nm">ប.ជ. · Senior Policy Official</div><div class="ist-info">MLVT · Phnom Penh</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ NEWS ══════════ -->
+<section class="sec" id="news">
+  <div class="si">
+    <div class="news-header rv">
+      <div>
+        <div class="sec-label" style="margin-bottom:8px;">ព័ត៌មាន</div>
+        <h2 class="sh" style="margin-bottom:0;">ព័ត៌មាន &amp; ព្រឹត្តការណ៍</h2>
+      </div>
+      <a href="#" class="see-all">មើលទាំងអស់ <span>→</span></a>
+    </div>
+    <div class="news-filters rv d1">
+      <button class="nfp on">ទាំងអស់</button>
+      <button class="nfp">ព្រឹត្តការណ៍</button>
+      <button class="nfp">ការបោះពុម្ព</button>
+      <button class="nfp">ភាពជាដៃគូ</button>
+      <button class="nfp">ទិន្នន័យ</button>
+    </div>
+    <div class="news-featured rv d1">
+      <div class="nf-vis">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80&fit=crop" alt="WBL Forum" loading="lazy"/>
+        <div class="nf-icon">🎓</div>
+        <div class="nf-btm">
+          <div class="nf-chip">⭐ Featured</div>
+          <div class="nf-flags">
+            <span class="nf-fl">🇰🇭 Cambodia</span>
+            <span class="nf-fl">🇱🇦 Lao PDR</span>
+            <span class="nf-fl">🇲🇲 Myanmar</span>
+          </div>
+        </div>
+      </div>
+      <div class="nf-body">
+        <div class="nf-date">ថ្ងៃទី ១០ ខែមីនា ២០២៦</div>
+        <h3 class="nf-title">វេទិកា WBL តំបន់ ២០២៦</h3>
+        <p class="nf-desc">ASTI annual forum ប្រមូល TVET practitioners, officials, employers — ចែករំលែក WBL best practices ។</p>
+        <a href="#" class="nf-rl">អានបន្ថែម <span class="nf-arr">→</span></a>
+      </div>
+    </div>
+    <div class="news-grid">
+      <div class="nc rv d2">
+        <div class="nc-th t1"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=75&fit=crop" alt="Publication" loading="lazy"/><div class="nc-ic">📝</div><span class="nc-tg pub">ការបោះពុម្ព</span><div class="nc-bar"></div></div>
+        <div class="nc-body"><div class="nc-date">២៨ ខែកុម្ភៈ ២០២៦</div><div class="nc-title">ឧបករណ៍វាស់វែង WBL ថ្មី — ជំនួយ TVET Assessment</div><div class="nc-ft"><span class="nc-loc">🌏 Regional</span><a href="#" class="nc-rl">អាន →</a></div></div>
+      </div>
+      <div class="nc rv d3">
+        <div class="nc-th t2"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=75&fit=crop" alt="Partnership" loading="lazy"/><div class="nc-ic">🤝</div><span class="nc-tg par">ភាពជាដៃគូ</span><div class="nc-bar"></div></div>
+        <div class="nc-body"><div class="nc-date">១៥ ខែកុម្ភៈ ២០២៦</div><div class="nc-title">LNCCI · MoES ចុះហត្ថលេខា Dual-Training MoU</div><div class="nc-ft"><span class="nc-loc">🇱🇦 Lao PDR</span><a href="#" class="nc-rl">អាន →</a></div></div>
+      </div>
+      <div class="nc rv d4">
+        <div class="nc-th t3"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75&fit=crop" alt="Data report" loading="lazy"/><div class="nc-ic">📊</div><span class="nc-tg dat">ទិន្នន័យ</span><div class="nc-bar"></div></div>
+        <div class="nc-body"><div class="nc-date">៣០ ខែមករា ២០២៦</div><div class="nc-title">Annual Results Report ASTI ២០២៥ — Download</div><div class="nc-ft"><span class="nc-loc">🌏 Regional</span><a href="#" class="nc-rl">ទាញ →</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners-sec">
+  <div class="ps-in">
+    <div class="ps-label">ដៃគូ &amp; អ្នកផ្ដល់មូលនិធិ</div>
+    <div class="ps-logos">
+      <div class="ps-chip ps-a">ASEAN Secretariat</div>
+      <div class="ps-chip ps-s">🇨🇭 SDC Switzerland</div>
+      <div class="ps-chip ps-g">GIZ International Services</div>
+      <div class="ps-chip ps-h">HELVETAS</div>
+      <div class="ps-chip ps-sf">SFUVET Switzerland</div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="nl-sec">
+  <div class="nl-in">
+    <div class="nl-pretitle rv">ព័ត៌មានចុងក្រោយ</div>
+    <h2 class="nl-h rv d1">ស្ថិតនៅ Close ជាមួយ ASTI</h2>
+    <p class="nl-sub rv d2">WBL opportunities, eLMS courses, events — ផ្ទាល់ inbox ។ Free ។ No spam ។</p>
+    <div class="nl-form rv d3">
+      <input type="text" class="nl-inp" placeholder="ឈ្មោះពេញ"/>
+      <input type="email" class="nl-inp" placeholder="your@email.com"/>
+      <select class="nl-sel">
+        <option>ខ្ញុំជា...</option>
+        <option>🧑‍🎓 យុវជន / Student</option>
+        <option>🏭 ក្រុមហ៊ុន / Employer</option>
+        <option>🏛️ មន្ត្រីរដ្ឋ</option>
+        <option>🏫 ស្ថាប័ន TVET</option>
+        <option>🌐 ម្ចាស់ជំនួយ</option>
+      </select>
+      <button class="nl-sbt">ចុះឈ្មោះ →</button>
+      <div class="nl-note">🔒 Privacy protected · No spam · Unsubscribe anytime</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="ft-in">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-brand">
+          <div class="logo-mark"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="4.5" stroke="white" stroke-width="1.6"/><path d="M11 2.5V5.5M11 16.5V19.5M2.5 11H5.5M16.5 11H19.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="11" cy="11" r="1.8" fill="rgba(255,255,255,.7)"/></svg></div>
+          <span class="ft-brand-nm">ASTI</span>
+        </div>
+        <p class="ft-desc">ASEAN Swiss TVET Initiative — ពង្រឹង WBL នៅ Cambodia, Lao PDR, Myanmar ។ ២០២២–២០២៧ ។ Funded by SDC Switzerland ។</p>
+        <div class="ft-soc">
+          <a href="#" aria-label="X">𝕏</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Web">🌐</a>
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="Telegram">✈</a>
+        </div>
+      </div>
+      <div class="ft-col"><h4>Platform</h4><ul><li><a href="#">អំពី ASTI</a></li><li><a href="#">WBL System</a></li><li><a href="#">eLMS Free</a></li><li><a href="#">ប្រទេស ៣</a></li><li><a href="#">លទ្ធផល</a></li></ul></div>
+      <div class="ft-col"><h4>ធនធាន</h4><ul><li><a href="#">Knowledge Hub</a></li><li><a href="#">WBL Toolkit</a></li><li><a href="#">Salary Guide</a></li><li><a href="#">CV Template</a></li><li><a href="#">Impact Data</a></li></ul></div>
+      <div class="ft-col"><h4>Info</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Accessibility</a></li><li><a href="#">Safeguarding</a></li><li><a href="#">Feedback</a></li><li><a href="#">Contact</a></li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">© ២០២៦ ASTI · Funded by SDC · Implemented by GIZ International Services &amp; Helvetas · asti-tvet.org</div>
+      <div class="ft-stripe">
+        <div class="ft-s" style="background:#C62828"></div>
+        <div class="ft-s" style="background:#E8A020"></div>
+        <div class="ft-s" style="background:#2E7D32"></div>
+        <div class="ft-s" style="background:rgba(255,255,255,.1)"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+/* NAV */
+function togNav(){
+  document.getElementById('ham-btn').classList.toggle('open');
+  document.getElementById('mob-menu').classList.toggle('open');
+}
+document.querySelectorAll('.mob-nav a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('ham-btn').classList.remove('open');
+  document.getElementById('mob-menu').classList.remove('open');
+}));
+/* LANG */
+document.querySelectorAll('.ls-btn').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.ls-btn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+}));
+/* COUNTRY TABS */
+function switchTab(id,btn){
+  document.querySelectorAll('.cpanel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ctab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('t-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+/* NEWS FILTER */
+document.querySelectorAll('.nfp').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.nfp').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+}));
+/* SKILLS ACTIVE */
+document.querySelectorAll('.sl-item').forEach(item=>item.addEventListener('click',()=>{
+  document.querySelectorAll('.sl-item').forEach(x=>x.classList.remove('active'));
+  item.classList.add('active');
+}));
+/* IMPACT STORIES */
+document.querySelectorAll('.ist').forEach(item=>item.addEventListener('click',()=>{
+  document.querySelectorAll('.ist').forEach(x=>x.classList.remove('active'));
+  item.classList.add('active');
+}));
+/* SCROLL REVEAL */
+document.addEventListener('DOMContentLoaded',()=>{
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+  },{threshold:0.07});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+});
+</script>
+</body>
+</html>

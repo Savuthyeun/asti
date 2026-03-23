@@ -20,6 +20,123 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/css/main.css"/>
 
+
+<style>
+/* ── Dropdown: ទំព័រដើម → v1 / v2 ── */
+.has-drop { position: relative; }
+
+.has-drop > a {
+  display: flex !important;
+  align-items: center;
+  gap: 5px;
+}
+.has-drop > a::after {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .2s;
+  opacity: .55;
+}
+.has-drop:hover > a::after {
+  transform: rotate(-135deg) translateY(-2px);
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid #E5EAF2;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(10,35,66,.13);
+  overflow: hidden;
+  z-index: 999;
+  padding: 6px 0;
+}
+.has-drop:hover .dropdown { display: block; }
+
+.dropdown a {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  height: auto !important;
+  padding: 11px 18px !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  border-bottom: none !important;
+  transition: background .15s !important;
+  white-space: nowrap;
+}
+.dropdown a:hover {
+  background: #F4F6FB;
+  color: #0A2342 !important;
+}
+.dropdown a.dd-active {
+  background: #EBF2FF;
+  color: #0A2342 !important;
+  font-weight: 700 !important;
+}
+.dd-badge {
+  font-family: 'Sora', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: auto;
+}
+.dd-badge.cur  { background: #E8F5E9; color: #2E7D32; }
+.dd-badge.new  { background: #EBF2FF; color: #0B3D91; }
+.dd-sep {
+  height: 1px;
+  background: #E5EAF2;
+  margin: 4px 0;
+}
+
+/* Mobile dropdown */
+.mob-drop-btn {
+  width: 100%;
+  text-align: left;
+  padding: 14px 28px;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0A1628;
+  border-bottom: 1px solid #F4F6FB;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mob-drop-btn::after {
+  content: '›';
+  font-size: 18px;
+  color: #8896A8;
+}
+.mob-sub {
+  display: none;
+  flex-direction: column;
+  background: #F4F6FB;
+}
+.mob-sub.open { display: flex; }
+.mob-sub a {
+  padding: 12px 40px !important;
+  font-size: 14px !important;
+  color: #374151 !important;
+  border-bottom: 1px solid #E5EAF2;
+}
+.mob-sub a.dd-active {
+  color: #0B3D91 !important;
+  font-weight: 700 !important;
+}
+</style>
 </head>
 <body>
 
@@ -51,7 +168,20 @@
     <div><div class="lw1">ASTI</div><div class="lw2">ASEAN Swiss TVET Initiative</div></div>
   </a>
   <ul class="nav-links">
-    <li><a href="#" class="act">ទំព័រដើម</a></li>
+    <li class="has-drop">
+      <a href="index.html" class="act">ទំព័រដើម</a>
+      <div class="dropdown">
+        <a href="index.html" class="dd-active">
+          🏠 Home v1 — Classic
+          <span class="dd-badge cur">Current</span>
+        </a>
+        <div class="dd-sep"></div>
+        <a href="index_Hompage2.html">
+          ✨ Home v2 — New
+          <span class="dd-badge new">New</span>
+        </a>
+      </div>
+    </li>
     <li><a href="#">អំពី ASTI</a></li>
     <li><a href="#">ជំនាញ & eLMS</a></li>
     <li><a href="#">ប្រទេស</a></li>
@@ -67,7 +197,14 @@
 </nav>
 <div class="mob-nav" id="mob-menu">
   <ul>
-    <li><a href="#">ទំព័រដើម</a></li><li><a href="#">អំពី ASTI</a></li>
+    <li>
+    <button class="mob-drop-btn" onclick="this.nextElementSibling.classList.toggle('open')">ទំព័រដើម</button>
+    <div class="mob-sub">
+      <a href="index.html" class="dd-active">🏠 Home v1 — Current</a>
+      <a href="index_Hompage2.html">✨ Home v2 — New</a>
+    </div>
+  </li>
+  <li><a href="#">អំពី ASTI</a></li>
     <li><a href="#">ជំនាញ & eLMS</a></li><li><a href="#">ប្រទេស</a></li>
     <li><a href="#">ដៃគូ WBL</a></li><li><a href="#">ធនធាន</a></li><li><a href="#">លទ្ធផល</a></li>
   </ul>
